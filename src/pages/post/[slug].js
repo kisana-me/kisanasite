@@ -5,7 +5,7 @@ import Link from 'next/link'
 import rehypeParse from 'rehype-parse'
 import rehypeReact from 'rehype-react'
 import { useState, useEffect, Fragment, createElement } from 'react'
-import { unified } from 'Unified'
+import { unified } from 'unified'
 
 const MyLink = ({ children, href }) => {
   return (
