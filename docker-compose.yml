@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  app:
+    image: node:lts-alpine3.17
+    tty: true
+    stdin_open: true
+    environment:
+      - WATCHPACK_POLLING=true
+    working_dir: /app
+    volumes:
+      - ./src:/app
+    ports:
+      - '3000:3000'
+    command: sh -c "npm install && npm update && npm run build && npm run start"
