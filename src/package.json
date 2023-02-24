@@ -29,6 +29,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "rehype-parse": "^8.0.4",
-    "rehype-react": "^7.1.2"
+    "rehype-react": "^7.1.2",
+    "unified": "^10.1.2"
   }
 }

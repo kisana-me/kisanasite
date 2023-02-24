@@ -4,7 +4,10 @@ export default function Footer() {
   return (
     <footer>
       <div>
-        <div className="kisana">© Amiverse</div>
+        <div className="copyright">© Amiverse</div>
+        <div className="kisana">
+          Made by <Link href="https://github.com/Kisana528/personal-website">Kisana</Link>
+        </div>
       </div>
       <div>
         <ul>
@@ -22,7 +25,7 @@ export default function Footer() {
         display: flex;
         justify-content: space-around;
       }
-      .kisana {
+      .copyright {
         padding: 10px;
       }
       ul {
