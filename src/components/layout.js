@@ -1,10 +1,15 @@
 import Header from './header'
 import Footer from './footer'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 export default function Layout({ children }) {
   const [isDark, setIsDark] = useState(false)
   const modeTrigger = () => setIsDark(!isDark)
+  useEffect(() => {
+    if(window.matchMedia('(prefers-color-scheme: dark)').matches === true){
+      modeTrigger()
+    } 
+  },[]);
   return (
     <div className={`all ${isDark ? "dark" : ""}`}>
       <Header isDark={isDark} modeTrigger={modeTrigger} />

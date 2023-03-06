@@ -26,7 +26,6 @@ export default function Footer() {
         justify-content: space-around;
       }
       .copyright {
-        padding: 10px;
       }
       ul {
         margin: 0;
