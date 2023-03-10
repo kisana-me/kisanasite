@@ -19,6 +19,22 @@ import MDTL from 'markdown-it-task-lists'//[ ] or [x]
 
 const postsDirectory = path.join(process.cwd(), 'posts')
 
+export function getTags() {
+  const allPosts = getSortedPostsData()[0]
+  let tags = [];
+  allPosts.forEach((post) => {
+    tags = [...tags, ...post.tag]
+  })
+  const setTags = [...new Set(tags)];
+  return setTags.sort();
+}
+
+export async function getAssociatedPosts(tag) {
+  const allPosts = getSortedPostsData()[0]
+  const associatedPosts = allPosts.filter((data) => data.tag.includes(tag))
+  return associatedPosts
+}
+
 export function getSortedPostsData() {
   const fileNames = fs.readdirSync(postsDirectory)
   const allPostsData = fileNames.map(fileName => {

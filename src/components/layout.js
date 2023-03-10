@@ -9,7 +9,7 @@ export default function Layout({ children }) {
     if(window.matchMedia('(prefers-color-scheme: dark)').matches === true){
       modeTrigger()
     } 
-  },[]);
+  },[])
   return (
     <div className={`all ${isDark ? "dark" : ""}`}>
       <Header isDark={isDark} modeTrigger={modeTrigger} />

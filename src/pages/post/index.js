@@ -22,6 +22,7 @@ export default function Home({ sortedDate, sortedUpdate }) {
       <h1>POST INDEX</h1>
       <button onClick={arrayTrigger}>切り替え</button>
       <p>{isPostOrder ? "投稿順です" : "更新順です" }</p>
+      <Link href="/post/tags">タグ一覧</Link>
       {(isPostOrder ? sortedDate : sortedUpdate).map((post) => (
         <Link key={ post.slug } href={ "/post/" + post.slug }>
           <div className="post">

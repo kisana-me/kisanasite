@@ -89,7 +89,7 @@ export default function Post({ postData, sortedDate }) {
         <div>ID:{ postData.id }</div>
         <div>投稿:{ postData.date }</div>
         <div>更新:{ postData.update }</div>
-        <div>タグ:{ postData.tag.map((t)=> <span key={t}>{t}</span> ) }</div>
+        <div>タグ:{ postData.tag.map((t)=> <Link key={t} href={'/post/tags#' + t}><span>{t}</span></Link> ) }</div>
         <div>{postData.description}</div>
         {toReactNode(postData.contentHtml)}
       </div>
