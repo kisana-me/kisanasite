@@ -18,7 +18,6 @@ export async function getStaticProps() {
     return (jsonOutput)
   }
   const result = await allPostsAndTags()
-  console.log(result)
   return {
     props: {
       result,

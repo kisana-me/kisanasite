@@ -4,7 +4,7 @@
 docker-compose build
 
 docker-compose run --rm app sh -c 'npx create-next-app .'
-
+allNo@
 docker-compose up
 
 docker-compose exec app sh

@@ -1,6 +1,10 @@
 import Link from 'next/link'
+import React, {useContext} from 'react'
+import {darkContext, setDarkContext} from '../pages/_app'
 
-export default function Header({ isDark, modeTrigger }) {
+export default function Header() {
+  const isDark = useContext(darkContext)
+  const modeTrigger = useContext(setDarkContext)
   return (
     <header>
       <div className="top-left">
