@@ -28,7 +28,7 @@ export default function Header() {
           <button className={isDark ? "dark-button" : "light-button"} onClick={modeTrigger}>{isDark ? "🌙" : "☀️"}</button>
         </div>
       </div>
-      <style jsx="true">{`
+      <style jsx>{`
       header {
         backdrop-filter: blur(12px);
         display: flex;
@@ -70,9 +70,9 @@ export default function Header() {
         padding: 10px;
         color: #7847da;
         border-radius: 3px;
-        transition: all 0.5s 0s ease;
+        transition: all 0.2s 0s ease;
       }
-      li:hover {
+      li:active {
         box-shadow: 4px 4px 7px 0 rgb(0 0 0 / 25%);
         background: #ffffff;
         transform: translate(-.5px, -.5px);
