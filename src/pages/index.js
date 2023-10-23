@@ -23,7 +23,7 @@ export default function Home() {
       <div className="container">
         {/*content here*/}
       </div> 
-      <style jsx="true">{`
+      <style jsx>{`
         .container {
           height: calc(100vh - 50px);
           justify-content: space-around;

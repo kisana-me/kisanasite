@@ -8,6 +8,7 @@ export default function Footer() {
         <div className="kisana">
           Made by <Link href="https://github.com/Kisana528/personal-website">Kisana</Link>
         </div>
+        <div><Link href="/edit">新規作成</Link></div>
       </div>
       <div>
         <ul>

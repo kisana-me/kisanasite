@@ -6,9 +6,9 @@ services:
     environment:
       - WATCHPACK_POLLING=true
     working_dir: /app
-    restart: always
+    #restart: always
     volumes:
       - ./src:/app
     ports:
-      - '3000:3000'
-    command: sh -c "npm install && npm update && npm run build && npm run start"
+      - '3002:3000'
+    command: sh -c "npm install && npm update && npm run dev"
