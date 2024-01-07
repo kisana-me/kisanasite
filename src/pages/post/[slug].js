@@ -6,6 +6,7 @@ import rehypeParse from 'rehype-parse'
 import rehypeReact from 'rehype-react'
 import { useState, useEffect, Fragment, createElement } from 'react'
 import { unified } from 'unified'
+import parse from 'html-react-parser'
 
 const MyLink = ({ children, href }) => {
   return (
@@ -37,7 +38,7 @@ function toReactNode(content) {
       })
       .processSync(content);
 
-    setContent(processor.result);
+    setContent(content);
   }, [content]);
 
   return Content;
@@ -91,7 +92,7 @@ export default function Post({ postData, sortedDate }) {
         <div>更新:{ postData.update }</div>
         <div>タグ:{ postData.tag.map((t)=> <Link key={t} href={'/post/tags#' + t}><span>{t}</span></Link> ) }</div>
         <div>{postData.description}</div>
-        {toReactNode(postData.contentHtml)}
+        {parse(postData.contentHtml)}
       </div>
       <div className="pathContainer">
         {sortedDate.map((post) => (

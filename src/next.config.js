@@ -11,6 +11,14 @@ const withPWA = require("next-pwa")({
 module.exports = withPWA({
   reactStrictMode: true,
   images: {
-    domains: ['localhost', 'kisana.amiverse.net'],
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+      },{
+        protocol: 'https',
+        hostname: '**.amiverse.net',
+      }
+    ],
   },
 })
