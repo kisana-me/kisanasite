@@ -9,6 +9,6 @@ const withPWA = require("next-pwa")({
 module.exports = withPWA({
   reactStrictMode: true,
   images: {
-    domains: ['localhost', 'kisana.amiverse.net', '192.168.0.4'],
+    domains: ['localhost', 'kisana.amiverse.net'],
   },
 })
