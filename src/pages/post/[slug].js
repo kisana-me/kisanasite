@@ -2,47 +2,7 @@ import Image from 'next/image'
 import { getAllPostIds, getPostData, getSortedPostsData } from '../../lib/posts'
 import Head from "../../components/Head"
 import Link from 'next/link'
-import rehypeParse from 'rehype-parse'
-import rehypeReact from 'rehype-react'
-import { useState, useEffect, Fragment, createElement } from 'react'
-import { unified } from 'unified'
 import parse from 'html-react-parser'
-
-const MyLink = ({ children, href }) => {
-  return (
-    <Link href={href}>
-      {children}
-    </Link>
-  )
-}
-
-const MyImage = ({ src, alt }) => {
-  return <Image src={src} alt={alt} layout="fill" objectFit="contain" />
-}
-
-function toReactNode(content) {
-  const [Content, setContent] = useState(Fragment);
-
-  useEffect(() => {
-    const processor = unified()
-      .use(rehypeParse, {
-        fragment: true,
-      })
-      .use(rehypeReact, {
-        createElement,
-        Fragment,
-        components: {
-          a: MyLink,
-          img: MyImage,
-        },
-      })
-      .processSync(content);
-
-    setContent(content);
-  }, [content]);
-
-  return Content;
-}
 
 export async function getStaticPaths() {
   const paths = getAllPostIds()
