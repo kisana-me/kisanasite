@@ -6,7 +6,6 @@ export default function Model() {
   useEffect(() => {
     let canvas = document.getElementById('canvas')
     let parentElement = canvas.parentElement
-    let countDelta
     const sizes = {
       width: (parentElement.offsetWidth - 1),
       height: parentElement.offsetHeight
@@ -31,47 +30,27 @@ export default function Model() {
     })
     renderer.setSize(sizes.width, sizes.height)
     renderer.setPixelRatio(window.devicePixelRatio)
+    renderer.physicallyCorrectLights = true
     // ライト
     const ambientLight = new THREE.AmbientLight(0xFFFFFF)
     scene.add(ambientLight)
 
-    const rect_light = new THREE.RectAreaLight(0xFFFFFF, 500, 1, 1)
-    rect_light.rotateY(-Math.PI / 2)
-    rect_light.rotateX(-Math.PI / 4)
-    rect_light.position.set(0, 15, -5)
+    const rect_light = new THREE.RectAreaLight(0xFFFFFF, 700, 1, 1)
+    rect_light.rotateX(-Math.PI / 2)
+    rect_light.position.set(0, 17, -5)
     scene.add(rect_light)
     // オブジェクト
-    const planeGeometry = new THREE.PlaneGeometry(400, 400, 100, 100)
-    const material = new THREE.MeshBasicMaterial({
-      color: "orange",
-      wireframe: true,
-    })
-    const plane = new THREE.Mesh(planeGeometry, material)
-    plane.rotateX(-Math.PI / 2)
-    //scene.add(plane)
-    function getRandomColor() {
-      return Math.random() * 0xFFFFFF
-    }
-    const cube_geometry = new THREE.BoxGeometry(1, 1, 1)
-    const cube_material = new THREE.MeshBasicMaterial({ color: getRandomColor() })
-    const cube = new THREE.Mesh(cube_geometry, cube_material)
-    //scene.add(cube)
     const loader = new GLTFLoader()
     loader.load('test.glb', function(gltf) {
       scene.add(gltf.scene)
     }, undefined, function(e) {
       console.error(e)
     })
-    let prevTime = performance.now()
     function animate() {
-      //requestAnimationFrame(animate)
-      const time = performance.now()
-      const delta = (time - prevTime) / 1000
-      countDelta += delta * 1000
-      prevTime = time
       renderer.render(scene, camera)
     }
     renderer.setAnimationLoop(animate)
+    animate()
     // 画面リサイズ設定
     window.addEventListener("resize", onWindowResize)
     function onWindowResize() {
