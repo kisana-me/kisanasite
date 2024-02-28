@@ -26,7 +26,6 @@ export default function DefaultHead({ children,
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
       <meta name="robots" content={robots} />
-      <meta name="referrer" content="no-referrer" />
       <meta name="creator" content={author} />
       <meta name="googlebot" content={robots} />
       <meta name="publisher" content={author} />

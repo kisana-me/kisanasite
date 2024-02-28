@@ -17,7 +17,7 @@ export default function Footer() {
           <Link href="/contact"><li>CONTACT</li></Link>
         </ul>
       </div>
-      <style jsx="true">{`
+      <style jsx>{`
       footer {
         background-color: #9ad1ff;
         width: 100%;

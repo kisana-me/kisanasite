@@ -13,11 +13,11 @@ module.exports = withPWA({
   images: {
     remotePatterns: [
       {
-        protocol: 'http',
-        hostname: 'localhost',
-      },{
         protocol: 'https',
         hostname: '**.amiverse.net',
+      },{
+        protocol: 'https',
+        hostname: '**.kisana.me',
       }
     ],
   },

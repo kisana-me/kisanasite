@@ -11,7 +11,6 @@ export default function Home() {
         <div className="page">
           <div className="container">
             <div className="model">
-              <Model></Model>
             </div>
             <div className="plate">
               <div className="separate">

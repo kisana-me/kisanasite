@@ -7,7 +7,7 @@ export default function Layout({ children, isDark }) {
       <Header />
       <main>{children}</main>
       <Footer />
-      <style jsx="true">{`
+      <style jsx>{`
         .all {
           width: 100%;
           min-height: 100vh;
