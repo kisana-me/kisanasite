@@ -39,7 +39,7 @@ export default function Post({ postData, sortedDate }) {
             />
           :
             <Image
-              src={`/images/testimg.png`}
+              src={`/images/apples.png`}
               layout="fill"
               objectFit="contain"
               alt="コンテンツなし"
@@ -84,7 +84,7 @@ export default function Post({ postData, sortedDate }) {
           </Link>
         ))}
       </div>
-      <style jsx="true">{`
+      <style jsx>{`
         .postPageContainer{
           display: flex;
           justify-content: space-around;

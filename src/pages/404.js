@@ -9,7 +9,7 @@ export default function Custom404() {
       url=""
       />
       <h1>404 - Page Not Found</h1>
-      <p>お探しのページはありませんね。</p>
+      <p>お探しのページはありません!</p>
     </>
   )
 }

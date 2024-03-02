@@ -9,7 +9,7 @@ export default function Custom500() {
       url=""
       />
       <h1>500 - Server-side error occurred</h1>
-      <p>サーバー死んでますね。</p>
+      <p>サーバー死んでます!</p>
     </>
   )
 }

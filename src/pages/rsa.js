@@ -81,7 +81,7 @@ export default function rsa() {
       <div className="key jwk">
         <textarea rows="20" cols="50" defaultValue={JSON.stringify(formJwkPrivate)} />
       </div>
-      <style jsx="true">{`
+      <style jsx>{`
         .key {
           width: 500px;
           overflow: scroll;

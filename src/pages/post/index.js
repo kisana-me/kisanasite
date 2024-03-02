@@ -36,7 +36,7 @@ export default function Home({ sortedDate, sortedUpdate }) {
                 />
               :
               <Image
-                src={`/images/testimg.png`}
+                src={`/images/apples.png`}
                 layout="fill"
                 objectFit="contain"
                 alt="コンテンツなし"
@@ -53,7 +53,7 @@ export default function Home({ sortedDate, sortedUpdate }) {
           </div>
         </Link>
       ))}
-      <style jsx="true">{`
+      <style jsx>{`
         .post {
           margin: 5px;
           border: solid 2px #329eff;

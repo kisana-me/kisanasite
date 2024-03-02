@@ -1,7 +1,5 @@
 import Link from "next/link"
 import Head from "../components/Head"
-import Model from "../components/Model"
-import { useEffect, useState } from "react"
 
 export default function Home() {
   return (
@@ -19,9 +17,9 @@ export default function Home() {
               </div>
               <div className="separate">
                 <div className="card card-2">
-                  <span>Web developer</span>
-                  <h1>Koyu0TT</h1>
-                  <span><Link href="https://amiverse.net">@amiverse.net</Link></span>
+                  <span>Studying Design.</span>
+                  <h1>KISANA:ME</h1>
+                  <span><Link href="https://twitter.com/kisana_me">@kisana_me</Link></span>
                 </div>
               </div>
             </div>

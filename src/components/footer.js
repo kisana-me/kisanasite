@@ -4,9 +4,9 @@ export default function Footer() {
   return (
     <footer>
       <div>
-        <div className="copyright">© Amiverse</div>
+        <div className="copyright">©KISANA:ME</div>
         <div className="kisana">
-          Made by <Link href="https://github.com/Kisana528/personal-website">Kisana</Link>
+          Made by KISANA:ME
         </div>
         <div><Link href="/edit">新規作成</Link></div>
       </div>

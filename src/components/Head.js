@@ -2,27 +2,27 @@ import Head from "next/head"
 
 export default function DefaultHead({ children,
   title,
-  author = "KISANA",
-  description = "Amiverse",
-  keywords = "amiverse",
+  author = "KISANA:ME",
+  description = "KISANA:ME",
+  keywords = "KISANA:ME",
   robots = "index, follow",
   url = "/",
   type = "website",
-  image = "/images/testimg.png",
+  image = "/images/apples.png",
   card = "summary_large_image",
-  site = "amiverse.net",
-  id = "amiverse.net",
-  alt = "amiverse",
+  site = "kisana.me",
+  id = "kisana_me",
+  alt = "KISANA:ME",
 }) {
   return (
     <Head key={title}>
       <meta charSet="UTF-8" />
-      <title>{title ? title + ' | Amiverse' : 'Amiverse'}</title>
+      <title>{title ? title + ' | KISANA:ME' : 'KISANA:ME'}</title>
       <meta name="theme-color" content="#ffa9c7" />
       <meta name="color-scheme" content="light" /> {/* dark対応予定 */}
       <meta name="viewport" content="width=device-width" />
       <meta name="author" content={author} />
-      <meta name="generator" content="Next.js" />
+      <meta name="generator" content="KISANA:ME" />
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
       <meta name="robots" content={robots} />
@@ -46,7 +46,7 @@ export default function DefaultHead({ children,
       <meta name="twitter:image:alt" content={alt} />
       <meta name="twitter:creator" content={author} />
       <meta name="twitter:creator:id" content={id} />
-      <link rel="icon" href="/dub.ico" />
+      <link rel="icon" href="/favicon.ico" />
       {children}
     </Head>
   )
