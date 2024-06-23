@@ -1,6 +1,6 @@
 import Image from 'next/image'
-import { getAllPostIds, getPostData, getSortedPostsData } from '../../lib/posts'
-import Head from "../../components/Head"
+import { getAllPostIds, getPostData, getSortedPostsData } from '@/lib/posts'
+import Head from "@/components/Head"
 import Link from 'next/link'
 import parse from 'html-react-parser'
 
@@ -25,7 +25,7 @@ export default function Post({ postData, sortedDate }) {
         <Head
         title={postData.title}
         description={postData.description}
-        url={"/post/" + postData.slug}
+        url={"/posts/" + postData.slug}
         image={'/images/' + postData.slug + '/' + postData.image}
         type = "article"
         />
@@ -39,7 +39,7 @@ export default function Post({ postData, sortedDate }) {
             />
           :
             <Image
-              src={`/images/apples.png`}
+              src={`/images/apples.webp`}
               layout="fill"
               objectFit="contain"
               alt="コンテンツなし"
@@ -50,13 +50,13 @@ export default function Post({ postData, sortedDate }) {
         <div>ID:{ postData.id }</div>
         <div>投稿:{ postData.date }</div>
         <div>更新:{ postData.update }</div>
-        <div>タグ:{ postData.tag.map((t)=> <Link key={t} href={'/post/tags#' + t}><span>{t}</span></Link> ) }</div>
+        <div>タグ:{ postData.tag.map((t)=> <Link key={t} href={'/tags#' + t}><span>{t}</span></Link> ) }</div>
         <div>{postData.description}</div>
         {parse(postData.contentHtml)}
       </div>
       <div className="pathContainer">
         {sortedDate.map((post) => (
-          <Link key={ post.slug } href={ "/post/" + post.slug }>
+          <Link key={ post.slug } href={ "/posts/" + post.slug }>
             <div className="post">
               <div className="pathPostImage">
                 {post.image ?
@@ -68,7 +68,7 @@ export default function Post({ postData, sortedDate }) {
                   />
                 :
                 <Image
-                  src={`/images/testimg.png`}
+                  src={`/images/apples.webp`}
                   layout="fill"
                   objectFit="contain"
                   alt="コンテンツなし"

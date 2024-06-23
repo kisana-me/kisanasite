@@ -5,7 +5,7 @@ import hljs from "highlight.js"
 // MD処理系
 import MDI from 'markdown-it'
 import MDIC from 'markdown-it-container'//:::warning:::
-import MDEM from 'markdown-it-emoji'//:)
+import MDEM from 'markdown-it-emoji'//:) //つかえない？
 import MDMR from 'markdown-it-mark'//==marked==<mark>
 import MDIN from 'markdown-it-ins'//++inserted++<ins>
 import MDAB from 'markdown-it-abbr'//*[HTML]: Hyper Text Markup Language<abbr title=
@@ -83,7 +83,6 @@ export async function getPostData(id) {
     breaks: true,
     typographer: true
   })
-  .use(MDEM) // emoji
   .use(MDMR) // mark
   .use(MDIN) // ins
   .use(MDAB) // abbr

@@ -4,11 +4,13 @@ export default function about() {
   return (
     <>
       <Head
-      title="ABOUT"
-      description="ABOUT"
+      title="About"
+      description="About"
       url="/about/"
       />
-      <h1>ABOUT</h1>
+      <h1>About</h1>
+      <p>こんにちは、私は「きさな🍭/kisana」です。</p>
+      <p>自称WEBプログラマです。</p>
     </>
   )
 }

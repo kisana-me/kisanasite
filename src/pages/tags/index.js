@@ -1,4 +1,4 @@
-import { getTags, getAssociatedPosts } from '../../lib/posts'
+import { getTags, getAssociatedPosts } from '@/lib/posts'
 import React , { useEffect, useState } from 'react'
 import Link from 'next/link'
 
@@ -35,7 +35,7 @@ export default function Tags({result}) {
           <h2 id={tag}>#{tag}</h2>
           <ul>
             {JSON.parse(result)[tag].map((post) => (
-              <Link key={post.slug} href={ "/post/" + post.slug }>
+              <Link key={post.slug} href={ "/posts/" + post.slug }>
                 {post.title}
               </Link>
             ))}

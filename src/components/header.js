@@ -20,8 +20,8 @@ export default function Header() {
         <nav>
           <ul>
             <Link href="/about"><li>ABOUT</li></Link>
-            <Link href="/work"><li>WORK</li></Link>
-            <Link href="/post"><li>POST</li></Link>
+            <Link href="/works"><li>WORK</li></Link>
+            <Link href="/posts"><li>POST</li></Link>
           </ul>
         </nav>
         <div className="mode-toggle">

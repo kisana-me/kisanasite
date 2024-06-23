@@ -1,15 +1,15 @@
 import Link from 'next/link'
 import React, { useState } from 'react'
 import Image from 'next/image'
-import { getSortedPostsData } from '../../lib/posts'
-import Head from "../../components/Head"
+import { getSortedPostsData } from '@/lib/posts'
+import Head from "@/components/Head"
 
 export const getStaticProps = () => {
   const allPostsData = getSortedPostsData()
   return { props: { sortedDate: allPostsData[0], sortedUpdate: allPostsData[1] } }
 }
 
-export default function Home({ sortedDate, sortedUpdate }) {
+export default function Posts({ sortedDate, sortedUpdate }) {
   const [isPostOrder, setIsPostOrder] = useState(true)
   const arrayTrigger = () => setIsPostOrder(!isPostOrder)
   return (
@@ -17,14 +17,14 @@ export default function Home({ sortedDate, sortedUpdate }) {
       <Head
       title="投稿一覧"
       description="投稿一覧"
-      url="/post/"
+      url="/posts/"
       />
       <h1>POST INDEX</h1>
       <button onClick={arrayTrigger}>切り替え</button>
       <p>{isPostOrder ? "投稿順です" : "更新順です" }</p>
-      <Link href="/post/tags">タグ一覧</Link>
+      <Link href="/tags">タグ一覧</Link>
       {(isPostOrder ? sortedDate : sortedUpdate).map((post) => (
-        <Link key={ post.slug } href={ "/post/" + post.slug }>
+        <Link key={ post.slug } href={ "/posts/" + post.slug }>
           <div className="post">
             <div className="postImage">
               {post.image ?
@@ -36,7 +36,7 @@ export default function Home({ sortedDate, sortedUpdate }) {
                 />
               :
               <Image
-                src={`/images/apples.png`}
+                src={`/images/apples.webp`}
                 layout="fill"
                 objectFit="contain"
                 alt="コンテンツなし"

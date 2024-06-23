@@ -12,9 +12,9 @@ export default function Footer() {
       </div>
       <div>
         <ul>
-          <Link href="/policy"><li>POLICY</li></Link>
-          <Link href="/disclaimer"><li>DISCLAIMER</li></Link>
-          <Link href="/contact"><li>CONTACT</li></Link>
+          <Link href="/terms"><li>利用規約</li></Link>
+          <Link href="/policy"><li>プライバシーポリシー</li></Link>
+          <Link href="/contact"><li>お問い合わせ</li></Link>
         </ul>
       </div>
       <style jsx>{`

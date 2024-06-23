@@ -1,7 +1,7 @@
-export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID
+export const GA4_ID = process.env.NEXT_PUBLIC_GA4_ID
 
 export const pageview = (url) => {
-  window.gtag("config", GA_MEASUREMENT_ID, {
+  window.gtag("config", GA4_ID, {
     page_path: url,
   })
 }

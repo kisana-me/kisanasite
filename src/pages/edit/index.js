@@ -2,6 +2,7 @@ import Head from "@/components/Head"
 import { useState, useEffect, Fragment } from "react"
 import matter from 'gray-matter'
 import hljs from "highlight.js"
+import markdownToHtml from 'zenn-markdown-html';
 // MD処理系
 import MDI from 'markdown-it'
 import MDIC from 'markdown-it-container'//:::warning:::
@@ -37,7 +38,6 @@ function getPostData(rawData) {
     breaks: true,
     typographer: true
   })
-  .use(MDEM) // emoji
   .use(MDMR) // mark
   .use(MDIN) // ins
   .use(MDAB) // abbr

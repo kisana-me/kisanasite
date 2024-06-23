@@ -1,31 +1,16 @@
 {
     "theme_color": "#3cf635",
-    "background_color": "#f335f6",
+    "background_color": "#249421",
     "display": "standalone",
     "scope": "/",
     "start_url": "/",
-    "name": "kisana.amiverse",
-    "description": "kisana.amiverse for pwa",
-    "short_name": "afp",
+    "name": "KISANA:ME",
+    "description": "KISANA:ME PWA",
+    "short_name": "KISANA:ME",
     "icons": [
         {
-            "src": "/icon-192x192.png",
-            "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "/icon-256x256.png",
-            "sizes": "256x256",
-            "type": "image/png"
-        },
-        {
-            "src": "/icon-384x384.png",
-            "sizes": "384x384",
-            "type": "image/png"
-        },
-        {
-            "src": "/icon-512x512.png",
-            "sizes": "512x512",
+            "src": "/icon-520x520.png",
+            "sizes": "520x520",
             "type": "image/png"
         }
     ]
