@@ -6,39 +6,26 @@ export default function Home() {
     <>
       <Head/>
       <div className="wrap">
-        <div className="page">
-          <div className="container">
-            <div className="model">
-            </div>
-            <div className="plate">
-              <div className="separate">
-                <div className="card card-1">
-                </div>
-              </div>
-              <div className="separate">
-                <div className="card card-2">
-                  <span>Studying Design.</span>
-                  <h1>KISANA:ME</h1>
-                  <span><Link href="https://twitter.com/kisana_me">@kisana_me</Link></span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <hr />
-          <div className="container">
-            <h2>page2</h2>
-          </div> 
-          <hr />
-          <div className="container">
-            <h2>last page</h2>
+        <div className="container c-1">
+          <div className="name-plate">
+            <span>Studying Design.</span>
+            <h1>KISANA:ME</h1>
+            <span><Link href="https://twitter.com/kisana_me">@kisana_me</Link></span>
           </div>
         </div>
+        <hr />
+        <div className="container">
+          <h2>page2</h2>
+        </div>
+        <hr />
+        <div className="container">
+          <h2>last page</h2>
+        </div>
+            
       </div>
       <style jsx>{`
         .wrap {
           position: relative;
-        }
-        .page {
         }
         .container {
           height: calc(100vh - 50px);
@@ -46,32 +33,21 @@ export default function Home() {
         .container:first-child {
           position: relative;
         }
-        .container:last-child {
-          height: calc(100vh - 122px);
-        }
-        .model {
-          position: absolute;
-          width: 100%;
-          height: 100%;
-        }
-        .plate {
+        .c-1 {
           display: flex;
-          justify-content: space-around;
+          position: relative;
+        }
+        .name-plate {
+          align-self: flex-start;
           position: absolute;
-          width: 100%;
-          height: 100%;
+          bottom: 50px;
+          right: 50px;
         }
-        .separate {
-          display: flex;
-          align-items: center;
-        }
-        .card-1 {
-        }
-        .card-2 span {
+        .name-plate span {
           display: inline-block;
           width:100%
         }
-        .card-2 span:last-child {
+        .name-plate span:last-child {
           text-align:right
         }
         .post {

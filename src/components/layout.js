@@ -15,7 +15,7 @@ export default function Layout({ children, isDark }) {
         }
         main {
           padding-top: 50px;
-          padding-bottom: 72px
+          min-height: calc(100svh - 80px);
         }
         .dark {
           background-color: #000000e6;

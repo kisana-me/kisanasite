@@ -1,3 +1,8 @@
+html {
+  background-color: #000000;
+  scrollbar-color: #ffffff #000000;
+  scrollbar-width: thin;
+}
 body, h1, h2, h3, p {
   margin: 0;
 }
@@ -8,13 +13,4 @@ a {
 img {
   position: static !important;
   height: auto !important;
-}
-::-webkit-scrollbar{
-  width: 5px;
-}
-::-webkit-scrollbar-track{
-  background-color: #232323;
-}
-::-webkit-scrollbar-thumb{
-  background-color: #f4bfbf;
 }

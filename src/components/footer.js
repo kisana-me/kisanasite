@@ -3,30 +3,49 @@ import Link from 'next/link'
 export default function Footer() {
   return (
     <footer>
-      <div>
+      <div className='list-wrap'>
         <div className="copyright">©KISANA:ME</div>
         <div className="kisana">
           Made by KISANA:ME
         </div>
         <div><Link href="/edit">新規作成</Link></div>
       </div>
-      <div>
-        <ul>
-          <Link href="/terms"><li>利用規約</li></Link>
-          <Link href="/policy"><li>プライバシーポリシー</li></Link>
-          <Link href="/contact"><li>お問い合わせ</li></Link>
-        </ul>
+      <div className='list-wrap'>
+        <div className='list-name'>関連サイト</div>
+        <div className='list'>
+          <Link href="https://amiverse.net/"><div className='list-content'>amiverse</div></Link>
+          <Link href="https://ivecolor.com/"><div className='list-content'>ivecolor</div></Link>
+        </div>
+      </div>
+      <div className='list-wrap'>
+        <div className='list-name'>法的表示</div>
+        <div className='list'>
+          <Link href="/terms"><div className='list-content'>利用規約</div></Link>
+          <Link href="/policy"><div className='list-content'>プライバシーポリシー</div></Link>
+          <Link href="/contact"><div className='list-content'>お問い合わせ</div></Link>
+        </div>
       </div>
       <style jsx>{`
       footer {
-        background-color: #9ad1ff;
         width: 100%;
-        position: absolute;
-        bottom: 0;
+        padding: 100px 0;
+        border-top: 1px solid #fff;
+        margin-top: 30px;
         display: flex;
-        justify-content: space-around;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
       }
       .copyright {
+      }
+      .list-wrap {
+        margin: 20px;
+      }
+      .list-name {
+        font-weight: bold;
+      }
+
+      .list-content {
+        color: #878787
       }
       ul {
         margin: 0;
@@ -35,6 +54,12 @@ export default function Footer() {
       li {
         list-style: none;
         color: #2987d8;
+      }
+      @media (max-width: 600px) {
+        footer {
+          flex-wrap: nowrap;
+          flex-direction: column;
+        }
       }
       `}</style>
     </footer>
