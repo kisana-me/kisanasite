@@ -8,8 +8,15 @@ export default function Custom404() {
       description="Page Not Found"
       url=""
       />
-      <h1>404 - Page Not Found</h1>
-      <p>お探しのページはありません!</p>
+      <div className="wrap">
+        <h1>404 - Page Not Found</h1>
+        <p>お探しのページはありません!</p>
+      </div>
+      <style jsx>{`
+        .wrap {
+          padding: 50px 0 0 0;
+        }
+      `}</style>
     </>
   )
 }

@@ -28,21 +28,26 @@ export async function getStaticProps() {
 export default function Tags({result}) {
   return (
     <>
-    <div>
-      <h1>タグ一覧</h1>
-      {Object.keys(JSON.parse(result)).map((tag) => (
-        <div key={tag}>
-          <h2 id={tag}>#{tag}</h2>
-          <ul>
-            {JSON.parse(result)[tag].map((post) => (
-              <Link key={post.slug} href={ "/posts/" + post.slug }>
-                {post.title}
-              </Link>
-            ))}
-          </ul>
-        </div>
-      ))}
-    </div>
+      <div className='wrap'>
+        <h1>タグ一覧</h1>
+        {Object.keys(JSON.parse(result)).map((tag) => (
+          <div key={tag}>
+            <h2 id={tag}>#{tag}</h2>
+            <ul>
+              {JSON.parse(result)[tag].map((post) => (
+                <Link key={post.slug} href={ "/posts/" + post.slug }>
+                  {post.title}
+                </Link>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <style jsx>{`
+        .wrap {
+          padding: 50px 0 0 0;
+        }
+      `}</style>
     </>
   )
 }

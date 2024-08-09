@@ -29,8 +29,7 @@ export default function Footer() {
       footer {
         width: 100%;
         padding: 100px 0;
-        border-top: 1px solid #fff;
-        margin-top: 30px;
+        border-top: 1px solid var(--border-color);
         display: flex;
         flex-wrap: wrap;
         justify-content: space-evenly;
@@ -45,7 +44,7 @@ export default function Footer() {
       }
 
       .list-content {
-        color: #878787
+        color: var(--inconspicuous-color);
       }
       ul {
         margin: 0;

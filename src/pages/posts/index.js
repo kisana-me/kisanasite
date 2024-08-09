@@ -19,41 +19,46 @@ export default function Posts({ sortedDate, sortedUpdate }) {
       description="投稿一覧"
       url="/posts/"
       />
-      <h1>POST INDEX</h1>
-      <button onClick={arrayTrigger}>切り替え</button>
-      <p>{isPostOrder ? "投稿順です" : "更新順です" }</p>
-      <Link href="/tags">タグ一覧</Link>
-      {(isPostOrder ? sortedDate : sortedUpdate).map((post) => (
-        <Link key={ post.slug } href={ "/posts/" + post.slug }>
-          <div className="post">
-            <div className="postImage">
-              {post.image ?
+      <div className='wrap'>
+        <h1>POST INDEX</h1>
+        <button onClick={arrayTrigger}>切り替え</button>
+        <p>{isPostOrder ? "投稿順です" : "更新順です" }</p>
+        <Link href="/tags">タグ一覧</Link>
+        {(isPostOrder ? sortedDate : sortedUpdate).map((post) => (
+          <Link key={ post.slug } href={ "/posts/" + post.slug }>
+            <div className="post">
+              <div className="postImage">
+                {post.image ?
+                  <Image
+                    src={`/images/${post.slug}/${post.image}`}
+                    fill
+                  sizes="10vw"
+                    alt={post.title}
+                  />
+                :
                 <Image
-                  src={`/images/${post.slug}/${post.image}`}
-                  layout="fill"
-                  objectFit="contain"
-                  alt={post.title}
+                  src={`/images/apples.webp`}
+                  fill
+                  sizes="10vw"
+                  alt="コンテンツなし"
                 />
-              :
-              <Image
-                src={`/images/apples.webp`}
-                layout="fill"
-                objectFit="contain"
-                alt="コンテンツなし"
-              />
-              }
+                }
+              </div>
+              <div>
+                <h2>{ post.title }</h2>
+                <div>ID:{ post.slug }</div>
+                <div>投稿:{ post.date }</div>
+                <div>更新:{ post.update }</div>
+                <div>タグ:{ post.tag.map((t)=> <span key={t}>{t}</span> ) }</div>
+              </div>
             </div>
-            <div>
-              <h2>{ post.title }</h2>
-              <div>ID:{ post.slug }</div>
-              <div>投稿:{ post.date }</div>
-              <div>更新:{ post.update }</div>
-              <div>タグ:{ post.tag.map((t)=> <span key={t}>{t}</span> ) }</div>
-            </div>
-          </div>
-        </Link>
-      ))}
+          </Link>
+        ))}
+      </div>
       <style jsx>{`
+        .wrap {
+          padding: 50px 0 0 0;
+        }
         .post {
           margin: 5px;
           border: solid 2px #329eff;
@@ -64,6 +69,7 @@ export default function Posts({ sortedDate, sortedUpdate }) {
           margin: 0;
         }
         .postImage {
+          position: relative;
           width: 150px;
           min-width: 150px;
         }

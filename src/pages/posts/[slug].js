@@ -31,19 +31,9 @@ export default function Post({ postData, sortedDate }) {
         />
         <div className="postImage">
           {postData.image ? 
-            <Image
-              src={`/images/${postData.id}/${postData.image}`}
-              layout="fill"
-              objectFit="contain"
-              alt={postData.title}
-            />
+            <Image src={`/images/${postData.id}/${postData.image}`} alt={postData.title} sizes="100vw" priority={true} fill />
           :
-            <Image
-              src={`/images/apples.webp`}
-              layout="fill"
-              objectFit="contain"
-              alt="コンテンツなし"
-            />
+            <Image src={`/images/apples.webp`} alt="コンテンツなし" sizes="100vw" priority={true} fill/>
           }
         </div>
         <h1>{postData.title}</h1>
@@ -60,19 +50,9 @@ export default function Post({ postData, sortedDate }) {
             <div className="post">
               <div className="pathPostImage">
                 {post.image ?
-                  <Image
-                    src={`/images/${post.slug}/${post.image}`}
-                    layout="fill"
-                    objectFit="contain"
-                    alt={post.title}
-                  />
+                  <Image src={`/images/${post.slug}/${post.image}`} alt={post.title} sizes="30vw" fill />
                 :
-                <Image
-                  src={`/images/apples.webp`}
-                  layout="fill"
-                  objectFit="contain"
-                  alt="コンテンツなし"
-                />
+                <Image src={`/images/apples.webp`} alt="コンテンツなし" sizes="30vw" fill/>
                 }
               </div>
               <div className="pathPostTxt">
@@ -86,6 +66,7 @@ export default function Post({ postData, sortedDate }) {
       </div>
       <style jsx>{`
         .postPageContainer{
+          padding: 50px 0 0 0;
           display: flex;
           justify-content: space-around;
         }

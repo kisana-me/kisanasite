@@ -205,10 +205,15 @@ export default function threejs() {
         description="test"
         url="/threejs/"
       />
-      <div className="canvas">
-        <canvas id='canvas'></canvas>
+      <div className="wrap">
+        <div className="canvas">
+          <canvas id='canvas'></canvas>
+        </div>
       </div>
       <style jsx>{`
+        .wrap {
+          padding: 50px 0 0 0;
+        }
         .canvas {
           width: 100%;
           height: calc(100vh - 122px);

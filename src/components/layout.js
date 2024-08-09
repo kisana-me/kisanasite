@@ -8,14 +8,8 @@ export default function Layout({ children, isDark }) {
       <main>{children}</main>
       <Footer />
       <style jsx>{`
-        .all {
-          width: 100%;
-          min-height: 100vh;
-          position: relative;
-        }
         main {
-          padding-top: 50px;
-          min-height: calc(100svh - 80px);
+          min-height: 100svh;
         }
         .dark {
           background-color: #000000e6;

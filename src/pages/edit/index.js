@@ -79,19 +79,20 @@ export default function about() {
       description="EDIT"
       url="/edit/"
       />
-      <div>
+      <div className="wrap">
         <h1>EDIT</h1>
         <h2>Write markdown here.</h2>
         <div className="markdown">
           <textarea rows="20" cols="50" onChange={e=>{setPostData(getPostData(e.target.value))}} />
         </div>
         <div className="show-md">
-          {console.log(postData)}
           {postData.contentHtml ? parse(postData.contentHtml) : ''}
         </div>
       </div>
       <style jsx>{`
-
+        .wrap {
+          padding: 50px 0 0 0;
+        }
       `}</style>
     </>
   )

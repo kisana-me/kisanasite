@@ -1,0 +1,33 @@
+{
+  "service": [
+    {"date": "2024.6", "heading": "生存確認アプリ「BeAlive.」作成"},
+    {"date": "2024.2", "heading": "ブログサイト「IVECOLOR」立ち上げ"},
+    {"date": "2023.3", "heading": "ソーシャルメディア「Amiverse」開始"},
+    {"date": "2021.6", "heading": "「AmiverseBlog」がAdSenseに合格"},
+    {"date": "2021.3", "heading": "「AmiverseBlog」開始"},
+    {"date": "2020.10", "heading": "マイクラ「LA鯖」開始"},
+    {"date": "2019.8", "heading": "個人ブログ開始"}
+  ],
+  "tech": [
+    {"date": "2024", "heading": "ITパスポート, 普通自動車免許取得"},
+    {"date": "2022", "heading": "英検2級 取得"},
+    {"date": "2021", "heading": "3Dモデリング 始める"},
+    {"date": "2020", "heading": "動画編集 始める"},
+    {"date": "2018", "heading": "プログラミング 始める"}
+  ],
+  "hobby": [
+    {"date": "2024.11", "heading": "GBB"},
+    {"date": "2024.9", "heading": "IVE 東京ドーム 2回"},
+    {"date": "2024.8", "heading": "aespa 東京ドーム 1回"},
+    {"date": "2024.7", "heading": "TWICE READY TO BE SPECIAL 3回"},
+    {"date": "2024.7", "heading": "LE SSERAFIM FEARNADA 1回"},
+    {"date": "2024.6", "heading": "NewJean bunnies camp 1回"},
+    {"date": "2023.11", "heading": "MAMA 東京ドーム 1回"},
+    {"date": "2023.8?", "heading": "LE SSERAFIM 代々木 1回"},
+    {"date": "2023.5", "heading": "TWICE READY TO BE 1回"},
+    {"date": "2023.?", "heading": "BLACKPINK 東京ドーム 1回"},
+    {"date": "2023.?", "heading": "aespa 埼玉スーアリ 1回"},
+    {"date": "2023.2", "heading": "IVE Prom Queen 2回"},
+    {"date": "2022.4", "heading": "TWICE Ⅲ 3回"}
+  ]
+}
