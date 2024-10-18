@@ -1,118 +1,26 @@
+html {
+  scrollbar-width: thin;
+}
 body, h1, h2, h3, p {
   margin: 0;
 }
 a {
   text-decoration: none;
-  color: #0000ff;
 }
 img {
   position: static !important;
   height: auto !important;
 }
 
-:root .red {
-  --lc-1: #e63c3c;
-  --lc-2: #ee5d5d;
-  --lc-3: #f87575;
-  --dc-1: #c80606;
-  --dc-2: #6d0000;
-  --dc-3: #360000;
-}
-:root .green {
-  --lc-1: #4ff13a;
-  --lc-2: #92fc84;
-  --lc-3: #a6ff9b;
-  --dc-1: #1c8d0e;
-  --dc-2: #105308;
-  --dc-3: #073202;
-}
-:root .blue {
-  --lc-1: #0c59ff;
-  --lc-2: #427eff;
-  --lc-3: #7ea7ff;
-  --dc-1: #023bb6;
-  --dc-2: #002678;
-  --dc-3: #00133c;
-}
-:root .pink {
-  --lc-1: #ff0cef;
-  --lc-2: #ff68f5;
-  --lc-3: #ff7ef6;
-  --dc-1: #dc00cd;
-  --dc-2: #aa009f;
-  --dc-3: #600059;
-}
-:root .orange {
-  --lc-1: #ff7300;
-  --lc-2: #ff943c;
-  --lc-3: #ffb67a;
-  --dc-1: #d35f00;
-  --dc-2: #a14800;
-  --dc-3: #843b00;
-}
-:root .aqua {
-  --lc-1: #0ee7ff;
-  --lc-2: #83f3ff;
-  --lc-3: #95f4ff;
-  --dc-1: #00c6dc;
-  --dc-2: #0091a1;
-  --dc-3: #007684;
-}
-:root .yellow {
-  --lc-1: #fff70f;
-  --lc-2: #fffca4;
-  --lc-3: #fefcc2;
-  --dc-1: #e1d900;
-  --dc-2: #b0aa00;
-  --dc-3: #7d7900;
-}
-:root .purple {
-  --lc-1: #9a0cff;
-  --lc-2: #af3fff;
-  --lc-3: #bc5eff;
-  --dc-1: #8600e6;
-  --dc-2: #6600ae;
-  --dc-3: #440074;
-}
+/* theme */
 
-:root .light {
-  --background-color: #ffffff;
-  --transparent-background-color: #ffffff12;
-  --font-color: #000000;
-  --link-color: var(--dc-1);
-  --conspicuous-color: var(--dc-2);
-  --inconspicuous-color: #5c5c5c;
-  --border-color: var(--lc-3);
-}
-:root .dark {
-  --background-color: #000000;
-  --transparent-background-color: #00000012;
-  --font-color: #ffffff;
-  --link-color: var(--lc-1);
-  --conspicuous-color: var(--lc-2);
-  --inconspicuous-color: #b0b0b0;
-  --border-color: var(--dc-3);
-}
-
-.html-light {
+.light {
+  color: #000;
   background-color: #ffffff;
   scrollbar-color: #000000 #ffffff;
-  scrollbar-width: thin;
-}
-.html-dark {
-  background-color: #000000;
-  scrollbar-color: #ffffff #000000;
-  scrollbar-width: thin;
-}
-.light {
-  color: #000000;
-}
-.light a {
-  color: var(--dc-1);
 }
 .dark {
-  color: #ffffff;
-}
-.dark a {
-  color: var(--lc-1);
+  color: #fff;
+  background-color: #000000;
+  scrollbar-color: #ffffff #000000;
 }

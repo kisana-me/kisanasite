@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react'
 import { useTheme } from '@/contexts/ThemeContext'
 
 export default function Header() {
+  // Menu
   const [isMenu, setIsMenu] = useState(false)
-  const { theme, toggleTheme, color, setColor } = useTheme()
   useEffect(() => {
     if(isMenu) {
       document.body.style.overflow = 'hidden'
@@ -12,6 +12,23 @@ export default function Header() {
       document.body.style.overflow = 'auto'
     }
   }, [isMenu])
+
+  // Theme
+  const { theme, setTheme, hue, setHue, resetHue } = useTheme()
+  const handleHueChange = (newHue) => {
+    setHue(newHue)
+  }
+  const gradientBackground = `
+    linear-gradient(to right, 
+    hsl(0, 75%, 70%), 
+    hsl(60, 75%, 70%), 
+    hsl(120, 75%, 70%), 
+    hsl(180, 75%, 70%), 
+    hsl(240, 75%, 70%), 
+    hsl(300, 75%, 70%), 
+    hsl(360, 75%, 70%)
+    )
+  `
 
   return (
     <header>
@@ -31,18 +48,51 @@ export default function Header() {
           <Link onClick={() => setIsMenu(false)} href="/works"><div className="link">Works</div></Link>
           <Link onClick={() => setIsMenu(false)} href="/posts"><div className="link">Posts</div></Link>
           <div className='view-settings'>
-            <button onClick={() => {toggleTheme(); setIsMenu(false)}} className='theme-button'>
-              {theme === 'light' ? '🌞 Day' : '🌙 Night'}
-            </button>
+            
             <div>
-              <button onClick={() => {setColor('red'); setIsMenu(false)}} className={color === 'red' ? 'selected-color-button color-button' : 'color-button'}>🔴</button>
-              <button onClick={() => {setColor('green'); setIsMenu(false)}} className={color === 'green' ? 'selected-color-button color-button' : 'color-button'}>💚</button>
-              <button onClick={() => {setColor('blue'); setIsMenu(false)}} className={color === 'blue' ? 'selected-color-button color-button' : 'color-button'}>💙</button>
-              <button onClick={() => {setColor('pink'); setIsMenu(false)}} className={color === 'pink' ? 'selected-color-button color-button' : 'color-button'}>🩷</button>
-              <button onClick={() => {setColor('orange'); setIsMenu(false)}} className={color === 'orange' ? 'selected-color-button color-button' : 'color-button'}>🧡</button>
-              <button onClick={() => {setColor('aqua'); setIsMenu(false)}} className={color === 'aqua' ? 'selected-color-button color-button' : 'color-button'}>🩵</button>
-              <button onClick={() => {setColor('yellow'); setIsMenu(false)}} className={color === 'yellow' ? 'selected-color-button color-button' : 'color-button'}>💛</button>
-              <button onClick={() => {setColor('purple'); setIsMenu(false)}} className={color === 'purple' ? 'selected-color-button color-button' : 'color-button'}>💜</button>
+              <div>テーマを変更</div>
+              <span>現在のテーマ: {theme}</span>
+              <br />
+              <button
+                onClick={() => setTheme('light')}
+              >ライト</button>
+              <br />
+              <button
+                onClick={() => setTheme('system')}
+              >システム</button>
+              <br />
+              <button
+                onClick={() => setTheme('dark')}
+              >ダーク</button>
+            </div>
+            <br />
+            <br />
+            <br />
+            <div>
+              <div>色を変更</div>
+              <span>現在の色: <span style={{ color: 'var(--theme-color)' }}>こんな色</span></span>
+              <br />
+              <input
+                type="range"
+                min={0}
+                max={360}
+                step={1}
+                value={hue}
+                onChange={(e) => handleHueChange(parseInt(e.target.value))}
+                className='input_hue'
+                style={{
+                  appearance: 'none',
+                  height: '12px',
+                  borderRadius: '2px',
+                  background: gradientBackground,
+                  cursor: 'pointer'
+                }}
+              />
+              <br />
+              <button
+                onClick={resetHue}
+                className="reset_hue"
+              >リセット</button>
             </div>
           </div>
         </div>
@@ -89,7 +139,9 @@ export default function Header() {
         background-color: rgba(0, 0, 0, 0.9);
         color: white;
         text-align: center;
-        padding-top: 80px;
+        padding: 80px 0;
+        overflow-y: auto;
+        box-sizing: border-box;
       }
       .menu-open-button {
         background: none;
@@ -106,25 +158,31 @@ export default function Header() {
       .view-settings {
         margin-top: 50px;
       }
-      .theme-button {
-        background: none;
-        color: white;
-        border: none;
-        font-size: 17px;
-        box-sizing: border-box;
+      .input_hue::-webkit-slider-thumb {
+        appearance: none;
+        width: 12px;
+        height: 20px;
+        background: var(--theme-color);
+        border-radius: 2px;
+        transition: transform .2s ease;
+        border: 0 solid var(--theme-color);
+        box-shadow: 0px 4px 5px -2px var(--theme-color);
       }
-      .color-button {
-        background: none;
-        color: white;
-        border: none;
-        font-size: 17px;
-        box-sizing: border-box;
-        border: 1px solid #0000;
-        border-radius: 7px;
-        cursor: pointer;
+      .input_hue::-moz-range-thumb {
+        appearance: none;
+        width: 12px;
+        height: 20px;
+        background: var(--theme-color);
+        border-radius: 2px;
+        transition: transform .2s ease;
+        border: 0 solid var(--theme-color);
+        box-shadow: 0px 4px 5px -2px var(--theme-color);
       }
-      .selected-color-button {
-        border: 1px solid #fff;
+      .input_hue:hover::-webkit-slider-thumb {
+        transform: scale(1.15);
+      }
+      .input_hue:hover::-moz-range-thumb {
+        transform: scale(1.15);
       }
       @media screen and (min-width: 600px) {
         header {
