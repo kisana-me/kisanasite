@@ -6,6 +6,7 @@ export const ThemeProvider = ({ children }) => {
   const thereRenderFlagRef = useRef(false)
   const hueRenderFlagRef = useRef(false)
   const [theme, setTheme] = useState('system')
+  const [darkMode, setDarkMode] = useState(false)
   const [hue, setHue] = useState(120)
 
   useEffect(() => {
@@ -25,13 +26,15 @@ export const ThemeProvider = ({ children }) => {
     }else{
       thereRenderFlagRef.current = true
     }
-    const root = window.document.documentElement
-    root.classList.remove('light', 'dark')
     if (theme === 'system') {
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-      root.classList.add(systemTheme)
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? true : false
+      setDarkMode(systemTheme)
+    } else if (theme === 'light') {
+      setDarkMode(false)
+    } else if (theme === 'dark') {
+      setDarkMode(true)
     } else {
-      root.classList.add(theme)
+      setDarkMode(false)
     }
   }, [theme])
 
@@ -48,13 +51,18 @@ export const ThemeProvider = ({ children }) => {
   }
 
   const GlobalStyles = `
-  :root {
-    --theme-hue: ${hue};
-    --theme-color: hsl(${hue}, 75%, 70%);
-  }
-  a {
-    color: hsl(${hue}, 75%, 45%);
-  }
+    :root {
+      --theme-hue: ${hue};
+      --theme-color: hsl(${hue}, 75%, 70%);
+      --theme-dark-mode: ${darkMode ? '255,255,255' : '0,0,0'};
+    }
+    html {
+      background-color: #${darkMode ? '000' : 'fff'};
+      color: #${darkMode ? 'fff' : '000'};
+    }
+    a {
+      color: hsl(${hue}, 75%, 45%);
+    }
   `
 
   return (

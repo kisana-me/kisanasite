@@ -6,6 +6,7 @@ import * as gtag from "../lib/gtag"
 import { useRouter } from "next/router"
 import React, { useState, useEffect } from 'react'
 import { ThemeProvider } from '@/contexts/ThemeContext'
+import { ScrollbarProvider } from '@/contexts/ScrollbarContext'
 
 export default function App({ Component, pageProps }) {
   const router = useRouter()
@@ -20,25 +21,27 @@ export default function App({ Component, pageProps }) {
   }, [router.events])
   return (
     <ThemeProvider>
-      <Layout>
-        <Script
-          strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA4_ID}`}
-        />
-        <Script
-          id="gtag-init"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${gtag.GA4_ID}');
-            `,
-          }}
-        />
-        <Component {...pageProps} />
-      </Layout>
+      <ScrollbarProvider>
+        <Layout>
+          <Script
+            strategy="afterInteractive"
+            src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA4_ID}`}
+          />
+          <Script
+            id="gtag-init"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${gtag.GA4_ID}');
+              `,
+            }}
+          />
+          <Component {...pageProps} />
+        </Layout>
+      </ScrollbarProvider>
     </ThemeProvider>
   )
 }

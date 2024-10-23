@@ -1,5 +1,5 @@
 html {
-  scrollbar-width: thin;
+  scrollbar-width: none;
 }
 body, h1, h2, h3, p {
   margin: 0;
@@ -10,17 +10,4 @@ a {
 img {
   position: static !important;
   height: auto !important;
-}
-
-/* theme */
-
-.light {
-  color: #000;
-  background-color: #ffffff;
-  scrollbar-color: #000000 #ffffff;
-}
-.dark {
-  color: #fff;
-  background-color: #000000;
-  scrollbar-color: #ffffff #000000;
 }
