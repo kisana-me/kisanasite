@@ -62,7 +62,7 @@ export const MenuProvider = ({ children }) => {
           <br />
           <div>
             <div>色を変更</div>
-            <span>現在の色: <span style={{ color: 'var(--theme-color)' }}>こんな色</span></span>
+            <span>現在の色: <span style={{ color: 'var(--theme-hsl-color)' }}>こんな色</span></span>
             <br />
             <input
               type="range"
@@ -91,7 +91,7 @@ export const MenuProvider = ({ children }) => {
       <style jsx>{`
         .link {
           padding: 10px;
-          color: #ffffff;
+          color: rgb(var(--theme-mode-accent-rgb-value));
         }
         .menu-close {
           display: none;
@@ -102,8 +102,8 @@ export const MenuProvider = ({ children }) => {
           left: 0;
           width: 100%;
           height: 100svh;
-          background-color: rgba(0, 0, 0, 0.9);
-          color: white;
+          color: rgb(var(--theme-mode-accent-rgb-value));
+          background-color: rgba(var(--theme-mode-base-rgb-value), 0.9);
           text-align: center;
           padding: 80px 0;
           overflow-y: auto;
@@ -112,7 +112,7 @@ export const MenuProvider = ({ children }) => {
         }
         .menu-close-button {
           background: none;
-          color: white;
+          color: rgb(var(--theme-mode-accent-rgb-value));
           border: none;
           font-size: 14px;
           cursor: pointer;
@@ -124,21 +124,21 @@ export const MenuProvider = ({ children }) => {
           appearance: none;
           width: 12px;
           height: 20px;
-          background: var(--theme-color);
+          background: var(--theme-hsl-color);
           border-radius: 2px;
           transition: transform .2s ease;
-          border: 0 solid var(--theme-color);
-          box-shadow: 0px 4px 5px -2px var(--theme-color);
+          border: 0 solid var(--theme-hsl-color);
+          box-shadow: 0px 4px 5px -2px var(--theme-hsl-color);
         }
         .input_hue::-moz-range-thumb {
           appearance: none;
           width: 12px;
           height: 20px;
-          background: var(--theme-color);
+          background: var(--theme-hsl-color);
           border-radius: 2px;
           transition: transform .2s ease;
-          border: 0 solid var(--theme-color);
-          box-shadow: 0px 4px 5px -2px var(--theme-color);
+          border: 0 solid var(--theme-hsl-color);
+          box-shadow: 0px 4px 5px -2px var(--theme-hsl-color);
         }
         .input_hue:hover::-webkit-slider-thumb {
           transform: scale(1.15);

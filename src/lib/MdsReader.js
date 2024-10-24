@@ -8,7 +8,7 @@ import MDIC from 'markdown-it-container'//:::warning:::
 import MDEM from 'markdown-it-emoji'//:) //つかえない？
 import MDMR from 'markdown-it-mark'//==marked==<mark>
 import MDIN from 'markdown-it-ins'//++inserted++<ins>
-import MDAB from 'markdown-it-abbr'//*[HTML]: Hyper Text Markup Language<abbr title=
+import MDAB from 'markdown-it-abbr'//*[HTML]: Hyper Text Markup Languageが<abbr title=
 import MDDE from 'markdown-it-deflist'//定義記述
 import MDSP from 'markdown-it-sup'//29^th^
 import MDSB from 'markdown-it-sub'//H~2~0
@@ -17,43 +17,22 @@ import MDMT from 'markdown-it-multimd-table'//
 import MDTO from 'markdown-it-table-of-contents'//[[toc]]
 import MDTL from 'markdown-it-task-lists'//[ ] or [x]
 
-const postsDirectory = path.join(process.cwd(), 'posts')
-
-export function getTags() {
-  const allPosts = getSortedPostsData()[0]
-  let tags = [];
-  allPosts.forEach((post) => {
-    tags = [...tags, ...post.tag]
-  })
-  const setTags = [...new Set(tags)];
-  return setTags.sort();
-}
-
-export async function getAssociatedPosts(tag) {
-  const allPosts = getSortedPostsData()[0]
-  const associatedPosts = allPosts.filter((data) => data.tag.includes(tag))
-  return associatedPosts
-}
-
-export function getSortedPostsData() {
-  const fileNames = fs.readdirSync(postsDirectory)
+export function getSortedMdsData(dir) {
+  const fileNames = fs.readdirSync(path.join(process.cwd(), dir))
   const allPostsData = fileNames.map(fileName => {
     const slug = fileName.replace(/\.md$/, '')
-    const fileContents = fs.readFileSync(`${postsDirectory}/${fileName}`, 'utf8')
+    const fileContents = fs.readFileSync(`${path.join(process.cwd(), dir)}/${fileName}`, 'utf8')
     const matterResult = matter(fileContents)
     return { slug, ...matterResult.data }
   })
   const sortedDate = allPostsData.sort((postA, postB) =>
     new Date(postA.date) > new Date(postB.date) ? -1 : 1
   )
-  const sortedUpdate = allPostsData.concat().sort((postA, postB) =>
-    new Date(postA.update) > new Date(postB.update) ? -1 : 1
-  )
-  return ( [sortedDate, sortedUpdate] )
+  return (sortedDate)
 }
 
-export function getAllPostIds() {
-  const fileNames = fs.readdirSync(postsDirectory)
+export function getAllMdIds(dir) {
+  const fileNames = fs.readdirSync(path.join(process.cwd(), dir))
   return fileNames.map(fileName => {
     return {
       params: {
@@ -63,8 +42,8 @@ export function getAllPostIds() {
   })
 }
 
-export async function getPostData(id) {
-  const fullPath = path.join(postsDirectory, `${id}.md`)
+export async function getMdData(dir, id) {
+  const fullPath = path.join(path.join(process.cwd(), dir), `${id}.md`)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const matterResult = matter(fileContents)
   const md = new MDI({
@@ -110,7 +89,7 @@ export async function getPostData(id) {
   const contentHtml = processedContent.toString()
   return {
     id,
-    contentHtml,
+    contentHtml: processedContent,
     ...matterResult.data
   }
 }

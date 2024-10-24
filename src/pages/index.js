@@ -33,7 +33,7 @@ export default function Home() {
           </div>
           <div className='created-list-container'>
             <div className='created-list created-card'>
-              <Image src="/images/object.png" alt="object" style={{ objectFit: 'cover', objectPosition: 'center' }} sizes="30vw" fill />
+              <Image src="/images/ivecolor-ss.webp" alt="object" style={{ objectFit: 'cover', objectPosition: 'center' }} sizes="30vw" fill />
               <div className='created-card-plate'>
                 <div className='created-card-title'>IVECOLOR</div>
                 <div className='created-card-content'>ブログ</div>

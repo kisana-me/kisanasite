@@ -1,6 +1,13 @@
+import Link from "next/link"
 import Head from "@/components/Head"
+import { getSortedMdsData } from '@/lib/MdsReader'
 
-export default function work() {
+export function getStaticProps() {
+  const sortedMdsData = getSortedMdsData('works')
+  return { props: {sortedMdsData} }
+}
+
+export default function work({ sortedMdsData }) {
   return (
     <>
       <div className="wrap">
@@ -10,6 +17,13 @@ export default function work() {
         url="/works/"
         />
         <h1>Works</h1>
+        {sortedMdsData.map((work) => (
+          <Link key={ work.slug } href={ "/works/" + work.slug }>
+            <div>{work.title}</div>
+            <div>{work.date}</div>
+            <div>{work.description}</div>
+          </Link>
+        ))}
       </div>
       <style jsx>{`
         .wrap {

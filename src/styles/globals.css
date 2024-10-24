@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'MPLUS1';
+  src: url('/fonts/MPLUS1-VariableFont_wght.ttf') format('truetype');
+}
+body {
+  font-family: 'MPLUS1';
+}
 body, h1, h2, h3, p {
   margin: 0;
 }
@@ -7,4 +14,41 @@ a {
 img {
   position: static !important;
   height: auto !important;
+}
+table {
+  border-collapse: collapse;
+}
+table, th, td {
+  border: 1px solid var(--theme-hsl-color);
+}
+th, td {
+  padding: 10px;
+}
+thead {
+ background: hsl(var(--theme-hue-value), 75%, 88%);
+}
+tbody tr:nth-child(even) {
+  background: hsl(var(--theme-hue-value), 75%, 94%);
+}
+
+tbody tr:nth-child(odd) {
+  background: hsl(var(--theme-hue-value), 75%, 96%);
+}
+
+.hljs {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 7px;
+}
+.warning {
+  background: #ff00004d;
+  padding: 10px;
+  border-radius: 7px;
+  margin: 10px 0;
+}
+.info {
+  background: #0000ff4d;
+  padding: 10px;
+  border-radius: 7px;
+  margin: 10px 0;
 }

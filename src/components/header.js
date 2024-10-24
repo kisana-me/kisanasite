@@ -19,7 +19,11 @@ export default function Header() {
       <style jsx>{`
         header {
           backdrop-filter: blur(3px);
-          background: #00000036;
+          background: linear-gradient(0deg,
+            rgba(var(--theme-mode-base-rgb-value),0.30) 0%,
+            rgba(var(--theme-mode-base-rgb-value),0.5) 40%,
+            rgba(var(--theme-mode-base-rgb-value),0.8) 100%
+          );
           display: flex;
           justify-content: space-between;
           top: 0;
@@ -31,11 +35,11 @@ export default function Header() {
         }
         .logo {
           padding: 10px;
-          color: #ffffff;
+          color: rgb(var(--theme-mode-accent-rgb-value));
         }
         .link {
           padding: 10px;
-          color: #ffffff;
+          color: rgb(var(--theme-mode-accent-rgb-value));
         }
         nav {
           display: flex;
@@ -48,7 +52,7 @@ export default function Header() {
         }
         .menu-open-button {
           background: none;
-          color: white;
+          color: rgb(var(--theme-mode-accent-rgb-value));
           border: none;
           font-size: 14px;
           cursor: pointer;

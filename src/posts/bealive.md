@@ -9,6 +9,6 @@ tag: [bealive]
 
 [[toc]]
 
-# BeAlive
+## BeAlive
 
 生存確認WEBアプリケーションです。

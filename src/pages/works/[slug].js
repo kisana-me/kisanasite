@@ -1,11 +1,11 @@
 import Image from 'next/image'
-import { getAllPostIds, getPostData, getSortedPostsData } from '@/lib/posts'
+import { getAllMdIds, getMdData, getSortedMdsData } from '@/lib/MdsReader'
 import Head from "@/components/Head"
 import Link from 'next/link'
 import parse from 'html-react-parser'
 
 export async function getStaticPaths() {
-  const paths = getAllPostIds()
+  const paths = getAllMdIds('works')
   return {
     paths,
     fallback: false
@@ -13,39 +13,37 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const allPostsData = getSortedPostsData()
-  const postData = await getPostData(params.slug)
-  return { props: { postData, sortedDate: allPostsData[0] } }
+  const sortedMdsData = getSortedMdsData('works')
+  const mdData = await getMdData('works', params.slug)
+  return { props: { mdData, sortedMdsData } }
 }
 
-export default function Post({ postData, sortedDate }) {
+export default function Post({ mdData, sortedMdsData }) {
   return (
     <div className="postPageContainer">
       <div className="postContainer">
         <Head
-        title={postData.title}
-        description={postData.description}
-        url={"/posts/" + postData.slug}
-        image={'/images/' + postData.slug + '/' + postData.image}
+        title={mdData.title}
+        description={mdData.description}
+        url={"/works/" + mdData.slug}
+        image={'/images/' + mdData.slug + '/' + mdData.image}
         type = "article"
         />
         <div className="postImage">
-          {postData.image ? 
+          {false ? 
             <Image src={`/images/${postData.id}/${postData.image}`} alt={postData.title} sizes="100vw" priority={true} fill />
           :
             <Image src={`/images/apples.webp`} alt="コンテンツなし" sizes="100vw" priority={true} fill/>
           }
         </div>
-        <h1>{postData.title}</h1>
-        <div>ID:{ postData.id }</div>
-        <div>投稿:{ postData.date }</div>
-        <div>更新:{ postData.update }</div>
-        <div>タグ:{ postData.tag.map((t)=> <Link key={t} href={'/tags'}><span>{t}</span></Link> ) }</div>
-        <div>{postData.description}</div>
-        {parse(postData.contentHtml)}
+        <h1>{mdData.title}</h1>
+        <div>ID:{ mdData.id }</div>
+        <div>投稿:{ mdData.date }</div>
+        <div>{mdData.description}</div>
+        {parse(mdData.contentHtml)}
       </div>
       <div className="pathContainer">
-        {sortedDate.map((post) => (
+        {/* {sortedDate.map((post) => (
           <Link key={ post.slug } href={ "/posts/" + post.slug }>
             <div className="post">
               <div className="pathPostImage">
@@ -62,7 +60,7 @@ export default function Post({ postData, sortedDate }) {
               </div>
             </div>
           </Link>
-        ))}
+        ))} */}
       </div>
       <style jsx>{`
         .postPageContainer{

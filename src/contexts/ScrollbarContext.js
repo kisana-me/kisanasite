@@ -117,7 +117,7 @@ export function ScrollbarProvider({ children }) {
           right: 4px;
           width: 4px;
           border-radius: 2px;
-          background-color: rgba(var(--theme-dark-mode), 0.2);
+          background-color: rgba(var(--theme-mode-accent-rgb-value), 0.2);
           opacity: 0;
           transition: opacity 0.3s, width 0.2s, right 0.2s;
           cursor: pointer;
@@ -129,7 +129,7 @@ export function ScrollbarProvider({ children }) {
         }
         @media (pointer: coarse) {
           html {
-            {/* scrollbar-width: thin; */}
+            scrollbar-width: thin;
           }
           .global-scrollbar {
             display: none;
@@ -148,7 +148,7 @@ export function ScrollbarProvider({ children }) {
           width: 8px;
           border-radius: 4px;
           right: 2px;
-          background-color: rgba(var(--theme-dark-mode), 0.3);
+          background-color: rgba(var(--theme-mode-accent-rgb-value), 0.3);
         }
       `}</style>
     </ScrollbarContext.Provider>

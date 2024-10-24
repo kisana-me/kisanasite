@@ -52,9 +52,11 @@ export const ThemeProvider = ({ children }) => {
 
   const GlobalStyles = `
     :root {
-      --theme-hue: ${hue};
-      --theme-color: hsl(${hue}, 75%, 70%);
-      --theme-dark-mode: ${darkMode ? '255,255,255' : '0,0,0'};
+      --theme-hue-value: ${hue};
+      --theme-hsl-color: hsl(${hue}, 75%, 70%);
+      --theme-background-hsl-color: hsl(${hue}, 75%, 70%);
+      --theme-mode-accent-rgb-value: ${darkMode ? '255,255,255' : '0,0,0'};
+      --theme-mode-base-rgb-value: ${darkMode ? '0,0,0' : '255,255,255'};
     }
     html {
       background-color: #${darkMode ? '000' : 'fff'};
