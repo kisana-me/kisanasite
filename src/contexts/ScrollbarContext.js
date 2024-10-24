@@ -1,13 +1,13 @@
-import { createContext, useContext, useRef, useState, useEffect } from 'react';
+import { createContext, useContext, useRef, useState, useEffect } from 'react'
 
-const ScrollbarContext = createContext(null);
+const ScrollbarContext = createContext()
 
 export function ScrollbarProvider({ children }) {
-  const [scrollbarVisible, setScrollbarVisible] = useState(false);
-  const timeoutRef = useRef(null);
-  const isDraggingRef = useRef(false);
-  const scrollbarRef = useRef(null);
-  const dragInfoRef = useRef({ startY: 0, startScroll: 0 });
+  const [scrollbarVisible, setScrollbarVisible] = useState(false)
+  const timeoutRef = useRef(null)
+  const isDraggingRef = useRef(false)
+  const scrollbarRef = useRef(null)
+  const dragInfoRef = useRef({ startY: 0, startScroll: 0 })
 
   const showScrollbar = () => {
     setScrollbarVisible(true)
@@ -93,12 +93,12 @@ export function ScrollbarProvider({ children }) {
 
   const handleMouseDown = (e) => {
     if (scrollbarRef.current) {
-      onMouseDown(e);
-      window.addEventListener('mousemove', onMouseMove);
+      onMouseDown(e)
+      window.addEventListener('mousemove', onMouseMove)
       window.addEventListener('mouseup', () => {
-        onMouseUp();
-        window.removeEventListener('mousemove', onMouseMove);
-      }, { once: true });
+        onMouseUp()
+        window.removeEventListener('mousemove', onMouseMove)
+      }, { once: true })
     }
   }
 
@@ -121,14 +121,28 @@ export function ScrollbarProvider({ children }) {
           opacity: 0;
           transition: opacity 0.3s, width 0.2s, right 0.2s;
           cursor: pointer;
-          z-index: 99;
+          z-index: 101;
           pointer-events: auto;
         }
-
         .global-scrollbar.visible {
           opacity: 1;
         }
-
+        @media (pointer: coarse) {
+          html {
+            {/* scrollbar-width: thin; */}
+          }
+          .global-scrollbar {
+            display: none;
+          }
+        }
+        @media (pointer: fine) {
+          html {
+            scrollbar-width: none;
+          }
+          .global-scrollbar {
+            display: block;
+          }
+        }
         .global-scrollbar.visible:hover,
         .global-scrollbar.dragging {
           width: 8px;
@@ -138,5 +152,5 @@ export function ScrollbarProvider({ children }) {
         }
       `}</style>
     </ScrollbarContext.Provider>
-  );
+  )
 }
