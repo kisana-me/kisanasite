@@ -54,7 +54,9 @@ export const ThemeProvider = ({ children }) => {
     :root {
       --theme-hue-value: ${hue};
       --theme-hsl-color: hsl(${hue}, 75%, 70%);
-      --theme-background-hsl-color: hsl(${hue}, 75%, 70%);
+      --theme-background-1-hsl-color: hsl(${hue}, 75%, ${darkMode ? '16' : '88'}%);
+      --theme-background-2-hsl-color: hsl(${hue}, 75%, ${darkMode ? '10' : '94'}%);
+      --theme-background-3-hsl-color: hsl(${hue}, 75%, ${darkMode ? '8' : '96'}%);
       --theme-mode-accent-rgb-value: ${darkMode ? '255,255,255' : '0,0,0'};
       --theme-mode-base-rgb-value: ${darkMode ? '0,0,0' : '255,255,255'};
     }

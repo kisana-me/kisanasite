@@ -25,14 +25,13 @@ th, td {
   padding: 10px;
 }
 thead {
- background: hsl(var(--theme-hue-value), 75%, 88%);
+ background: var(--theme-background-1-hsl-color);
 }
 tbody tr:nth-child(even) {
-  background: hsl(var(--theme-hue-value), 75%, 94%);
+  background: var(--theme-background-2-hsl-color);
 }
-
 tbody tr:nth-child(odd) {
-  background: hsl(var(--theme-hue-value), 75%, 96%);
+  background: var(--theme-background-3-hsl-color);
 }
 
 .hljs {
