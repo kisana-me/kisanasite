@@ -1,6 +1,6 @@
 import '@/styles/globals.css'
 import '@/styles/atom-one-dark-reasonable.min.css'
-import Layout from '../components/Layout'
+import Layout from '../components/Layout.js'
 import * as gtag from "@/lib/gtag"
 import { ThemeProvider } from '@/contexts/ThemeContext'
 import { ScrollbarProvider } from '@/contexts/ScrollbarContext'

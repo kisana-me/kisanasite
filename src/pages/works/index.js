@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Head from "../../components/Head"
-import { getSortedMdsData } from '@/lib/mdsReader'
+import { getSortedMdsData } from '../../lib/mdsReader'
 
 export function getStaticProps() {
   const sortedMdsData = getSortedMdsData('works')
