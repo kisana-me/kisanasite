@@ -69,7 +69,7 @@ function getPostData(rawData) {
   }
 }
 
-export default function markdownEditor() {
+export default function index() {
   const [postData, setPostData] = useState({})
 
   return (
