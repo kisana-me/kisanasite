@@ -2,7 +2,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Head from "@/components/Head"
 import { useState, useContext } from 'react'
-import IslandScene from "@/components/island_scene" // <IslandScene isNight={isNight} toggleDayNight={toggleDayNight} />
 
 export default function Home() {
 

@@ -3,63 +3,96 @@ import Link from 'next/link'
 export default function Footer() {
   return (
     <footer>
-      <div className='list-wrap'>
-        <div className="copyright">©KISANA:ME</div>
-        <div className="kisana">
-          Made by KISANA:ME
+      <div className='foreword'>
+        <div className='list-wrap'>
+          <div className='list-name'>ソーシャルメディア</div>
+          <ul>
+            <li><Link href='https://amiverse.net/@kisana/' rel='noopener noreferrer' target='_blank'><div className='list-content'>Amiverse</div></Link></li>
+            <li><Link href='https://misskey.io/@kisana/' rel='noopener noreferrer' target='_blank'><div className='list-content'>Misskey.io</div></Link></li>
+            <li><Link href='https://x.com/@kisana_me/' rel='noopener noreferrer' target='_blank'><div className='list-content'>X</div></Link></li>
+          </ul>
         </div>
-        <div><Link href="/edit">新規作成</Link></div>
-      </div>
-      <div className='list-wrap'>
-        <div className='list-name'>関連サイト</div>
-        <div className='list'>
-          <Link href="https://amiverse.net/"><div className='list-content'>amiverse</div></Link>
-          <Link href="https://ivecolor.com/"><div className='list-content'>ivecolor</div></Link>
+        <div className='list-wrap'>
+          <div className='list-name'>関連サイト</div>
+          <ul>
+            <li><Link href='https://amiverse.net/' rel='noopener noreferrer' target='_blank'><div className='list-content'>Amiverse</div></Link></li>
+              <li><Link href='https://ivecolor.com/' rel='noopener noreferrer' target='_blank'><div className='list-content'>IVECOLOR</div></Link></li>
+              <li><Link href='https://bealive.amiverse.net/' rel='noopener noreferrer' target='_blank'><div className='list-content'>BeAlive.</div></Link></li>
+            </ul>
+        </div>
+        <div className='list-wrap'>
+          <div className='list-name'>ツール</div>
+          <ul>
+            <li><Link href='/tools/markdown-editor'><div className='list-content'>Markdown editor</div></Link></li>
+          </ul>
+          <div className='list'>
+          </div>
+        </div>
+        <div className='list-wrap'>
+          <div className='list-name'>このサイトについて</div>
+          <ul>
+            <li><Link href='/sitemap'><div className='list-content'>サイトマップ</div></Link></li>
+            <li><Link href='/terms'><div className='list-content'>利用規約</div></Link></li>
+            <li><Link href='/policy'><div className='list-content'>プライバシーポリシー</div></Link></li>
+            <li><Link href='/contact'><div className='list-content'>お問い合わせ</div></Link></li>
+          </ul>
         </div>
       </div>
-      <div className='list-wrap'>
-        <div className='list-name'>法的表示</div>
-        <div className='list'>
-          <Link href="/terms"><div className='list-content'>利用規約</div></Link>
-          <Link href="/policy"><div className='list-content'>プライバシーポリシー</div></Link>
-          <Link href="/contact"><div className='list-content'>お問い合わせ</div></Link>
+      <div className='content'>
+        <div className='copyright'>
+          ©kisana
+        </div>
+        <div className='madeby'>
+          Made by kisana
         </div>
       </div>
       <style jsx>{`
-      footer {
-        width: 100%;
-        padding: 100px 0;
-        border-top: 1px solid var(--border-color);
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
-      }
-      .copyright {
-      }
-      .list-wrap {
-        margin: 20px;
-      }
-      .list-name {
-        font-weight: bold;
-      }
-
-      .list-content {
-        color: var(--inconspicuous-color);
-      }
-      ul {
-        margin: 0;
-        padding: 0;
-      }
-      li {
-        list-style: none;
-        color: #2987d8;
-      }
-      @media (max-width: 600px) {
         footer {
-          flex-wrap: nowrap;
-          flex-direction: column;
+          margin: 50px 0 0;
+          padding: 20px;
+          border-top: 1px solid var(--inconspicuous-color);
+          border-radius: 20px 20px 0 0;
+          font-size: small;
         }
-      }
+        /* forward */
+        .foreword {
+          width: 100%;
+          display: flex;
+          justify-content: space-evenly;
+          flex-wrap: wrap;
+        }
+        .list-wrap {
+          margin: 20px;
+        }
+        .list-name {
+          font-weight: bold;
+        }
+        ul {
+          margin: 0;
+          padding-left: 0;
+          list-style-type: none;
+        }
+        .list-content {
+          display: inline;
+          color: var(--inconspicuous-color);
+        }
+        /* content */
+        .content {
+          padding: 10px 10px 0;
+          border-top: 1px solid var(--inconspicuous-color);
+          text-align: right;
+        }
+        .copyright {
+
+        }
+        .madeby {
+          color: var(--inconspicuous-color);
+        }
+        @media (max-width: 700px) {
+          .foreword {
+            flex-direction: column;
+          }
+        }
       `}</style>
     </footer>
   )

@@ -1,9 +1,9 @@
-import Header from './header'
-import Footer from './footer'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
 
-export default function Layout({ children, isDark }) {
+export default function Layout({ children }) {
   return (
-    <div className={`all ${isDark ? "dark" : ""}`}>
+    <>
       <Header />
       <main>{children}</main>
       <Footer />
@@ -11,11 +11,7 @@ export default function Layout({ children, isDark }) {
         main {
           min-height: 100svh;
         }
-        .dark {
-          background-color: #000000e6;
-          color: #fff;
-        }
       `}</style>
-    </div>
+    </>
   )
 }

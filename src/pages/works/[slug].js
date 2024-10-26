@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { getAllMdIds, getMdData, getSortedMdsData } from '@/lib/MdsReader'
+import { getAllMdIds, getMdData, getSortedMdsData } from '@/lib/mdsReader'
 import Head from "@/components/Head"
 import Link from 'next/link'
 import parse from 'html-react-parser'

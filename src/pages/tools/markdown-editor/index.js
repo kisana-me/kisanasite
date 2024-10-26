@@ -69,7 +69,7 @@ function getPostData(rawData) {
   }
 }
 
-export default function about() {
+export default function markdownEditor() {
   const [postData, setPostData] = useState({})
 
   return (
