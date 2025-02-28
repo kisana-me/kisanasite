@@ -43,19 +43,17 @@ export const MenuProvider = ({ children }) => {
         <div className='view-settings'>
           <div>
             <div>テーマを変更</div>
-            <span>現在のテーマ: {theme}</span>
             <br />
             <button
-              onClick={() => setTheme('light')}
-            >ライト</button>
-            <br />
-            <button
-              onClick={() => setTheme('system')}
-            >システム</button>
-            <br />
-            <button
-              onClick={() => setTheme('dark')}
-            >ダーク</button>
+              onClick={() => {
+                const themes = ['light', 'dark', 'system'];
+                const currentIndex = themes.indexOf(theme);
+                const nextIndex = (currentIndex + 1) % themes.length;
+                setTheme(themes[nextIndex]);
+              }}
+            >
+              {theme === 'light' ? '☀️' : theme === 'dark' ? '🌙' : '🖥️'}
+            </button>
           </div>
           <br />
           <br />
