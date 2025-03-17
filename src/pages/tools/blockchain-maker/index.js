@@ -1,5 +1,5 @@
-import { useState } from "react";
-import Head from "@/components/Head";
+import { useState, useEffect } from "react"
+import { usePageContext } from "@/contexts/PageContext"
 import Block from '@/components/tools/blockchain/Block'
 
 const generateHash = async (message) => {
@@ -12,6 +12,10 @@ const generateHash = async (message) => {
 }
 
 export default function index() {
+  const { setTitle } = usePageContext()
+  useEffect(()=>{
+    setTitle('Blockchain Maker')
+  }, [])
   const [blocks, setBlocks] = useState([
     { blockNumber: 1, previousHash: '0000000000000000000000000000000000000000000000000000000000000000' }
   ])
@@ -22,14 +26,9 @@ export default function index() {
 
   return (
     <>
-      <Head
-      title="EDIT"
-      description="EDIT"
-      url="/edit/"
-      />
       <div className="wrap">
         <div className="container">
-          <h1>Blockchain</h1>
+          <h1>Blockchain Maker</h1>
           <p>難易度は、先頭から「0」が何個続くhash値を探すかであり、react上の計算が遅いので1~3の間に設定することをおすすめします。</p>
           <p>ハッシュ化する文字列は、単にブロック番号、ナンス、テキスト、前ハッシュ値をスペーサー等入れず順に組み合わせたものです。</p>
 

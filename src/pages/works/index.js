@@ -1,5 +1,6 @@
 import Link from "next/link"
-import Head from "@/components/Head"
+import { useEffect } from "react"
+import { usePageContext } from "@/contexts/PageContext"
 import { getSortedMdsData } from '@/lib/mdsReader'
 
 export function getStaticProps() {
@@ -8,14 +9,14 @@ export function getStaticProps() {
 }
 
 export default function work({ sortedMdsData }) {
+  const { setTitle } = usePageContext()
+  useEffect(()=>{
+    setTitle('Works')
+  }, [])
+
   return (
     <>
       <div className="wrap">
-        <Head
-        title="Works"
-        description="Works"
-        url="/works/"
-        />
         <h1>Works</h1>
         {sortedMdsData.map((work) => (
           <Link key={ work.slug } href={ "/works/" + work.slug }>

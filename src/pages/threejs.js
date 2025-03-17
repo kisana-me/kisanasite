@@ -7,8 +7,15 @@ import { Stats } from "three/examples/jsm/libs/stats.module"
 import GUI from "lil-gui"
 import { RectAreaLightHelper } from "three/addons/helpers/RectAreaLightHelper"
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"
+import { usePageContext } from "@/contexts/PageContext"
 
 export default function threejs() {
+  const { setTitle, setRobots } = usePageContext()
+  useEffect(()=>{
+    setTitle('Three.js')
+    setRobots('noindex, nofollow')
+  }, [])
+
   useEffect(() => {
     let canvas = document.getElementById('canvas')
     let parentElement = canvas.parentElement
@@ -200,11 +207,6 @@ export default function threejs() {
   }, [])
   return (
     <>
-      <Head
-        title="Three.js test."
-        description="test"
-        url="/threejs/"
-      />
       <div className="wrap">
         <div className="canvas">
           <canvas id='canvas'></canvas>

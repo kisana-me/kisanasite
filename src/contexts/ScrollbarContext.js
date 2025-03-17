@@ -2,7 +2,7 @@ import { createContext, useContext, useRef, useState, useEffect } from 'react'
 
 const ScrollbarContext = createContext()
 
-export function ScrollbarProvider({ children }) {
+export function ScrollbarContextProvider({ children }) {
   const [scrollbarVisible, setScrollbarVisible] = useState(false)
   const timeoutRef = useRef(null)
   const isDraggingRef = useRef(false)

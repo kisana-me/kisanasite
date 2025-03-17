@@ -2,7 +2,7 @@ import { createContext, useContext, useState, useEffect, useRef } from 'react'
 
 const ThemeContext = createContext()
 
-export const ThemeProvider = ({ children }) => {
+export const ThemeContextProvider = ({ children }) => {
   const thereRenderFlagRef = useRef(false)
   const hueRenderFlagRef = useRef(false)
   const [theme, setTheme] = useState('system')
@@ -78,4 +78,4 @@ export const ThemeProvider = ({ children }) => {
   )
 }
 
-export const useTheme = () => useContext(ThemeContext)
+export const useThemeContext = () => useContext(ThemeContext)

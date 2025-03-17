@@ -1,8 +1,15 @@
 import { useState } from "react"
 import jwkToPem from "jwk-to-pem"
 import {pem2jwk, jwk2pem} from "pem-jwk"
+import { usePageContext } from "@/contexts/PageContext"
 
 export default function rsa() {
+  const { setTitle, setRobots } = usePageContext()
+  useEffect(()=>{
+    setTitle('RSA')
+    setRobots('noindex, nofollow')
+  }, [])
+
   const [publicKey, setPublicKey] = useState('')
   const [privateKey, setPrivateKey] = useState('')
   const [publicKeyPem, setPublicKeyPem] = useState('')

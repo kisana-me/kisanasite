@@ -1,13 +1,14 @@
-import Head from "../components/Head"
+import { usePageContext } from "@/contexts/PageContext"
+import { useEffect } from 'react'
 
 export default function Custom500() {
+  const { setTitle } = usePageContext()
+  useEffect(()=>{
+    setTitle('500 サーバーエラー')
+  }, [])
+
   return (
     <>
-      <Head
-      title="500"
-      description="Server-side error occurred"
-      url=""
-      />
       <div className="wrap">
         <h1>500 - Server-side error occurred</h1>
         <p>サーバー死んでます!</p>

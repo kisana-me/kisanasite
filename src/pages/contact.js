@@ -1,13 +1,14 @@
-import Head from "../components/Head"
+import { usePageContext } from "@/contexts/PageContext"
+import { useEffect } from 'react'
 
 export default function contact() {
+  const { setTitle } = usePageContext()
+  useEffect(()=>{
+    setTitle('Contact')
+  }, [])
+
   return (
     <>
-      <Head
-      title="CONTACT"
-      description="CONTACT"
-      url="/contact/"
-      />
       <div className="wrap">
         <h1>お問い合わせ</h1>
         <p>

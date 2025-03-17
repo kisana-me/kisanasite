@@ -1,5 +1,5 @@
-import Head from "@/components/Head"
 import { useState, useEffect, Fragment } from "react"
+import { usePageContext } from "@/contexts/PageContext"
 import matter from 'gray-matter'
 import hljs from "highlight.js"
 import markdownToHtml from 'zenn-markdown-html';
@@ -70,18 +70,18 @@ function getPostData(rawData) {
 }
 
 export default function index() {
+  const { setTitle } = usePageContext()
+  useEffect(()=>{
+    setTitle('Markdown Editor')
+  }, [])
   const [postData, setPostData] = useState({})
 
   return (
     <>
-      <Head
-      title="EDIT"
-      description="EDIT"
-      url="/edit/"
-      />
       <div className="wrap">
-        <h1>EDIT</h1>
-        <h2>Write markdown here.</h2>
+        <h1>Markdown Editor</h1>
+        <p>このフォームにマークダウン形式で記述すると下にレンダリング結果が出力されます。</p>
+        <p>マークダウン処理エンジンは'markdown-it'を使用しています。</p>
         <div className="markdown">
           <textarea rows="20" cols="50" onChange={e=>{setPostData(getPostData(e.target.value))}} />
         </div>

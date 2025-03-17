@@ -1,10 +1,10 @@
 import Link from 'next/link'
 import { createContext, useContext, useState, useEffect, useRef } from 'react'
-import { useTheme } from '@/contexts/ThemeContext'
+import { useThemeContext } from '@/contexts/ThemeContext'
 
 const MenuContext = createContext()
 
-export const MenuProvider = ({ children }) => {
+export const MenuContextProvider = ({ children }) => {
   // Menu
   const [isMenu, setIsMenu] = useState(false)
   useEffect(() => {
@@ -15,7 +15,7 @@ export const MenuProvider = ({ children }) => {
     }
   }, [isMenu])
   // Theme
-  const { theme, setTheme, hue, setHue, resetHue } = useTheme()
+  const { theme, setTheme, hue, setHue, resetHue } = useThemeContext()
   const handleHueChange = (newHue) => {
     setHue(newHue)
   }

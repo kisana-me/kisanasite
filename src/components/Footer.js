@@ -23,7 +23,8 @@ export default function Footer() {
         <div className='list-wrap'>
           <div className='list-name'>ツール</div>
           <ul>
-            <li><Link href='/tools/markdown-editor'><div className='list-content'>Markdown editor</div></Link></li>
+            <li><Link href='/tools/markdown-editor'><div className='list-content'>Markdown Editor</div></Link></li>
+            <li><Link href='/tools/blockchain-maker'><div className='list-content'>Blockchain Maker</div></Link></li>
           </ul>
           <div className='list'>
           </div>

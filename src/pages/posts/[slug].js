@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { getAllPostIds, getPostData, getSortedPostsData } from '@/lib/posts'
-import Head from "@/components/Head"
+import { useEffect } from 'react'
+import { usePageContext } from "@/contexts/PageContext"
 import Link from 'next/link'
 import parse from 'html-react-parser'
 
@@ -19,16 +20,17 @@ export async function getStaticProps({ params }) {
 }
 
 export default function Post({ postData, sortedDate }) {
+  const { setTitle, setDescription, setType, setImageUrl } = usePageContext()
+  useEffect(()=>{
+    setTitle(postData.title)
+    setDescription(postData.description)
+    setType('article')
+    setImageUrl(postData.image)
+  }, [])
+
   return (
     <div className="postPageContainer">
       <div className="postContainer">
-        <Head
-        title={postData.title}
-        description={postData.description}
-        url={"/posts/" + postData.slug}
-        image={'/images/' + postData.slug + '/' + postData.image}
-        type = "article"
-        />
         <div className="postImage">
           {postData.image ? 
             <Image src={`/images/${postData.id}/${postData.image}`} alt={postData.title} sizes="100vw" priority={true} fill />

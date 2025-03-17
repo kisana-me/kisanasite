@@ -1,5 +1,6 @@
 import { getTags, getAssociatedPosts } from '@/lib/posts'
 import React , { useEffect, useState } from 'react'
+import { usePageContext } from "@/contexts/PageContext"
 import Link from 'next/link'
 
 export async function getStaticProps() {
@@ -26,6 +27,11 @@ export async function getStaticProps() {
 }
 
 export default function Tags({result}) {
+  const { setTitle } = usePageContext()
+  useEffect(()=>{
+    setTitle('タグ一覧')
+  }, [])
+
   return (
     <>
       <div className='wrap'>

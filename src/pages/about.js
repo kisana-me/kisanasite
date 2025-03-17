@@ -1,16 +1,17 @@
 import DataDisplay from "@/components/data_display"
-import Head from "../components/Head"
+import { usePageContext } from "@/contexts/PageContext"
+import { useEffect } from 'react'
 import fs from 'fs'
 import path from 'path'
 
 export default function about({data}) {
+  const { setTitle } = usePageContext()
+  useEffect(()=>{
+    setTitle('About')
+  }, [])
+
   return (
     <>
-      <Head
-      title="About"
-      description="About"
-      url="/about/"
-      />
       <div className="wrap">
         <h1>About</h1>
         <p>こんにちは、私は「きさな🍭/kisana」です。</p>

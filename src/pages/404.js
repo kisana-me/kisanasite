@@ -1,13 +1,14 @@
-import Head from "../components/Head"
+import { usePageContext } from "@/contexts/PageContext"
+import { useEffect } from 'react'
 
 export default function Custom404() {
+  const { setTitle } = usePageContext()
+  useEffect(()=>{
+    setTitle('404 存在しないページ')
+  }, [])
+
   return (
     <>
-      <Head
-      title="404"
-      description="Page Not Found"
-      url=""
-      />
       <div className="wrap">
         <h1>404 - Page Not Found</h1>
         <p>お探しのページはありません!</p>

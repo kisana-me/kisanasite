@@ -1,8 +1,8 @@
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { getSortedPostsData } from '@/lib/posts'
-import Head from "@/components/Head"
+import { usePageContext } from "@/contexts/PageContext"
 
 export const getStaticProps = () => {
   const allPostsData = getSortedPostsData()
@@ -10,15 +10,15 @@ export const getStaticProps = () => {
 }
 
 export default function Posts({ sortedDate, sortedUpdate }) {
+  const { setTitle } = usePageContext()
+  useEffect(()=>{
+    setTitle('投稿一覧')
+  }, [])
+
   const [isPostOrder, setIsPostOrder] = useState(true)
   const arrayTrigger = () => setIsPostOrder(!isPostOrder)
   return (
     <>
-      <Head
-      title="投稿一覧"
-      description="投稿一覧"
-      url="/posts/"
-      />
       <div className='wrap'>
         <h1>POST INDEX</h1>
         <button onClick={arrayTrigger}>切り替え</button>

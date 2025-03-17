@@ -2,12 +2,16 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Head from "@/components/Head"
 import { useState, useContext } from 'react'
+import { usePageContext } from "@/contexts/PageContext"
+import { useEffect } from 'react'
 
 export default function Home() {
-
+  const { setTitle } = usePageContext()
+  useEffect(()=>{
+    setTitle('')
+  }, [])
   return (
     <>
-      <Head/>
       <div className="wrap">
         <div className="main-container">
           <div className="top-front">

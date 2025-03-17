@@ -1,8 +1,9 @@
 import Image from 'next/image'
 import { getAllMdIds, getMdData, getSortedMdsData } from '@/lib/mdsReader'
-import Head from "@/components/Head"
 import Link from 'next/link'
 import parse from 'html-react-parser'
+import { useEffect } from "react"
+import { usePageContext } from "@/contexts/PageContext"
 
 export async function getStaticPaths() {
   const paths = getAllMdIds('works')
@@ -19,16 +20,17 @@ export async function getStaticProps({ params }) {
 }
 
 export default function Post({ mdData, sortedMdsData }) {
+  const { setTitle, setDescription, setType, setImageUrl } = usePageContext()
+  useEffect(()=>{
+    setTitle(mdData.title)
+    setDescription(mdData.description)
+    setType('article')
+    setImageUrl(mdData.image)
+  }, [])
+
   return (
     <div className="postPageContainer">
       <div className="postContainer">
-        <Head
-        title={mdData.title}
-        description={mdData.description}
-        url={"/works/" + mdData.slug}
-        image={'/images/' + mdData.slug + '/' + mdData.image}
-        type = "article"
-        />
         <div className="postImage">
           {false ? 
             <Image src={`/images/${postData.id}/${postData.image}`} alt={postData.title} sizes="100vw" priority={true} fill />

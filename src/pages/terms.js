@@ -1,13 +1,14 @@
-import Head from "../components/Head"
+import { usePageContext } from "@/contexts/PageContext"
+import { useEffect } from 'react'
 
 export default function terms() {
+  const { setTitle } = usePageContext()
+  useEffect(()=>{
+    setTitle('利用規約')
+  }, [])
+
   return (
     <>
-      <Head
-      title="Terms"
-      description="Terms"
-      url="/terms/"
-      />
       <div className="wrap">
         <h1>利用規約</h1>
         <h2>免責事項</h2>

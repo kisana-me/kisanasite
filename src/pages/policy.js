@@ -1,14 +1,15 @@
-import Head from "../components/Head"
+import { usePageContext } from "@/contexts/PageContext"
+import { useEffect } from 'react'
 import Link from "next/link"
 
 export default function policy() {
+  const { setTitle } = usePageContext()
+  useEffect(()=>{
+    setTitle('プライバシーポリシー')
+  }, [])
+
   return (
     <>
-      <Head
-      title="POLICY"
-      description="POLICY"
-      url="/policy/"
-      />
       <div className="wrap">
         <h1>このサイトの運営方針</h1>
         <h2>個人情報の利用目的</h2>
