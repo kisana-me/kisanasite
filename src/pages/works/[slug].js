@@ -35,7 +35,7 @@ export default function Post({ mdData, sortedMdsData }) {
           {false ? 
             <Image src={`/images/${postData.id}/${postData.image}`} alt={postData.title} sizes="100vw" priority={true} fill />
           :
-            <Image src={`/images/apples.webp`} alt="コンテンツなし" sizes="100vw" priority={true} fill/>
+            <Image src={`/images/no-image.png`} alt="コンテンツなし" sizes="100vw" priority={true} fill/>
           }
         </div>
         <h1>{mdData.title}</h1>
@@ -52,7 +52,7 @@ export default function Post({ mdData, sortedMdsData }) {
                 {post.image ?
                   <Image src={`/images/${post.slug}/${post.image}`} alt={post.title} sizes="30vw" fill />
                 :
-                <Image src={`/images/apples.webp`} alt="コンテンツなし" sizes="30vw" fill/>
+                <Image src={`/images/no-image.png`} alt="コンテンツなし" sizes="30vw" fill/>
                 }
               </div>
               <div className="pathPostTxt">

@@ -15,7 +15,7 @@ export default function Home() {
       <div className="wrap">
         <div className="main-container">
           <div className="top-front">
-            <Image src="/images/object.png" alt="object" style={{ objectFit: 'cover', objectPosition: 'center' }} sizes="100vw" priority={true} fill />
+            <Image src="/images/preparing.png" alt="object" style={{ objectFit: 'cover', objectPosition: 'center' }} sizes="100vw" priority={true} fill />
             <div className="name-plate">
               <span>Studying Design.</span>
               <h1>KISANA:ME</h1>
@@ -28,7 +28,7 @@ export default function Home() {
             <h2>Created</h2>
           </div>
           <div className='created-main-container created-card'>
-            <Image src="/images/object.png" alt="object" style={{ objectFit: 'cover', objectPosition: 'center' }} sizes="100vw" fill />
+            <Image src="/images/amiverse/amiverse-1.png" alt="object" style={{ objectFit: 'cover', objectPosition: 'center' }} sizes="100vw" fill />
             <div className='created-card-plate'>
               <div className='created-card-title'>Amiverse</div>
               <div className='created-card-content'>ソーシャルメディア</div>
@@ -36,24 +36,38 @@ export default function Home() {
           </div>
           <div className='created-list-container'>
             <div className='created-list created-card'>
-              <Image src="/images/ivecolor-ss.webp" alt="object" style={{ objectFit: 'cover', objectPosition: 'center' }} sizes="30vw" fill />
+              <Image src="/images/ivecolor/ivecolor-1.png" alt="object" style={{ objectFit: 'cover', objectPosition: 'center' }} sizes="30vw" fill />
               <div className='created-card-plate'>
                 <div className='created-card-title'>IVECOLOR</div>
                 <div className='created-card-content'>ブログ</div>
               </div>
             </div>
             <div className='created-list created-card'>
-              <Image src="/images/object.png" alt="object" style={{ objectFit: 'cover', objectPosition: 'center' }} sizes="30vw" fill />
+              <Image src="/images/anyur/anyur-1.png" alt="object" style={{ objectFit: 'cover', objectPosition: 'center' }} sizes="30vw" fill />
+              <div className='created-card-plate'>
+                <div className='created-card-title'>ANYUR</div>
+                <div className='created-card-content'>総合アカウントシステム</div>
+              </div>
+            </div>
+            <div className='created-list created-card'>
+              <Image src="/images/bealive/bealive-1.png" alt="object" style={{ objectFit: 'cover', objectPosition: 'center' }} sizes="30vw" fill />
               <div className='created-card-plate'>
                 <div className='created-card-title'>BeAlive.</div>
                 <div className='created-card-content'>生存確認</div>
               </div>
             </div>
             <div className='created-list created-card'>
-              <Image src="/images/object.png" alt="object" style={{ objectFit: 'cover', objectPosition: 'center' }} sizes="30vw" fill />
+              <Image src="/images/x/x-1.png" alt="object" style={{ objectFit: 'cover', objectPosition: 'center' }} sizes="30vw" fill />
               <div className='created-card-plate'>
-                <div className='created-card-title'>Learn Pay</div>
-                <div className='created-card-content'>疑似電子決済</div>
+                <div className='created-card-title'>得句巣</div>
+                <div className='created-card-content'>次世代中華風電子共同体</div>
+              </div>
+            </div>
+            <div className='created-list created-card'>
+              <Image src="/images/kisana/kisana-1.png" alt="object" style={{ objectFit: 'cover', objectPosition: 'center' }} sizes="30vw" fill />
+              <div className='created-card-plate'>
+                <div className='created-card-title'>KISANA:ME</div>
+                <div className='created-card-content'>当サイト</div>
               </div>
             </div>
           </div>

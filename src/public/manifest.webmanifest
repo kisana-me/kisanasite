@@ -6,11 +6,11 @@
     "start_url": "/",
     "name": "KISANA:ME",
     "description": "KISANA:ME PWA",
-    "short_name": "KISANA:ME",
+    "short_name": "ksn",
     "icons": [
         {
-            "src": "/icon-520x520.png",
-            "sizes": "520x520",
+            "src": "/images/kisana/kisana-logo.png",
+            "sizes": "500x500",
             "type": "image/png"
         }
     ]

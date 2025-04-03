@@ -5,7 +5,7 @@ import { useThemeContext } from "@/contexts/ThemeContext"
 export default function DefaultHead({ children }) {
   const { title, author, description, keywords, robots, type, imagePath, imageUrl, card, id, url } = usePageContext()
   const { darkMode } = useThemeContext()
-  const tmpImagePath = imagePath || "/images/apples.webp"
+  const tmpImagePath = imagePath || "/images/kisana/kisana-1.png"
   const image = imageUrl || new URL(tmpImagePath, process.env.NEXT_PUBLIC_APP_URL || 'http://kisana.me/').toString()
   const alt = "白背景にりんごが5つ並ぶ"
   const site = process.env.NEXT_PUBLIC_APP_URL || 'http://kisana.me/'

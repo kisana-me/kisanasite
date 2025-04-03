@@ -37,7 +37,7 @@ export default function Posts({ sortedDate, sortedUpdate }) {
                   />
                 :
                 <Image
-                  src={`/images/apples.webp`}
+                  src={`/images/no-image.png`}
                   fill
                   sizes="10vw"
                   alt="コンテンツなし"
