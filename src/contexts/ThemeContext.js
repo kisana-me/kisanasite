@@ -59,6 +59,8 @@ export const ThemeContextProvider = ({ children }) => {
       --theme-background-3-hsl-color: hsl(${hue}, 75%, ${darkMode ? '8' : '96'}%);
       --theme-mode-accent-rgb-value: ${darkMode ? '255,255,255' : '0,0,0'};
       --theme-mode-base-rgb-value: ${darkMode ? '0,0,0' : '255,255,255'};
+      --theme-mode-accent-rgb-color: rgb(${darkMode ? '255,255,255' : '0,0,0'});
+      --theme-mode-base-rgb-color: rgb(${darkMode ? '0,0,0' : '255,255,255'});
       --inconspicuous-color: hsl(0, 0%, ${darkMode ? '64' : '55'}%);
     }
     html {

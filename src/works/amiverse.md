@@ -1,8 +1,10 @@
 ---
 title: 'Amiverse'
 date: '2024-06-24'
-description: '新しいソーシャルメディアです。'
-image: ''
+summary: 'ソーシャルメディア'
+description: '次世代のソーシャルメディアシステムを開発・運営しています。'
+icon: '/images/amiverse/amiverse-logo.png'
+image: '/images/amiverse/amiverse-1.png'
 ---
 
 ## 概要
@@ -18,4 +20,4 @@ ActivityPubやAT Protocol、Nostrなどの分散型SNSで使われるプロト�
 
 ## リンク
 
-[Amiverse](https://amiverse.net/)
+- [amiverse.net](https://amiverse.net/)

@@ -15,6 +15,7 @@ export const PageContextProvider = ({ children }) => {
   const [card, setCard] = useState('summary_large_image')
   const [id, setId] = useState('kisana_me')
   const [url, setUrl] = useState('')
+  const [mainTagTopPadding, setMainTagTopPadding] = useState(true)
 
   const router = useRouter()
 
@@ -34,7 +35,8 @@ export const PageContextProvider = ({ children }) => {
       imageUrl , setImageUrl,
       card, setCard,
       id, setId,
-      url
+      url, setUrl,
+      mainTagTopPadding, setMainTagTopPadding
     }}>
       {children}
     </PageContext.Provider>

@@ -6,16 +6,17 @@ import { usePageContext } from "@/contexts/PageContext"
 import { useEffect } from 'react'
 
 export default function Home() {
-  const { setTitle } = usePageContext()
+  const { setTitle, setMainTagTopPadding } = usePageContext()
   useEffect(()=>{
     setTitle('')
+    setMainTagTopPadding(false)
   }, [])
   return (
     <>
-      <div className="wrap">
+      <div>
         <div className="main-container">
           <div className="top-front">
-            <Image src="/images/preparing.png" alt="object" style={{ objectFit: 'cover', objectPosition: 'center' }} sizes="100vw" priority={true} fill />
+            <Image src="/images/preparing.png" alt="object" style={{ objectFit: 'cover', objectPosition: 'center' }} priority fill />
             <div className="name-plate">
               <span>Studying Design.</span>
               <h1>KISANA:ME</h1>
@@ -28,7 +29,7 @@ export default function Home() {
             <h2>Created</h2>
           </div>
           <div className='created-main-container created-card'>
-            <Image src="/images/amiverse/amiverse-1.png" alt="object" style={{ objectFit: 'cover', objectPosition: 'center' }} sizes="100vw" fill />
+            <Image src="/images/amiverse/amiverse-1.png" alt="object" style={{ objectFit: 'cover', objectPosition: 'center' }} fill />
             <div className='created-card-plate'>
               <div className='created-card-title'>Amiverse</div>
               <div className='created-card-content'>ソーシャルメディア</div>
@@ -105,11 +106,8 @@ export default function Home() {
             </div>
           </div>
         </div>
-            
       </div>
       <style jsx>{`
-        .wrap {
-        }
         .main-container {
           height: 100svh;
           position: relative;

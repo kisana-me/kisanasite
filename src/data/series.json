@@ -9,6 +9,7 @@
     {"date": "2019.8", "heading": "個人ブログ開始"}
   ],
   "tech": [
+    {"date": "2025", "heading": "情報セキュリティマネジメント試験 合格"},
     {"date": "2024", "heading": "ピアノ 始める"},
     {"date": "2024", "heading": "ITパスポート, 普通自動車免許取得"},
     {"date": "2022", "heading": "英検2級 取得"},
@@ -17,6 +18,13 @@
     {"date": "2018", "heading": "プログラミング 始める"}
   ],
   "hobby": [
+    {"date": "2025.6", "heading": "予定: LE SSERAFIM 1回"},
+    {"date": "2025.4", "heading": "予定: IVE 1回"},
+    {"date": "2025.4", "heading": "予定: BABYMONSTER 1回"},
+    {"date": "2025.3", "heading": "Aimer 1回"},
+    {"date": "2025.1", "heading": "MISAMO 東京ドーム 1回"},
+    {"date": "2025.1", "heading": "NMIXX 1回"},
+    {"date": "2024.11", "heading": "BEATPERA HOUSE 1回"},
     {"date": "2024.9", "heading": "IVE 東京ドーム 2回"},
     {"date": "2024.8", "heading": "aespa 東京ドーム 1回"},
     {"date": "2024.7", "heading": "TWICE READY TO BE SPECIAL 3回"},
@@ -24,6 +32,8 @@
     {"date": "2024.6", "heading": "NewJean bunnies camp 1回"},
     {"date": "2023.11", "heading": "MAMA 東京ドーム 1回"},
     {"date": "2023.11", "heading": "IVE Kアリーナ横浜 2回"},
+    {"date": "2023.10", "heading": "7 to Smoke 1回"},
+    {"date": "2023.8?", "heading": "aespa 東京ドーム 1回"},
     {"date": "2023.8?", "heading": "LE SSERAFIM 代々木 1回"},
     {"date": "2023.5", "heading": "TWICE READY TO BE 1回"},
     {"date": "2023.?", "heading": "BLACKPINK 東京ドーム 1回"},

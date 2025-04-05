@@ -9,14 +9,9 @@ export default function Custom500() {
 
   return (
     <>
-      <div className="wrap">
-        <h1>500 - Server-side error occurred</h1>
-        <p>サーバー死んでます!</p>
-      </div>
+      <h1>500 - Server-side error occurred</h1>
+      <p>サーバー死んでます!</p>
       <style jsx>{`
-        .wrap {
-          padding: 50px 0 0 0;
-        }
       `}</style>
     </>
   )

@@ -2,17 +2,17 @@ import Link from 'next/link'
 import { useMenu } from '@/contexts/MenuContext'
 
 export default function Header() {
-  const { isMenu, setIsMenu } = useMenu()
+  const { setIsMenu } = useMenu()
 
   return (
     <header>
-      <Link href="/"><div className='logo'>KISANA:ME</div></Link>
+      <Link href="/" legacyBehavior><a className='logo'>KISANA:ME</a></Link>
       <nav>
-        <div className="menu-listed">
-          <Link href="/"><div className="link">Home</div></Link>
-          <Link href="/about"><div className="link">About</div></Link>
-          <Link href="/works"><div className="link">Works</div></Link>
-          <Link href="/posts"><div className="link">Posts</div></Link>
+        <div className="menu-wrapper">
+          <Link href="/" legacyBehavior><a className="link">Home</a></Link>
+          <Link href="/about" legacyBehavior><a className="link">About</a></Link>
+          <Link href="/works" legacyBehavior><a className="link">Works</a></Link>
+          <Link href="/posts" legacyBehavior><a className="link">Posts</a></Link>
         </div>
         <button onClick={() => setIsMenu(true)} className="menu-open-button">&#9776;</button>
       </nav>
@@ -35,24 +35,24 @@ export default function Header() {
         }
         .logo {
           padding: 10px;
-          color: rgb(var(--theme-mode-accent-rgb-value));
+          color: var(--theme-mode-accent-rgb-color);
         }
         .link {
           padding: 10px;
-          color: rgb(var(--theme-mode-accent-rgb-value));
+          color: var(--theme-mode-accent-rgb-color);
         }
         nav {
           display: flex;
           margin-right: 20px;
         }
-        .menu-listed {
+        .menu-wrapper {
           display: none;
           padding: 0;
           justify-content: space-around;
         }
         .menu-open-button {
           background: none;
-          color: rgb(var(--theme-mode-accent-rgb-value));
+          color: var(--theme-mode-accent-rgb-color);
           border: none;
           font-size: 14px;
           cursor: pointer;
@@ -61,7 +61,7 @@ export default function Header() {
           header {
             justify-content: space-around;
           }
-          .menu-listed {
+          .menu-wrapper {
             display: flex;
           }
         }

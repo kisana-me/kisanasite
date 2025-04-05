@@ -32,7 +32,7 @@ export default function Posts({ sortedDate, sortedUpdate }) {
                   <Image
                     src={`/images/${post.slug}/${post.image}`}
                     fill
-                  sizes="10vw"
+                    sizes="10vw"
                     alt={post.title}
                   />
                 :

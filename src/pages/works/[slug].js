@@ -32,8 +32,15 @@ export default function Post({ mdData, sortedMdsData }) {
     <div className="postPageContainer">
       <div className="postContainer">
         <div className="postImage">
-          {false ? 
-            <Image src={`/images/${postData.id}/${postData.image}`} alt={postData.title} sizes="100vw" priority={true} fill />
+          {mdData.image ? 
+            <Image src={mdData.image} alt={mdData.title} sizes="100vw" priority={true} fill />
+          :
+            <Image src={`/images/no-image.png`} alt="コンテンツなし" sizes="100vw" priority={true} fill/>
+          }
+        </div>
+        <div className="postIcon">
+          {mdData.icon ? 
+            <Image src={mdData.icon} alt={mdData.title} sizes="100vw" priority={true} fill />
           :
             <Image src={`/images/no-image.png`} alt="コンテンツなし" sizes="100vw" priority={true} fill/>
           }

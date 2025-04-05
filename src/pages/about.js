@@ -12,20 +12,15 @@ export default function about({data}) {
 
   return (
     <>
-      <div className="wrap">
-        <h1>About</h1>
-        <p>こんにちは、私は「きさな🍭/kisana」です。</p>
-        <p>自称WEBプログラマです。</p>
-        <div>
-          <DataDisplay data={data} dataType='service' />
-          <DataDisplay data={data} dataType='tech' />
-          <DataDisplay data={data} dataType='hobby' />
-        </div>
+      <h1>About</h1>
+      <p>こんにちは、私は「きさな🍭/kisana」です。</p>
+      <p>自称WEBプログラマです。</p>
+      <div>
+        <DataDisplay data={data} dataType='service' />
+        <DataDisplay data={data} dataType='tech' />
+        <DataDisplay data={data} dataType='hobby' />
       </div>
       <style jsx>{`
-        .wrap {
-          padding: 50px 0 0 0;
-        }
       `}</style>
     </>
   )

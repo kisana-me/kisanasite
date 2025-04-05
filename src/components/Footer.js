@@ -3,47 +3,48 @@ import Link from 'next/link'
 export default function Footer() {
   return (
     <footer>
-      <div className='foreword'>
-        <div className='list-wrap'>
+      <div className='top-content'>
+        <div className='list-wrapper'>
           <div className='list-name'>ソーシャルメディア</div>
           <ul>
-            <li><Link href='https://amiverse.net/@kisana/' rel='noopener noreferrer' target='_blank'><div className='list-content'>Amiverse</div></Link></li>
-            <li><Link href='https://misskey.io/@kisana/' rel='noopener noreferrer' target='_blank'><div className='list-content'>Misskey.io</div></Link></li>
-            <li><Link href='https://x.com/@kisana_me/' rel='noopener noreferrer' target='_blank'><div className='list-content'>X</div></Link></li>
+            <li><Link href='https://amiverse.net/@kisana/' rel='noopener noreferrer' target='_blank' legacyBehavior><a className='list-content'>Amiverse</a></Link></li>
+            <li><Link href='https://misskey.io/@kisana/' rel='noopener noreferrer' target='_blank' legacyBehavior><a className='list-content'>Misskey.io</a></Link></li>
+            <li><Link href='https://x.com/@kisana_me/' rel='noopener noreferrer' target='_blank' legacyBehavior><a className='list-content'>X</a></Link></li>
           </ul>
         </div>
-        <div className='list-wrap'>
+        <div className='list-wrapper'>
           <div className='list-name'>関連サイト</div>
           <ul>
-            <li><Link href='https://amiverse.net/' rel='noopener noreferrer' target='_blank'><div className='list-content'>Amiverse</div></Link></li>
-              <li><Link href='https://ivecolor.com/' rel='noopener noreferrer' target='_blank'><div className='list-content'>IVECOLOR</div></Link></li>
-              <li><Link href='https://bealive.amiverse.net/' rel='noopener noreferrer' target='_blank'><div className='list-content'>BeAlive.</div></Link></li>
-            </ul>
+            <li><Link href='https://amiverse.net/' rel='noopener noreferrer' target='_blank' legacyBehavior><a className='list-content'>Amiverse</a></Link></li>
+            <li><Link href='https://ivecolor.com/' rel='noopener noreferrer' target='_blank' legacyBehavior><a className='list-content'>IVECOLOR</a></Link></li>
+            <li><Link href='https://bealive.amiverse.net/' rel='noopener noreferrer' target='_blank' legacyBehavior><a className='list-content'>BeAlive.</a></Link></li>
+            <li><Link href='https://x.amiverse.net/' rel='noopener noreferrer' target='_blank' legacyBehavior><a className='list-content'>得句巣</a></Link></li>
+          </ul>
         </div>
-        <div className='list-wrap'>
+        <div className='list-wrapper'>
           <div className='list-name'>ツール</div>
           <ul>
-            <li><Link href='/tools/markdown-editor'><div className='list-content'>Markdown Editor</div></Link></li>
-            <li><Link href='/tools/blockchain-maker'><div className='list-content'>Blockchain Maker</div></Link></li>
+            <li><Link href='/tools/markdown-editor' legacyBehavior><a className='list-content'>Markdown Editor</a></Link></li>
+            <li><Link href='/tools/blockchain-maker' legacyBehavior><a className='list-content'>Blockchain Maker</a></Link></li>
           </ul>
           <div className='list'>
           </div>
         </div>
-        <div className='list-wrap'>
+        <div className='list-wrapper'>
           <div className='list-name'>このサイトについて</div>
           <ul>
-            <li><Link href='/sitemap'><div className='list-content'>サイトマップ</div></Link></li>
-            <li><Link href='/terms'><div className='list-content'>利用規約</div></Link></li>
-            <li><Link href='/policy'><div className='list-content'>プライバシーポリシー</div></Link></li>
-            <li><Link href='/contact'><div className='list-content'>お問い合わせ</div></Link></li>
+            <li><Link href='/sitemap' legacyBehavior><a className='list-content'>サイトマップ</a></Link></li>
+            <li><Link href='/terms' legacyBehavior><a className='list-content'>利用規約</a></Link></li>
+            <li><Link href='/policy' legacyBehavior><a className='list-content'>プライバシーポリシー</a></Link></li>
+            <li><Link href='/contact' legacyBehavior><a className='list-content'>お問い合わせ</a></Link></li>
           </ul>
         </div>
       </div>
-      <div className='content'>
+      <div className='bottom-content'>
         <div className='copyright'>
-          ©kisana
+          © kisana
         </div>
-        <div className='madeby'>
+        <div className='made-by'>
           Made by kisana
         </div>
       </div>
@@ -55,14 +56,17 @@ export default function Footer() {
           border-radius: 20px 20px 0 0;
           font-size: small;
         }
-        /* forward */
-        .foreword {
+
+        /* top-content */
+
+        .top-content {
           width: 100%;
           display: flex;
+          flex-direction: column;
           justify-content: space-evenly;
           flex-wrap: wrap;
         }
-        .list-wrap {
+        .list-wrapper {
           margin: 20px;
         }
         .list-name {
@@ -77,21 +81,28 @@ export default function Footer() {
           display: inline;
           color: var(--inconspicuous-color);
         }
-        /* content */
-        .content {
-          padding: 10px 10px 0;
+        .list-content:hover {
+          text-decoration: underline;
+        }
+
+        /* bottom-content */
+
+        .bottom-content {
+          padding: 10px;
           border-top: 1px solid var(--inconspicuous-color);
-          text-align: right;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
         }
         .copyright {
 
         }
-        .madeby {
+        .made-by {
           color: var(--inconspicuous-color);
         }
-        @media (max-width: 700px) {
-          .foreword {
-            flex-direction: column;
+        @media (min-width: 700px) {
+          .top-content {
+            flex-direction: row;
           }
         }
       `}</style>
