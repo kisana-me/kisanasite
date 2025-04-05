@@ -42,6 +42,7 @@ export default function Posts({ sortedDate, sortedUpdate }) {
         }
         .posts-card {
           max-width: 100%;
+          flex-grow: 1;
         }
       `}</style>
     </>

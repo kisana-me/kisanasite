@@ -36,6 +36,7 @@ export default function work({ sortedMdsData }) {
         }
         .works-card {
           max-width: 100%;
+          flex-grow: 1;
         }
       `}</style>
     </>
