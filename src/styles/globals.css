@@ -5,11 +5,8 @@
 body {
   font-family: 'MPLUS1';
 }
-body, h1, h2, h3, p {
+body, h1, h2, h3, h4, h5, h6, p, a, img {
   margin: 0;
-}
-a {
-  text-decoration: none;
 }
 img {
   position: static !important;

@@ -36,60 +36,65 @@ export const MenuContextProvider = ({ children }) => {
       {children}
       <div className={isMenu ? 'menu-open' : 'menu-close'}>
         <button onClick={() => setIsMenu(false)}  className="menu-close-button">&times;</button>
-        <Link onClick={() => setIsMenu(false)} href="/"><div className="link">Home</div></Link>
-        <Link onClick={() => setIsMenu(false)} href="/about"><div className="link">About</div></Link>
-        <Link onClick={() => setIsMenu(false)} href="/works"><div className="link">Works</div></Link>
-        <Link onClick={() => setIsMenu(false)} href="/posts"><div className="link">Posts</div></Link>
-        <div className='view-settings'>
-          <div>
-            <div>テーマを変更</div>
-            <br />
-            <button
-              onClick={() => {
-                const themes = ['light', 'dark', 'system'];
-                const currentIndex = themes.indexOf(theme);
-                const nextIndex = (currentIndex + 1) % themes.length;
-                setTheme(themes[nextIndex]);
-              }}
-            >
-              {theme === 'light' ? '☀️' : theme === 'dark' ? '🌙' : '🖥️'}
-            </button>
-          </div>
+        <br />
+        <br />
+        <Link href="/" legacyBehavior><a onClick={() => setIsMenu(false)} className="link">Home</a></Link>
+        <Link href="/about" legacyBehavior><a onClick={() => setIsMenu(false)} className="link">About</a></Link>
+        <Link href="/works" legacyBehavior><a onClick={() => setIsMenu(false)} className="link">Works</a></Link>
+        <Link href="/posts" legacyBehavior><a onClick={() => setIsMenu(false)} className="link">Posts</a></Link>
+        <br />
+        <br />
+        <div>
+          <div>テーマを変更</div>
+          <span>
+            現在のテーマ: {theme === 'light' ? '☀️ライト☀️' : theme === 'dark' ? '🌙ダーク🌙' : '🖥️システム🖥️'}
+          </span>
           <br />
+          <button
+            onClick={() => {
+              const themes = ['light', 'dark', 'system']
+              const currentIndex = themes.indexOf(theme)
+              const nextIndex = (currentIndex + 1) % themes.length
+              setTheme(themes[nextIndex])
+            }}
+          >
+            {theme === 'light' ? '☀️' : theme === 'dark' ? '🌙' : '🖥️'}切り替え{theme === 'light' ? '☀️' : theme === 'dark' ? '🌙' : '🖥️'}
+          </button>
+        </div>
+        <br />
+        <br />
+        <div>
+          <div>色を変更</div>
+          <span>現在の色: <span style={{ color: 'var(--theme-hsl-color)' }}>こんな色</span></span>
           <br />
+          <input
+            type="range"
+            min={0}
+            max={360}
+            step={1}
+            value={hue}
+            onChange={(e) => handleHueChange(parseInt(e.target.value))}
+            className='input_hue'
+            style={{
+              appearance: 'none',
+              height: '12px',
+              borderRadius: '2px',
+              background: gradientBackground,
+              cursor: 'pointer'
+            }}
+          />
           <br />
-          <div>
-            <div>色を変更</div>
-            <span>現在の色: <span style={{ color: 'var(--theme-hsl-color)' }}>こんな色</span></span>
-            <br />
-            <input
-              type="range"
-              min={0}
-              max={360}
-              step={1}
-              value={hue}
-              onChange={(e) => handleHueChange(parseInt(e.target.value))}
-              className='input_hue'
-              style={{
-                appearance: 'none',
-                height: '12px',
-                borderRadius: '2px',
-                background: gradientBackground,
-                cursor: 'pointer'
-              }}
-            />
-            <br />
-            <button
-              onClick={resetHue}
-              className="reset_hue"
-            >リセット</button>
-          </div>
+          <button
+            onClick={resetHue}
+            className="reset_hue"
+          >リセット</button>
         </div>
       </div>
       <style jsx>{`
         .link {
           padding: 10px;
-          color: rgb(var(--theme-mode-accent-rgb-value));
+          color: var(--theme-mode-accent-rgb-color);
+          text-decoration: none;
         }
         .menu-close {
           display: none;
@@ -100,7 +105,7 @@ export const MenuContextProvider = ({ children }) => {
           left: 0;
           width: 100%;
           height: 100svh;
-          color: rgb(var(--theme-mode-accent-rgb-value));
+          color: var(--theme-mode-accent-rgb-color);
           background-color: rgba(var(--theme-mode-base-rgb-value), 0.9);
           text-align: center;
           padding: 80px 0;
@@ -110,13 +115,10 @@ export const MenuContextProvider = ({ children }) => {
         }
         .menu-close-button {
           background: none;
-          color: rgb(var(--theme-mode-accent-rgb-value));
+          color: var(--theme-mode-accent-rgb-color);
           border: none;
           font-size: 14px;
           cursor: pointer;
-        }
-        .view-settings {
-          margin-top: 50px;
         }
         .input_hue::-webkit-slider-thumb {
           appearance: none;

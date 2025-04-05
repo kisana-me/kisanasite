@@ -18,28 +18,30 @@ export default function Header() {
       </nav>
       <style jsx>{`
         header {
-          backdrop-filter: blur(3px);
+          width: 100%;
+          height: 44px;
+          padding: 3px;
+          top: 0;
+          position: fixed;
           background: linear-gradient(0deg,
             rgba(var(--theme-mode-base-rgb-value),0.30) 0%,
             rgba(var(--theme-mode-base-rgb-value),0.5) 40%,
             rgba(var(--theme-mode-base-rgb-value),0.8) 100%
           );
+          backdrop-filter: blur(3px);
           display: flex;
           justify-content: space-between;
-          top: 0;
-          position: fixed;
-          width: 100%;
-          height: 44px;
-          padding: 3px;
           z-index: 100;
         }
         .logo {
           padding: 10px;
           color: var(--theme-mode-accent-rgb-color);
+          text-decoration: none;
         }
         .link {
           padding: 10px;
           color: var(--theme-mode-accent-rgb-color);
+          text-decoration: none;
         }
         nav {
           display: flex;
@@ -51,9 +53,10 @@ export default function Header() {
           justify-content: space-around;
         }
         .menu-open-button {
+          border: none;
           background: none;
           color: var(--theme-mode-accent-rgb-color);
-          border: none;
+          text-decoration: none;
           font-size: 14px;
           cursor: pointer;
         }

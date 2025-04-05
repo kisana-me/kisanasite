@@ -80,6 +80,7 @@ export default function Footer() {
         .list-content {
           display: inline;
           color: var(--inconspicuous-color);
+          text-decoration: none;
         }
         .list-content:hover {
           text-decoration: underline;
