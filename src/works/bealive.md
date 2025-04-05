@@ -1,6 +1,6 @@
 ---
 title: 'BeAlive.'
-date: '2025-04-04'
+order: 4
 summary: '生存確認SNS'
 description: '写真を共有しあって生存確認をするSNSです。'
 icon: '/images/bealive/bealive-logo.png'

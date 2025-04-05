@@ -29,66 +29,48 @@ export default function Post({ mdData, sortedMdsData }) {
   }, [])
 
   return (
-    <div className="postPageContainer">
-      <div className="postContainer">
-        <div className="postImage">
-          {mdData.image ? 
-            <Image src={mdData.image} alt={mdData.title} sizes="100vw" priority={true} fill />
-          :
-            <Image src={`/images/no-image.png`} alt="コンテンツなし" sizes="100vw" priority={true} fill/>
-          }
+    <>
+      <div className="work-container">
+        <div className="work-main">
+          <div className="work-image">
+            <Image src={mdData.image ? mdData.image : '/images/no-image.png'} alt={mdData.title} priority fill />
+          </div>
+          <div className="work-icon">
+            <Image src={mdData.icon ? mdData.icon : '/images/no-image.png'} alt={mdData.title} priority fill />
+          </div>
+          <h1>{mdData.title}</h1>
+          <div>{mdData.description}</div>
+          <hr />
+          {parse(mdData.contentHtml)}
         </div>
-        <div className="postIcon">
-          {mdData.icon ? 
-            <Image src={mdData.icon} alt={mdData.title} sizes="100vw" priority={true} fill />
-          :
-            <Image src={`/images/no-image.png`} alt="コンテンツなし" sizes="100vw" priority={true} fill/>
-          }
+        <div className="work-others">
         </div>
-        <h1>{mdData.title}</h1>
-        <div>ID:{ mdData.id }</div>
-        <div>投稿:{ mdData.date }</div>
-        <div>{mdData.description}</div>
-        {parse(mdData.contentHtml)}
-      </div>
-      <div className="pathContainer">
-        {/* {sortedDate.map((post) => (
-          <Link key={ post.slug } href={ "/posts/" + post.slug }>
-            <div className="post">
-              <div className="pathPostImage">
-                {post.image ?
-                  <Image src={`/images/${post.slug}/${post.image}`} alt={post.title} sizes="30vw" fill />
-                :
-                <Image src={`/images/no-image.png`} alt="コンテンツなし" sizes="30vw" fill/>
-                }
-              </div>
-              <div className="pathPostTxt">
-                <div className="pathTxt">{ post.title }</div>
-                <div className="pathTxt">投稿:{ post.date }</div>
-                <div className="pathTxt">タグ:{ post.tag.map((t)=> <span key={t}>{t}</span> ) }</div>
-              </div>
-            </div>
-          </Link>
-        ))} */}
       </div>
       <style jsx>{`
-        .postPageContainer{
-          padding: 50px 0 0 0;
+        .work-container {
           display: flex;
-          justify-content: space-around;
+          flex-direction: column;
         }
-        .postContainer {
-          margin: 7px;
-          width: 60%;
-        }
-        .postImage {
+        .work-main {
           width: 100%;
+          max-width: 600px;
+          padding: 10px;
+          box-sizing: border-box;
         }
-        .pathContainer {
-          width: 40%;
-          max-width: 400px;
-          margin: 7px;
+        .work-image {
+          width: 100%;
+          display: flex;
         }
+        .work-icon {
+          width: 50px;
+          height:  50px;
+          display: flex;
+        }
+        .work-others {
+          width: 100%;
+          margin: 10px;
+        }
+        /* ??? */
         .post {
           display: flex;
           margin: 7px;
@@ -104,20 +86,16 @@ export default function Post({ mdData, sortedMdsData }) {
           text-overflow: ellipsis;
           white-space: nowrap;
         }
-        @media screen and (max-width: 830px) {
-          /* 830px以下 */
-          .postPageContainer{
-            display: block;
-          }
-          .postContainer {
-            width: auto;
-          }
-          .pathContainer {
-            width: auto;
-            max-width: none;
-          }
+        @media screen and (min-width: 800px) {
+        .work-container {
+          flex-direction: row;
+        }
+        .work-others {
+          width: 40%;
+          max-width: 400px;
+        }
         }
       `}</style>
-    </div>
+    </>
   )
 }

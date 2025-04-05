@@ -26,7 +26,8 @@ export function getSortedMdsData(dir) {
     return { slug, ...matterResult.data }
   })
   const sortedDate = allPostsData.sort((postA, postB) =>
-    new Date(postA.date) > new Date(postB.date) ? -1 : 1
+    postA.order < postB.order ? -1 : 1
+    // new Date(postA.date) > new Date(postB.date) ? -1 : 1
   )
   return (sortedDate)
 }

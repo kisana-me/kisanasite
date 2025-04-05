@@ -1,6 +1,6 @@
 ---
 title: 'ANYUR'
-date: '2025-04-04'
+order: 3
 summary: 'アカウントシステム'
 description: '私が運営しているサービスで使用するアカウントを一元管理するシステムです。'
 icon: '/images/anyur/anyur-logo.png'

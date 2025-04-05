@@ -1,6 +1,6 @@
 ---
 title: '得句巣'
-date: '2025-04-04'
+order: 5
 summary: '漢字とアルファベットのSNS'
 description: '漢字は必須、アルファベットは任意、平仮名と片仮名は使用できないSNSです。'
 icon: '/images/x/x-logo.png'

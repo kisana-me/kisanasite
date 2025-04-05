@@ -1,6 +1,6 @@
 ---
 title: 'Amiverse'
-date: '2024-06-24'
+order: 1
 summary: 'ソーシャルメディア'
 description: '次世代のソーシャルメディアシステムを開発・運営しています。'
 icon: '/images/amiverse/amiverse-logo.png'

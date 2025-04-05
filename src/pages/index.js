@@ -147,7 +147,7 @@ export default function Home() {
           border: 2px solid var(--inconspicuous-color);
           padding: 10px;
           border-radius: 7px;
-          background: var(--transparent-background-color);
+          background: rgba(var(--theme-mode-base-rgb-value), .5);
           box-sizing: border-box;
         }
         .name-plate span {
@@ -197,7 +197,7 @@ export default function Home() {
           position: absolute;
           bottom: 10px;
           right: 10px;
-          background: var(--transparent-background-color);
+          background: rgba(var(--theme-mode-base-rgb-value), .5);
           backdrop-filter: blur(3px);
           padding: 7px;
           border-radius: 7px;

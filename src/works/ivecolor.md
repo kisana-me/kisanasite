@@ -1,7 +1,7 @@
 ---
 title: 'IVECOLOR'
-date: '2025-04-04'
-summary: 'BLOGシステム'
+order: 2
+summary: 'ブログシステム'
 description: 'ブログシステムを構築し運営しています。'
 icon: '/images/ivecolor/ivecolor-logo.png'
 image: '/images/ivecolor/ivecolor-1.png'

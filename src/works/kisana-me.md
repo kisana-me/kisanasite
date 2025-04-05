@@ -1,6 +1,6 @@
 ---
 title: 'KISANA:ME'
-date: '2025-04-04'
+order: 6
 summary: 'ポートフォリオサイト'
 description: 'kisanaのポートフォリオサイトです。'
 icon: '/images/kisana/kisana-logo.png'
