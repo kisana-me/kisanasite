@@ -1,16 +1,16 @@
 import Link from 'next/link'
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
-import Card from "@/components/Card"
+import Card from "@/components/card"
 import { getSortedPostsData } from '@/lib/posts'
-import { usePageContext } from "@/contexts/PageContext"
+import { usePageContext } from "@/contexts/page_context"
 
 export const getStaticProps = () => {
   const allPostsData = getSortedPostsData()
   return { props: { sortedDate: allPostsData[0], sortedUpdate: allPostsData[1] } }
 }
 
-export default function Posts({ sortedDate, sortedUpdate }) {
+export default function index({ sortedDate, sortedUpdate }) {
   const { setTitle } = usePageContext()
   useEffect(()=>{
     setTitle('投稿一覧')
@@ -41,7 +41,8 @@ export default function Posts({ sortedDate, sortedUpdate }) {
           gap: 10px;
         }
         .posts-card {
-          max-width: 100%;
+          width: 100%;
+          max-width: 400px;
           flex-grow: 1;
         }
       `}</style>

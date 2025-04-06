@@ -1,15 +1,15 @@
 import Link from "next/link"
 import { useEffect } from "react"
-import { usePageContext } from "@/contexts/PageContext"
-import { getSortedMdsData } from '@/lib/mdsReader'
-import Card from "@/components/Card"
+import { usePageContext } from "@/contexts/page_context"
+import { getSortedMdsData } from '@/lib/mds_reader'
+import Card from "@/components/card"
 
 export function getStaticProps() {
   const sortedMdsData = getSortedMdsData('works')
   return { props: {sortedMdsData} }
 }
 
-export default function work({ sortedMdsData }) {
+export default function index({ sortedMdsData }) {
   const { setTitle } = usePageContext()
   useEffect(()=>{
     setTitle('Works')
@@ -35,7 +35,8 @@ export default function work({ sortedMdsData }) {
           gap: 10px;
         }
         .works-card {
-          max-width: 100%;
+          width: 100%;
+          max-width: 400px;
           flex-grow: 1;
         }
       `}</style>

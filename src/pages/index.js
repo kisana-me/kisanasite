@@ -1,11 +1,10 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import Head from "@/components/Head"
 import { useState, useContext } from 'react'
-import { usePageContext } from "@/contexts/PageContext"
+import { usePageContext } from "@/contexts/page_context"
 import { useEffect } from 'react'
 
-export default function Home() {
+export default function index() {
   const { setTitle, setMainTagTopPadding } = usePageContext()
   useEffect(()=>{
     setTitle('')

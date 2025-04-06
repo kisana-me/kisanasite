@@ -1,9 +1,10 @@
+import { useEffect } from "react"
 import Image from 'next/image'
-import { getAllMdIds, getMdData, getSortedMdsData } from '@/lib/mdsReader'
 import Link from 'next/link'
 import parse from 'html-react-parser'
-import { useEffect } from "react"
-import { usePageContext } from "@/contexts/PageContext"
+import { getAllMdIds, getMdData, getSortedMdsData } from '@/lib/mds_reader'
+import { usePageContext } from "@/contexts/page_context"
+import MiniCard from '@/components/mini_card'
 
 export async function getStaticPaths() {
   const paths = getAllMdIds('works')
@@ -19,7 +20,7 @@ export async function getStaticProps({ params }) {
   return { props: { mdData, sortedMdsData } }
 }
 
-export default function Post({ mdData, sortedMdsData }) {
+export default function work({ mdData, sortedMdsData }) {
   const { setTitle, setDescription, setType, setImageUrl } = usePageContext()
   useEffect(()=>{
     setTitle(mdData.title)
@@ -43,7 +44,14 @@ export default function Post({ mdData, sortedMdsData }) {
           <hr />
           {parse(mdData.contentHtml)}
         </div>
-        <div className="work-others">
+        <div className="work-aside">
+          {sortedMdsData.map((work) => (
+            <Link key={ work.slug } href={ "/works/" + work.slug } legacyBehavior>
+              <a className="">
+                <MiniCard title={work.title} image={work.image} summary={work.summary} />
+              </a>
+            </Link>
+          ))}
         </div>
       </div>
       <style jsx>{`
@@ -53,7 +61,7 @@ export default function Post({ mdData, sortedMdsData }) {
         }
         .work-main {
           width: 100%;
-          max-width: 600px;
+          max-width: 700px;
           padding: 10px;
           box-sizing: border-box;
         }
@@ -66,34 +74,17 @@ export default function Post({ mdData, sortedMdsData }) {
           height:  50px;
           display: flex;
         }
-        .work-others {
+        .work-aside {
           width: 100%;
           margin: 10px;
         }
-        /* ??? */
-        .post {
-          display: flex;
-          margin: 7px;
-        }
-        .pathPostImage {
-          width: 150px;
-        }
-        .pathPostTxt {
-          width: 50%;
-        }
-        .pathTxt {
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-        @media screen and (min-width: 800px) {
-        .work-container {
-          flex-direction: row;
-        }
-        .work-others {
-          width: 40%;
-          max-width: 400px;
-        }
+        @media screen and (min-width: 1000px) {
+          .work-container {
+            flex-direction: row;
+          }
+          .work-aside {
+            max-width: 400px;
+          }
         }
       `}</style>
     </>

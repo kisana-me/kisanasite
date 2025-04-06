@@ -3,62 +3,62 @@ import Image from 'next/image'
 export default function Card({image, icon, title, summary}) {
   return (
     <>
-      <div className="card">
-        <div className="card-image-wrapper">
+      <div className="mini-card">
+        <div className="mini-card-image-wrapper">
           <Image src={image ? image : '/images/no-image.png'} alt={title} fill style={{borderRadius: '6px'}} />
         </div>
-        <div className="card-plate">
+        <div className="mini-card-plate">
           {icon &&
-          <div className="card-icon">
+          <div className="mini-card-icon">
             <Image src={icon} alt={title} fill style={{borderRadius: '4px'}} />
           </div>
           }
-          <div className="card-text">
-            <div className="card-title">{title}</div>
-            <div className="card-summary">{summary ? summary : '---'}</div>
+          <div className="mini-card-text">
+            <div className="mini-card-title">{title}</div>
+            <div className="mini-card-summary">{summary ? summary : '---'}</div>
           </div>
         </div>
       </div>
       <style jsx>{`
-        .card {
+        .mini-card {
           width: 100%;
           max-width: 400px;
           padding: 10px;
           border-radius: 8px;
           border: 1px solid var(--inconspicuous-color);
           box-sizing: border-box;
-          display: inline-block;
+          display: flex;
           color: var(--theme-mode-accent-rgb-color);
           text-decoration: none;
         }
-        .card-image-wrapper {
+        .mini-card-image-wrapper {
           display: flex;
-          width: 100%;
+          width: 160px;
           aspect-ratio: 16 / 9;
           border-radius: 6px;
           background: var(--inconspicuous-color);
         }
-        .card-image {}
-        .card-plate {
+        .mini-card-image {}
+        .mini-card-plate {
           margin: 6px 0 0;
           display: flex;
         }
-        .card-icon {
+        .mini-card-icon {
           width: 50px;
           height: 50px;
           margin: 0 4px 0 0;
           display: flex;
         }
-        .card-text {
+        .mini-card-text {
           margin: 0 0 0 4px;
           overflow: hidden;
         }
-        .card-title, .card-summary {
+        .mini-card-title, .mini-card-summary {
           text-overflow: ellipsis;
           overflow: hidden;
           white-space: nowrap;
         }
-        .card-summary {
+        .mini-card-summary {
           color: var(--inconspicuous-color)
         }
       `}</style>

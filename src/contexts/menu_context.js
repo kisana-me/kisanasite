@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { createContext, useContext, useState, useEffect, useRef } from 'react'
-import { useThemeContext } from '@/contexts/ThemeContext'
+import { useThemeContext } from '@/contexts/theme_context'
 
 const MenuContext = createContext()
 

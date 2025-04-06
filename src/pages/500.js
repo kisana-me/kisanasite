@@ -1,4 +1,4 @@
-import { usePageContext } from "@/contexts/PageContext"
+import { usePageContext } from "@/contexts/page_context"
 import { useEffect } from 'react'
 
 export default function Custom500() {

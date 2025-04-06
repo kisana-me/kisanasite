@@ -1,5 +1,5 @@
 import { useState, useEffect, Fragment } from "react"
-import { usePageContext } from "@/contexts/PageContext"
+import { usePageContext } from "@/contexts/page_context"
 import matter from 'gray-matter'
 import hljs from "highlight.js"
 import markdownToHtml from 'zenn-markdown-html';

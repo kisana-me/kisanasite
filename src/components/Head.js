@@ -1,7 +1,7 @@
 import Head from "next/head"
 import hslToHex from "@/lib/theme"
-import { usePageContext } from "@/contexts/PageContext"
-import { useThemeContext } from "@/contexts/ThemeContext"
+import { usePageContext } from "@/contexts/page_context"
+import { useThemeContext } from "@/contexts/theme_context"
 import { useState, useEffect } from "react"
 
 export default function DefaultHead({ children }) {

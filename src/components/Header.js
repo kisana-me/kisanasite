@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { useMenu } from '@/contexts/MenuContext'
+import { useMenu } from '@/contexts/menu_context'
 
 export default function Header() {
   const { setIsMenu } = useMenu()

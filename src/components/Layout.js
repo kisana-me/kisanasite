@@ -1,6 +1,6 @@
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
-import { usePageContext } from '@/contexts/PageContext'
+import Header from '@/components/header'
+import Footer from '@/components/footer'
+import { usePageContext } from '@/contexts/page_context'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 

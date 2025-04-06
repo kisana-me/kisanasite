@@ -1,15 +1,15 @@
 import '@/styles/globals.css'
 import '@/styles/atom-one-dark-reasonable.min.css'
-import Layout from '@/components/Layout.js'
+import Layout from '@/components/layout'
 import * as gtag from "@/lib/gtag"
-import { ThemeContextProvider } from '@/contexts/ThemeContext'
-import { ScrollbarContextProvider } from '@/contexts/ScrollbarContext'
-import { MenuContextProvider } from '@/contexts/MenuContext'
-import { PageContextProvider } from '@/contexts/PageContext'
+import { ThemeContextProvider } from '@/contexts/theme_context'
+import { ScrollbarContextProvider } from '@/contexts/scrollbar_context'
+import { MenuContextProvider } from '@/contexts/menu_context'
+import { PageContextProvider } from '@/contexts/page_context'
 import Script from "next/script"
 import { useRouter } from "next/router"
 import React, { useEffect } from 'react'
-import Head from "@/components/Head"
+import Head from "@/components/head"
 
 export default function App({ Component, pageProps }) {
   const router = useRouter()

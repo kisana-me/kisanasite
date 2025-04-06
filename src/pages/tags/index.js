@@ -1,6 +1,6 @@
 import { getTags, getAssociatedPosts } from '@/lib/posts'
 import React , { useEffect, useState } from 'react'
-import { usePageContext } from "@/contexts/PageContext"
+import { usePageContext } from "@/contexts/page_context"
 import Link from 'next/link'
 
 export async function getStaticProps() {
@@ -26,7 +26,7 @@ export async function getStaticProps() {
   }
 }
 
-export default function Tags({result}) {
+export default function index({result}) {
   const { setTitle } = usePageContext()
   useEffect(()=>{
     setTitle('タグ一覧')
