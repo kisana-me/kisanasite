@@ -2,7 +2,7 @@ import Link from "next/link"
 import { useEffect } from "react"
 import { usePageContext } from "@/contexts/page_context"
 import { getSortedMdsData } from '@/lib/mds_reader'
-import Card from "@/components/card"
+import Card from "../../components/card"
 
 export function getStaticProps() {
   const sortedMdsData = getSortedMdsData('works')

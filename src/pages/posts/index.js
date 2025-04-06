@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
-import Card from "@/components/card"
+import Card from "../../components/card"
 import { getSortedPostsData } from '@/lib/posts'
 import { usePageContext } from "@/contexts/page_context"
 
