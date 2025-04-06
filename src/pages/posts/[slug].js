@@ -57,7 +57,7 @@ export default function post({ postData, sortedDate }) {
       <style jsx>{`
         .post-container {
           display: flex;
-          justify-content: space-around;
+          flex-direction: column;
         }
         .post-main {
           width: 100%;
