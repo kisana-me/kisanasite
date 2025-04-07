@@ -22,7 +22,6 @@ export default function Card({image, icon, title, summary}) {
       <style jsx>{`
         .card {
           width: 100%;
-          max-width: 400px;
           padding: 10px;
           border-radius: 8px;
           border: 1px solid var(--inconspicuous-color);
@@ -32,11 +31,12 @@ export default function Card({image, icon, title, summary}) {
           text-decoration: none;
         }
         .card-image-wrapper {
-          display: flex;
           width: 100%;
           aspect-ratio: 16 / 9;
           border-radius: 6px;
           background: var(--inconspicuous-color);
+          display: flex;
+          flex-shrink: 0;
         }
         .card-image {}
         .card-plate {

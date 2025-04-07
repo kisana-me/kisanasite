@@ -47,7 +47,7 @@ export default function work({ mdData, sortedMdsData }) {
         <div className="work-aside">
           {sortedMdsData.map((work) => (
             <Link key={ work.slug } href={ "/works/" + work.slug } legacyBehavior>
-              <a className="">
+              <a className="work-aside-works">
                 <MiniCard title={work.title} image={work.image} summary={work.summary} />
               </a>
             </Link>
@@ -58,6 +58,7 @@ export default function work({ mdData, sortedMdsData }) {
         .work-container {
           display: flex;
           flex-direction: column;
+          justify-content: space-evenly;
         }
         .work-main {
           width: 100%;
@@ -76,7 +77,15 @@ export default function work({ mdData, sortedMdsData }) {
         }
         .work-aside {
           width: 100%;
-          margin: 10px;
+          padding: 10px;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+        .work-aside-works {
+          width: 100%;
+          max-width: 400px;
+          text-decoration: none;
         }
         @media screen and (min-width: 1000px) {
           .work-container {

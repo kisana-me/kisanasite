@@ -42,8 +42,15 @@ export default function index({ sortedDate, sortedUpdate }) {
         }
         .posts-card {
           width: 100%;
-          max-width: 400px;
-          flex-grow: 1;
+          flex: 1 1 285px;
+        }
+        @media screen and (min-width: 600px) {
+          .posts {
+            justify-content: space-evenly;
+          }
+          .posts-card {
+            flex: 0 0 400px;
+          }
         }
       `}</style>
     </>

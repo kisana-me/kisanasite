@@ -32,15 +32,18 @@ export default function Card({image, icon, title, summary}) {
           text-decoration: none;
         }
         .mini-card-image-wrapper {
-          display: flex;
           width: 160px;
           aspect-ratio: 16 / 9;
           border-radius: 6px;
           background: var(--inconspicuous-color);
+          display: flex;
+          flex-shrink: 0;
         }
         .mini-card-image {}
         .mini-card-plate {
-          margin: 6px 0 0;
+          height: 90px;
+          margin: 0 0 0 6px;
+          overflow: hidden;
           display: flex;
         }
         .mini-card-icon {
@@ -53,10 +56,13 @@ export default function Card({image, icon, title, summary}) {
           margin: 0 0 0 4px;
           overflow: hidden;
         }
-        .mini-card-title, .mini-card-summary {
+        .mini-card-title {
           text-overflow: ellipsis;
           overflow: hidden;
           white-space: nowrap;
+        }
+        .mini-card-summary {
+          overflow: hidden;
         }
         .mini-card-summary {
           color: var(--inconspicuous-color)

@@ -47,7 +47,7 @@ export default function post({ postData, sortedDate }) {
         <div className="post-aside">
           {sortedDate.map((post) => (
             <Link key={ post.slug } href={ "/posts/" + post.slug } legacyBehavior>
-              <a className="">
+              <a className="post-aside-posts">
                 <MiniCard title={post.title} image={post.image} summary={post.description} />
               </a>
             </Link>
@@ -58,6 +58,7 @@ export default function post({ postData, sortedDate }) {
         .post-container {
           display: flex;
           flex-direction: column;
+          justify-content: space-evenly;
         }
         .post-main {
           width: 100%;
@@ -71,7 +72,15 @@ export default function post({ postData, sortedDate }) {
         }
         .post-aside {
           width: 100%;
-          margin: 10px;
+          padding: 10px;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+        .post-aside-posts {
+          width: 100%;
+          max-width: 400px;
+          text-decoration: none;
         }
         @media screen and (min-width: 1000px) {
           .post-container {
