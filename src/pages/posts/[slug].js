@@ -73,6 +73,7 @@ export default function post({ postData, sortedDate }) {
         .post-aside {
           width: 100%;
           padding: 10px;
+          box-sizing: border-box;
           display: flex;
           flex-direction: column;
           gap: 10px;
