@@ -78,6 +78,7 @@ export default function work({ mdData, sortedMdsData }) {
         .work-aside {
           width: 100%;
           padding: 10px;
+          box-sizing: border-box;
           display: flex;
           flex-direction: column;
           gap: 10px;
