@@ -1,6 +1,6 @@
 services:
   app:
-    image: node:lts
+    image: node:24.2-slim
     tty: true
     stdin_open: true
     environment:
@@ -9,6 +9,11 @@ services:
     restart: always
     volumes:
       - ./src:/app
+      - node_modules:/app/node_modules
+      - next:/app/.next
     ports:
       - '3000:3000'
     command: sh -c "npm install && npm update && npm run build && npm run start"
+volumes:
+  node_modules:
+  next:

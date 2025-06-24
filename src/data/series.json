@@ -18,9 +18,14 @@
     {"date": "2018", "heading": "プログラミング 始める"}
   ],
   "hobby": [
-    {"date": "2025.6", "heading": "予定: LE SSERAFIM 1回"},
-    {"date": "2025.4", "heading": "予定: IVE 1回"},
-    {"date": "2025.4", "heading": "予定: BABYMONSTER 1回"},
+    {"date": "2025.11", "heading": "LE SSERAFIM 1回"},
+    {"date": "2025.10", "heading": "予定: idle 1回"},
+    {"date": "2025.10", "heading": "予定: aespa 1回"},
+    {"date": "2025.9", "heading": "予定: TWICE 2回"},
+    {"date": "2025.8", "heading": "予定: ILLIT 1回"},
+    {"date": "2025.6", "heading": "LE SSERAFIM 1回"},
+    {"date": "2025.4", "heading": "IVE 1回"},
+    {"date": "2025.4", "heading": "BABYMONSTER 1回"},
     {"date": "2025.3", "heading": "Aimer 1回"},
     {"date": "2025.1", "heading": "MISAMO 東京ドーム 1回"},
     {"date": "2025.1", "heading": "NMIXX 1回"},
@@ -36,8 +41,8 @@
     {"date": "2023.8?", "heading": "aespa 東京ドーム 1回"},
     {"date": "2023.8?", "heading": "LE SSERAFIM 代々木 1回"},
     {"date": "2023.5", "heading": "TWICE READY TO BE 1回"},
-    {"date": "2023.?", "heading": "BLACKPINK 東京ドーム 1回"},
-    {"date": "2023.?", "heading": "aespa 埼玉スーアリ 1回"},
+    {"date": "2023.4", "heading": "aespa 埼玉スーアリ 1回"},
+    {"date": "2023.4", "heading": "BLACKPINK 東京ドーム 1回"},
     {"date": "2023.2", "heading": "IVE Prom Queen 2回"},
     {"date": "2022.4", "heading": "TWICE Ⅲ 3回"}
   ]
