@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { useState, useContext } from 'react'
 import { usePageContext } from "@/contexts/page_context"
 import { useEffect } from 'react'
+import ModelViewer from '@/components/model_viewer'
 
 export default function index() {
   const { setTitle, setMainTagTopPadding } = usePageContext()
@@ -15,7 +16,8 @@ export default function index() {
       <div>
         <div className="main-container">
           <div className="top-front">
-            <Image src="/images/preparing.png" alt="object" style={{ objectFit: 'cover', objectPosition: 'center' }} priority fill />
+            <ModelViewer style={{ objectFit: 'cover', objectPosition: 'center' }} />
+            {/* <Image src="/images/preparing.png" alt="object" style={{ objectFit: 'cover', objectPosition: 'center' }} priority fill /> */}
             <div className="name-plate">
               <span>Studying Design.</span>
               <h1>KISANA:ME</h1>
