@@ -1,20 +1,22 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react'
-// three.jsと関連ライブラリをインポート
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { CSS3DRenderer, CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js'
 
-// --- 表示する展示物のデータ ---
 const exhibitsData = [
-    { type: 'HTML', content: { image: 'https://kisana.me/images/anyur/anyur-logo.png', title: 'ANYUR', description: 'アカウントを管理', link: 'https://anyur.com' } },
-    { type: 'HTML', content: { image: 'https://kisana.me/images/amiverse/amiverse-logo.png', title: 'Amiverse', description: '楽しいソーシャルメディア', link: 'https://amiverse.net' } },
-    { type: 'HTML', content: { image: 'https://kisana.me/images/ivecolor/ivecolor-logo.png', title: 'IVECOLOR', description: 'ブログサイト', link: 'https://ivecolor.com' } },
-    { type: 'HTML', content: { image: 'https://kisana.me/images/bealive/bealive-logo.png', title: 'BeAlive.', description: '生存確認' } },
-    { type: 'HTML', content: { image: 'https://kisana.me/images/x/x-logo.png', title: '得句巣', description: '漢字のみ' } },
-    { type: 'HTML', content: { image: 'https://kisana.me/images/kisana/kisana-logo.png', title: 'KISANA:ME', description: 'このサイト' } },
-    { type: 'Sphere', content: { color: 0xff6b6b } },
-    { type: 'Cube', content: { color: 0x4a90e2 } },
-    { type: 'Torus', content: { color: 0x48dbfb } },
+  { type: 'HTML', content: { image: '/images/anyur/anyur-logo.png', title: 'ANYUR', description: 'アカウントを管理', link: 'https://anyur.com' } },
+  { type: 'HTML', content: { image: '/images/amiverse/amiverse-logo.png', title: 'Amiverse', description: '楽しいソーシャルメディア', link: 'https://amiverse.net' } },
+  { type: 'HTML', content: { image: '/images/ivecolor/ivecolor-logo.png', title: 'IVECOLOR', description: 'ブログサイト', link: 'https://ivecolor.com' } },
+  { type: 'HTML', content: { image: '/images/bealive/bealive-logo.png', title: 'BeAlive.', description: '生存確認', link: 'https://bealive.amiverse.net' } },
+  { type: 'HTML', content: { image: '/images/x/x-logo.png', title: '得句巣', description: '漢字のみ', link: 'https://x.amiverse.net' } },
+  { type: 'HTML', content: { image: '/images/kisana/kisana-logo.png', title: 'KISANA:ME', description: 'このサイト', link: 'https://kisana.me' } },
+  { type: 'HTML', content: { image: '/images/kisana/kisana-logo.png', title: 'YouTube / きさな', description: 'YouTubeのチャンネル', link: 'https://www.youtube.com/@kisana_me' } },
+  { type: 'HTML', content: { image: '/images/kisana/kisana-logo.png', title: 'X / kisana.', description: 'X(旧Twitter)のアカウント', link: 'https://x.com/kisana_me' } },
+  { type: 'HTML', content: { image: '/images/kisana/kisana-logo.png', title: 'GitHub / きさな', description: 'GitHubのアカウント', link: 'https://github.com/kisana-me' } },
+  { type: 'HTML', content: { image: '/images/kisana/kisana-logo.png', title: 'Zenn / きさな', description: 'Zennのアカウント', link: 'https://zenn.dev/kisana' } },
+  { type: 'Sphere', content: { color: 0xff6b6b } },
+  { type: 'Cube', content: { color: 0x4a90e2 } },
+  { type: 'Torus', content: { color: 0x48dbfb } },
 ]
 
 function ModelViewer() {
@@ -260,10 +262,30 @@ function ModelViewer() {
     }
     animate()
 
-    const handleResize = () => { /* ... */ }
+    const handleResize = () => {
+      if (threeStuffRef.current.camera && threeStuffRef.current.renderer && threeStuffRef.current.cssRenderer) {
+        const { camera, renderer, cssRenderer } = threeStuffRef.current
+        const currentMount = mountRef.current
+        if (currentMount) {
+          camera.aspect = currentMount.clientWidth / currentMount.clientHeight
+          camera.updateProjectionMatrix()
+          renderer.setSize(currentMount.clientWidth, currentMount.clientHeight)
+          cssRenderer.setSize(currentMount.clientWidth, currentMount.clientHeight)
+        }
+      }
+    }
     window.addEventListener('resize', handleResize)
 
-    return () => { /* ...クリーンアップ処理... */ }
+    return () => {
+      window.removeEventListener('resize', handleResize)
+      cancelAnimationFrame(animationFrameId)
+      if (currentMount && renderer.domElement) {
+        currentMount.removeChild(renderer.domElement)
+      }
+      if (currentMount && cssRenderer.domElement) {
+        currentMount.removeChild(cssRenderer.domElement)
+      }
+    }
   }, [changeTarget])
 
   const handlePrev = () => changeTarget((currentTargetIndex - 1 + exhibitsData.length) % exhibitsData.length)
@@ -271,7 +293,7 @@ function ModelViewer() {
 
   return (
     <>
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         .viewer-container { position: relative; width: 100vw; height: 100vh; background-color: transparent; overflow: hidden; }
         .viewer-container > div, .viewer-container > canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
         .css3d-container { pointer-events: none; }
@@ -288,7 +310,7 @@ function ModelViewer() {
         .nav-button { width: 60px; height: 60px; background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 50%; color: white; font-size: 24px; cursor: pointer; transition: background-color 0.3s, transform 0.1s; user-select: none; border: none; }
         .nav-button:hover { background-color: rgba(255, 255, 255, 0.2); }
         .nav-button:active { transform: scale(0.95); }
-      `}</style>
+      ` }} />
       <div ref={mountRef} className="viewer-container"></div>
       <div style={{ display: 'none' }}>{htmlContent}</div>
       <div className="controls-container">
