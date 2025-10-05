@@ -73,7 +73,7 @@ export const ThemeContextProvider = ({ children }) => {
   `
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme, hue, setHue, resetHue }}>
+    <ThemeContext.Provider value={{ theme, setTheme, hue, setHue, resetHue, darkMode }}>
       <style>{GlobalStyles}</style>
       {children}
     </ThemeContext.Provider>

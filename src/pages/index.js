@@ -15,7 +15,7 @@ export default function index() {
     <>
       <div>
         <div className="main-container">
-          <div className="top-front">
+          <div className="top-1">
             <ModelViewer style={{ objectFit: 'cover', objectPosition: 'center' }} />
             {/* <Image src="/images/preparing.png" alt="object" style={{ objectFit: 'cover', objectPosition: 'center' }} priority fill /> */}
             <div className="name-plate">
@@ -23,6 +23,8 @@ export default function index() {
               <h1>KISANA:ME</h1>
               <span><Link href="https://twitter.com/kisana_me" rel="noopener noreferrer" target="_blank">X: @kisana_me</Link></span>
             </div>
+          </div>
+          <div className="top-2">
           </div>
         </div>
         <div className="sub-container">
@@ -111,7 +113,33 @@ export default function index() {
       <style jsx>{`
         .main-container {
           height: 100svh;
-          position: relative;
+          display: flex;
+        }
+        @media (orientation: landscape) {
+          .main-container {
+            flex-direction: row;
+          }
+          .top-1 {
+            width: 70%;
+            height: 100%;
+          }
+          .top-2 {
+            width: 30%;
+            height: 100%;
+          }
+        }
+        @media (orientation: portrait) {
+          .main-container {
+            flex-direction: column;
+          }
+          .top-1 {
+            width: 100%;
+            height: 70%;
+          }
+          .top-2 {
+            width: 100%;
+            height: 30%;
+          }
         }
         .top-back {
           width: 100%;
@@ -133,11 +161,9 @@ export default function index() {
           radial-gradient(at 25% 27%, hsla(305,100%,56%,1) 0px, transparent 50%),
           radial-gradient(at 20% 51%, hsla(0,76%,46%,1) 0px, transparent 50%);
         }
-        .top-front {
-          width: 100%;
-          height: 100%;
+        .top-1 {
           display: flex;
-          position: absolute;
+          position: relative;
         }
         .name-plate {
           align-self: flex-start;

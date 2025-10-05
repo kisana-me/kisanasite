@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react'
+import { useThemeContext } from '@/contexts/theme_context'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { CSS3DRenderer, CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js'
@@ -21,6 +22,7 @@ const exhibitsData = [
 
 function ModelViewer() {
   const mountRef = useRef(null)
+  const { darkMode } = useThemeContext()
   const htmlItemsRef = useRef([])
   const threeStuffRef = useRef({})
   const [currentTargetIndex, setCurrentTargetIndex] = useState(0)
@@ -100,6 +102,13 @@ function ModelViewer() {
   }
 
   useEffect(() => {
+    const { scene } = threeStuffRef.current
+    if (scene) {
+      scene.background = new THREE.Color(darkMode ? 0x000000 : 0xffffff)
+    }
+  }, [darkMode])
+
+  useEffect(() => {
     const currentMount = mountRef.current
 
     // アニメーションの目標値を保持するオブジェクト
@@ -112,6 +121,7 @@ function ModelViewer() {
     }
 
     const scene = new THREE.Scene()
+    scene.background = new THREE.Color(darkMode ? 0x000000 : 0xffffff)
     const camera = new THREE.PerspectiveCamera(75, currentMount.clientWidth / currentMount.clientHeight, 0.1, 1000)
 
     const renderer = new THREE.WebGLRenderer({ antialias: true })
@@ -294,10 +304,10 @@ function ModelViewer() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: `
-        .viewer-container { position: relative; width: 100vw; height: 100vh; background-color: transparent; overflow: hidden; }
+        .viewer-container { position: relative; width: 100%; height: 100%; background-color: transparent; overflow: hidden; }
         .viewer-container > div, .viewer-container > canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
         .css3d-container { pointer-events: none; }
-        .html-item { width: 300px; height: 400px; background-color: #111; border-radius: 10px; pointer-events: auto; color: white; padding: 20px; box-sizing: border-box; box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); display: flex; flex-direction: column; align-items: center; position: relative; overflow: hidden; transition: opacity 0.3s; }
+        .html-item { width: 300px; height: 400px; background-color: #111; border-radius: 10px; pointer-events: auto; color: white; padding: 20px; display: flex; flex-direction: column; align-items: center; position: relative; overflow: hidden; transition: opacity 0.3s; }
         .html-item.hidden { opacity: 0 !important; pointer-events: none; }
         .html-item:hover { cursor: pointer; border: 1px solid rgba(255, 255, 255, 0.5); }
         .html-item img { width: 100%; height: 280px; object-fit: cover; border-radius: 5px; }
