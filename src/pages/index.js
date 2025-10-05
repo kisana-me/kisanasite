@@ -3,9 +3,11 @@ import Image from 'next/image'
 import { useState, useContext, useRef } from 'react'
 import { usePageContext } from "@/contexts/page_context"
 import { useEffect } from 'react'
-import ModelViewer, { exhibitsData } from '@/components/model_viewer'
+import ModelViewer from '@/components/model_viewer'
+import fs from 'fs'
+import path from 'path'
 
-export default function index() {
+export default function index({ exhibitsData }) {
   const { setTitle, setMainTagTopPadding } = usePageContext()
   const modelViewerRef = useRef(null)
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -25,7 +27,7 @@ export default function index() {
       <div>
         <div className="main-container">
           <div className="top-1">
-            <ModelViewer ref={modelViewerRef} onTargetChange={setCurrentIndex} style={{ objectFit: 'cover', objectPosition: 'center' }} />
+            <ModelViewer ref={modelViewerRef} onTargetChange={setCurrentIndex} exhibitsData={exhibitsData} style={{ objectFit: 'cover', objectPosition: 'center' }} />
             {/* <Image src="/images/preparing.png" alt="object" style={{ objectFit: 'cover', objectPosition: 'center' }} priority fill /> */}
             <div className="name-plate">
               <span>Studying Design.</span>
@@ -313,4 +315,16 @@ export default function index() {
       `}</style>
     </>
   )
+}
+
+export async function getStaticProps() {
+  const filePath = path.join(process.cwd(), 'data', 'exhibits.json')
+  const fileContents = fs.readFileSync(filePath, 'utf8')
+  const exhibitsData = JSON.parse(fileContents)
+
+  return {
+    props: {
+      exhibitsData
+    }
+  }
 }

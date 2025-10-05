@@ -4,23 +4,7 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { CSS3DRenderer, CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js'
 
-export const exhibitsData = [
-  { type: 'HTML', content: { image: '/images/anyur/anyur-logo.png', title: 'ANYUR', description: 'アカウントを管理', link: 'https://anyur.com' } },
-  { type: 'HTML', content: { image: '/images/amiverse/amiverse-logo.png', title: 'Amiverse', description: '楽しいソーシャルメディア', link: 'https://amiverse.net' } },
-  { type: 'HTML', content: { image: '/images/ivecolor/ivecolor-logo.png', title: 'IVECOLOR', description: 'ブログサイト', link: 'https://ivecolor.com' } },
-  { type: 'HTML', content: { image: '/images/bealive/bealive-logo.png', title: 'BeAlive.', description: '生存確認', link: 'https://bealive.amiverse.net' } },
-  { type: 'HTML', content: { image: '/images/x/x-logo.png', title: '得句巣', description: '漢字のみ', link: 'https://x.amiverse.net' } },
-  { type: 'HTML', content: { image: '/images/kisana/kisana-logo.png', title: 'KISANA:ME', description: 'このサイト', link: 'https://kisana.me' } },
-  { type: 'HTML', content: { image: '/images/kisana/kisana-logo.png', title: 'YouTube / きさな', description: 'YouTubeのチャンネル', link: 'https://www.youtube.com/@kisana_me' } },
-  { type: 'HTML', content: { image: '/images/kisana/kisana-logo.png', title: 'X / kisana.', description: 'X(旧Twitter)のアカウント', link: 'https://x.com/kisana_me' } },
-  { type: 'HTML', content: { image: '/images/kisana/kisana-logo.png', title: 'GitHub / きさな', description: 'GitHubのアカウント', link: 'https://github.com/kisana-me' } },
-  { type: 'HTML', content: { image: '/images/kisana/kisana-logo.png', title: 'Zenn / きさな', description: 'Zennのアカウント', link: 'https://zenn.dev/kisana' } },
-  { type: 'Sphere', content: { color: 0xff6b6b } },
-  { type: 'Cube', content: { color: 0x4a90e2 } },
-  { type: 'Torus', content: { color: 0x48dbfb } },
-]
-
-const ModelViewer = forwardRef((props, ref) => {
+const ModelViewer = forwardRef(({ exhibitsData, ...props }, ref) => {
   const mountRef = useRef(null)
   const { darkMode } = useThemeContext()
   const htmlItemsRef = useRef([])
