@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react'
+import React, { useEffect, useRef, useState, useCallback, forwardRef, useImperativeHandle } from 'react'
 import { useThemeContext } from '@/contexts/theme_context'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { CSS3DRenderer, CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js'
 
-const exhibitsData = [
+export const exhibitsData = [
   { type: 'HTML', content: { image: '/images/anyur/anyur-logo.png', title: 'ANYUR', description: 'アカウントを管理', link: 'https://anyur.com' } },
   { type: 'HTML', content: { image: '/images/amiverse/amiverse-logo.png', title: 'Amiverse', description: '楽しいソーシャルメディア', link: 'https://amiverse.net' } },
   { type: 'HTML', content: { image: '/images/ivecolor/ivecolor-logo.png', title: 'IVECOLOR', description: 'ブログサイト', link: 'https://ivecolor.com' } },
@@ -20,7 +20,7 @@ const exhibitsData = [
   { type: 'Torus', content: { color: 0x48dbfb } },
 ]
 
-function ModelViewer() {
+const ModelViewer = forwardRef((props, ref) => {
   const mountRef = useRef(null)
   const { darkMode } = useThemeContext()
   const htmlItemsRef = useRef([])
@@ -59,6 +59,9 @@ function ModelViewer() {
     if (!animationTargets || !targets) return
 
     setCurrentTargetIndex(index)
+    if (props.onTargetChange) {
+      props.onTargetChange(index)
+    }
     const targetObject = targets[index].object
 
     // アニメーションの目標値を設定
@@ -301,10 +304,30 @@ function ModelViewer() {
   const handlePrev = () => changeTarget((currentTargetIndex - 1 + exhibitsData.length) % exhibitsData.length)
   const handleNext = () => changeTarget((currentTargetIndex + 1) % exhibitsData.length)
 
+  useImperativeHandle(ref, () => ({
+    prev: handlePrev,
+    next: handleNext,
+    resetRotation: handleResetRotation,
+  }));
+
+  const backgroundColor = darkMode ? '#000' : '#fff';
+
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: `
         .viewer-container { position: relative; width: 100%; height: 100%; background-color: transparent; overflow: hidden; }
+        .viewer-container::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          background:
+            linear-gradient(to bottom, ${backgroundColor} 0%, transparent 15%, transparent 85%, ${backgroundColor} 100%),
+            linear-gradient(to right, ${backgroundColor} 0%, transparent 15%, transparent 85%, ${backgroundColor} 100%);
+        }
         .viewer-container > div, .viewer-container > canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
         .css3d-container { pointer-events: none; }
         .html-item { width: 300px; height: 400px; background-color: #111; border-radius: 10px; pointer-events: auto; color: white; padding: 20px; display: flex; flex-direction: column; align-items: center; position: relative; overflow: hidden; transition: opacity 0.3s; }
@@ -316,20 +339,11 @@ function ModelViewer() {
         .lighting-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, transparent 0%, rgba(0,0,0,0.8) 120%); transition: opacity 1.2s ease-in-out; }
         .lighting-overlay.lit { opacity: 0; }
         .lighting-overlay.dimmed { opacity: 1; }
-        .controls-container { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 20px; z-index: 10; }
-        .nav-button { width: 60px; height: 60px; background-color: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 50%; color: white; font-size: 24px; cursor: pointer; transition: background-color 0.3s, transform 0.1s; user-select: none; border: none; }
-        .nav-button:hover { background-color: rgba(255, 255, 255, 0.2); }
-        .nav-button:active { transform: scale(0.95); }
       ` }} />
       <div ref={mountRef} className="viewer-container"></div>
       <div style={{ display: 'none' }}>{htmlContent}</div>
-      <div className="controls-container">
-        <button onClick={handlePrev} className="nav-button">&lt;</button>
-        <button onClick={handleResetRotation} className="nav-button">↻</button>
-        <button onClick={handleNext} className="nav-button">&gt;</button>
-      </div>
     </>
   )
-}
+})
 
 export default ModelViewer

@@ -1,22 +1,31 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState, useContext } from 'react'
+import { useState, useContext, useRef } from 'react'
 import { usePageContext } from "@/contexts/page_context"
 import { useEffect } from 'react'
-import ModelViewer from '@/components/model_viewer'
+import ModelViewer, { exhibitsData } from '@/components/model_viewer'
 
 export default function index() {
   const { setTitle, setMainTagTopPadding } = usePageContext()
+  const modelViewerRef = useRef(null)
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const currentExhibit = exhibitsData[currentIndex]
+
   useEffect(()=>{
     setTitle('')
     setMainTagTopPadding(false)
   }, [])
+
+  const handlePrev = () => modelViewerRef.current?.prev()
+  const handleNext = () => modelViewerRef.current?.next()
+  const handleResetRotation = () => modelViewerRef.current?.resetRotation()
+
   return (
     <>
       <div>
         <div className="main-container">
           <div className="top-1">
-            <ModelViewer style={{ objectFit: 'cover', objectPosition: 'center' }} />
+            <ModelViewer ref={modelViewerRef} onTargetChange={setCurrentIndex} style={{ objectFit: 'cover', objectPosition: 'center' }} />
             {/* <Image src="/images/preparing.png" alt="object" style={{ objectFit: 'cover', objectPosition: 'center' }} priority fill /> */}
             <div className="name-plate">
               <span>Studying Design.</span>
@@ -25,6 +34,30 @@ export default function index() {
             </div>
           </div>
           <div className="top-2">
+            <div className="exhibit-info">
+              {currentExhibit && currentExhibit.type === 'HTML' && (
+                <>
+                  <h2>{currentExhibit.content.title}</h2>
+                  <p>{currentExhibit.content.description}</p>
+                  {currentExhibit.content.link && (
+                    <a href={currentExhibit.content.link} target="_blank" rel="noopener noreferrer" className="info-link">
+                      詳しく見る
+                    </a>
+                  )}
+                </>
+              )}
+              {currentExhibit && currentExhibit.type !== 'HTML' && (
+                <>
+                  <h2>{currentExhibit.type}</h2>
+                  <p>A simple geometric shape.</p>
+                </>
+              )}
+            </div>
+            <div className="controls-container">
+              <button onClick={handlePrev} className="nav-button">{"<"}</button>
+              <button onClick={handleResetRotation} className="nav-button">{"↻"}</button>
+              <button onClick={handleNext} className="nav-button">{">"}</button>
+            </div>
           </div>
         </div>
         <div className="sub-container">
@@ -126,6 +159,11 @@ export default function index() {
           .top-2 {
             width: 30%;
             height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
           }
         }
         @media (orientation: portrait) {
@@ -139,7 +177,39 @@ export default function index() {
           .top-2 {
             width: 100%;
             height: 30%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
           }
+        }
+        .exhibit-info {
+          color: var(--text-color);
+          text-align: center;
+          max-width: 80%;
+        }
+        .exhibit-info h2 {
+          margin: 0 0 10px 0;
+          font-size: 24px;
+        }
+        .exhibit-info p {
+          margin: 0 0 15px 0;
+          font-size: 16px;
+          color: var(--inconspicuous-color);
+        }
+        .info-link {
+          display: inline-block;
+          padding: 8px 20px;
+          border: 1px solid var(--link-color);
+          border-radius: 5px;
+          color: var(--link-color);
+          text-decoration: none;
+          transition: background-color 0.3s, color 0.3s;
+        }
+        .info-link:hover {
+          background-color: var(--link-color);
+          color: var(--background-color);
         }
         .top-back {
           width: 100%;
@@ -236,6 +306,10 @@ export default function index() {
         .created-card-content {
           color: var(--inconspicuous-color);
         }
+        .controls-container { display: flex; gap: 20px; z-index: 10; }
+        .nav-button { width: 60px; height: 60px; background-color: rgba(var(--theme-mode-opp-rgb-value), 0.1); border: 1px solid rgba(var(--theme-mode-opp-rgb-value), 0.2); border-radius: 50%; color: var(--text-color); font-size: 24px; cursor: pointer; transition: background-color 0.3s, transform 0.1s; user-select: none; }
+        .nav-button:hover { background-color: rgba(var(--theme-mode-opp-rgb-value), 0.2); }
+        .nav-button:active { transform: scale(0.95); }
       `}</style>
     </>
   )
