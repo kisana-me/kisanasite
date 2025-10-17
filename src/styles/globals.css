@@ -10,7 +10,7 @@ body, h1, h2, h3, h4, h5, h6, p, a, img {
 }
 img {
   position: static !important;
-  height: auto !important;
+  /* height: auto !important; */
   vertical-align: middle !important;
 }
 table {

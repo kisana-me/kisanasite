@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState, useRef } from 'react'
 
 export default function ProfileSection() {
   return (
@@ -33,11 +32,14 @@ export default function ProfileSection() {
                 <li><Link href="https://amiverse.net/" legacyBehavior><a rel="noopener noreferrer" target="_blank">Amiverse: SNS</a></Link></li>
               </ul>
               <div className="profile-2-icon">
-                <Image src="/images/kisana/kisana-logo.png" alt="kisana icon" style={{ objectFit: 'cover', objectPosition: 'center', borderRadius: '14px' }} fill />
+                <Image src="/images/kisana/kisana-logo.png" alt="kisana icon"
+                  style={{ objectFit: 'cover', objectPosition: 'center', borderRadius: '14px',
+                    boxShadow: '0px 0px 7px 3px #ffffff88'
+                  }}fill />
               </div>
               <ul>
                 <li><Link href="https://x.com/@kisana_me/" legacyBehavior><a rel="noopener noreferrer" target="_blank">X: @kisana_me</a></Link></li>
-                <li><Link href="https://github.com/@kisana-me/" legacyBehavior><a rel="noopener noreferrer" target="_blank">GitHub: @kisana-me</a></Link></li>
+                <li><Link href="https://github.com/kisana-me/" legacyBehavior><a rel="noopener noreferrer" target="_blank">GitHub: @kisana-me</a></Link></li>
                 <li><Link href="https://youtube.com/@kisana_me/" legacyBehavior><a rel="noopener noreferrer" target="_blank">YouTube: @kisana_me</a></Link></li>
               </ul>
             </div>
