@@ -6,6 +6,7 @@ import { useEffect } from 'react'
 import fs from 'fs'
 import path from 'path'
 import HeroSection from '@/components/home/hero_section'
+import ProfileSection from '@/components/home/profile_section'
 
 export default function index({ exhibitsData }) {
   const { setTitle, setMainTagTopPadding } = usePageContext()
@@ -18,6 +19,7 @@ export default function index({ exhibitsData }) {
   return (
     <>
       <HeroSection exhibitsData={exhibitsData} />
+      <ProfileSection />
       <div className="sub-container">
         <div className='heading-wrap'>
           <h2>Created</h2>
