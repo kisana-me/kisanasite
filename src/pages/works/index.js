@@ -36,7 +36,6 @@ export default function index({ sortedMdsData }) {
         }
         .works-card {
           width: 100%;
-          flex: 1 1 285px;
         }
         @media screen and (min-width: 600px) {
           .works {

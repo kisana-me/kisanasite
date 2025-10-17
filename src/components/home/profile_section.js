@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState, useRef } from 'react'
 
 export default function ProfileSection() {
   return (
@@ -33,11 +32,14 @@ export default function ProfileSection() {
                 <li><Link href="https://amiverse.net/" legacyBehavior><a rel="noopener noreferrer" target="_blank">Amiverse: SNS</a></Link></li>
               </ul>
               <div className="profile-2-icon">
-                <Image src="/images/kisana/kisana-logo.png" alt="kisana icon" style={{ objectFit: 'cover', objectPosition: 'center', borderRadius: '14px' }} fill />
+                <Image src="/images/kisana/kisana-logo.png" alt="kisana icon"
+                  style={{ objectFit: 'cover', objectPosition: 'center', borderRadius: '14px',
+                    boxShadow: '0px 0px 7px 3px #ffffff88'
+                  }}fill />
               </div>
               <ul>
                 <li><Link href="https://x.com/@kisana_me/" legacyBehavior><a rel="noopener noreferrer" target="_blank">X: @kisana_me</a></Link></li>
-                <li><Link href="https://github.com/@kisana-me/" legacyBehavior><a rel="noopener noreferrer" target="_blank">GitHub: @kisana-me</a></Link></li>
+                <li><Link href="https://github.com/kisana-me/" legacyBehavior><a rel="noopener noreferrer" target="_blank">GitHub: @kisana-me</a></Link></li>
                 <li><Link href="https://youtube.com/@kisana_me/" legacyBehavior><a rel="noopener noreferrer" target="_blank">YouTube: @kisana_me</a></Link></li>
               </ul>
             </div>
@@ -51,7 +53,8 @@ export default function ProfileSection() {
         }
         .profile {
           width: 100%;
-          margin: 10px;
+          max-width: 800px;
+          margin: 20px;
         }
         .profile-header {
           margin-bottom: 10px;
@@ -63,8 +66,8 @@ export default function ProfileSection() {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          align-items: center;
-          align-items:stretch;
+          align-items: stretch;
+          gap: 10px;
         }
         .profile-content p {
           font-size: 0.8em;
@@ -72,8 +75,14 @@ export default function ProfileSection() {
         .profile-1, .profile-2 {
           width: 100%;
         }
+        .profile-1 {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
         .profile-1 h3 {
           margin-bottom: 6px;
+          font-weight: normal;
         }
         .profile-1 dl {
           margin: 8px 0 0 0;
@@ -87,6 +96,7 @@ export default function ProfileSection() {
           display: flex;
           flex-direction: column;
           align-items: center;
+          justify-content: center;
           white-space: nowrap;
         }
         .profile-2 ul {
