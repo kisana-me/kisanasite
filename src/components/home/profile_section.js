@@ -51,7 +51,8 @@ export default function ProfileSection() {
         }
         .profile {
           width: 100%;
-          margin: 10px;
+          max-width: 800px;
+          margin: 20px;
         }
         .profile-header {
           margin-bottom: 10px;
@@ -63,8 +64,8 @@ export default function ProfileSection() {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          align-items: center;
-          align-items:stretch;
+          align-items: stretch;
+          gap: 10px;
         }
         .profile-content p {
           font-size: 0.8em;
@@ -72,8 +73,14 @@ export default function ProfileSection() {
         .profile-1, .profile-2 {
           width: 100%;
         }
+        .profile-1 {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
         .profile-1 h3 {
           margin-bottom: 6px;
+          font-weight: normal;
         }
         .profile-1 dl {
           margin: 8px 0 0 0;
@@ -87,6 +94,7 @@ export default function ProfileSection() {
           display: flex;
           flex-direction: column;
           align-items: center;
+          justify-content: center;
           white-space: nowrap;
         }
         .profile-2 ul {
