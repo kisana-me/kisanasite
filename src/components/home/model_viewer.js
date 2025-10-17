@@ -19,7 +19,7 @@ const ModelViewer = forwardRef(({ exhibitsData, ...props }, ref) => {
 
   const htmlContent = exhibitsData
     .map((data, index) => {
-      if (data.type !== 'HTML') return null
+      if (data.type !== 'CARD') return null
       return (
         <div
           key={index}
@@ -62,7 +62,7 @@ const ModelViewer = forwardRef(({ exhibitsData, ...props }, ref) => {
 
     // 照明クラスの管理
     exhibitsData.forEach((d, i) => {
-      if (d.type === 'HTML') {
+      if (d.type === 'CARD') {
         const lighting = document.getElementById(`html-lighting-${i}`)
         if (lighting) lighting.className = 'lighting-overlay dimmed'
       }
@@ -145,10 +145,7 @@ const ModelViewer = forwardRef(({ exhibitsData, ...props }, ref) => {
       let obj, isHtml = false
       const xPos = (index - (exhibitsData.length - 1) / 2) * modelSpacing
 
-      if (data.type === 'Sphere') obj = new THREE.Mesh(new THREE.SphereGeometry(1.2, 32, 32), new THREE.MeshStandardMaterial({ ...data.content }))
-      else if (data.type === 'Cube') obj = new THREE.Mesh(new THREE.BoxGeometry(1.8, 1.8, 1.8), new THREE.MeshStandardMaterial({ ...data.content }))
-      else if (data.type === 'Torus') obj = new THREE.Mesh(new THREE.TorusGeometry(1.2, 0.5, 32, 100), new THREE.MeshStandardMaterial({ ...data.content }))
-      else if (data.type === 'HTML') {
+      if (data.type === 'CARD') {
         isHtml = true
         const htmlElement = htmlItemsRef.current[index]
         if (htmlElement) {
@@ -159,6 +156,11 @@ const ModelViewer = forwardRef(({ exhibitsData, ...props }, ref) => {
           scene.add(proxy)
           occludableHtmls.push({ htmlElement, proxy, object: obj })
         }
+      } else if (data.type === 'OBJECT') {
+        if (data.content.object === 'Sphere') obj = new THREE.Mesh(new THREE.SphereGeometry(1.2, 32, 32), new THREE.MeshStandardMaterial({ ...data.content }))
+        else if (data.content.object === 'Cube') obj = new THREE.Mesh(new THREE.BoxGeometry(1.8, 1.8, 1.8), new THREE.MeshStandardMaterial({ ...data.content }))
+        else if (data.content.object === 'Torus') obj = new THREE.Mesh(new THREE.TorusGeometry(1.2, 0.5, 32, 100), new THREE.MeshStandardMaterial({ ...data.content }))
+        // custom object...
       }
 
       if (obj) {
