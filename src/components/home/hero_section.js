@@ -89,7 +89,7 @@ export default function HeroSection({ exhibitsData }) {
         {/* NAME PLATE */}
 
         .name-plate {
-          border: 1px solid var(--inconspicuous-color);
+          border: 0.5px solid var(--inconspicuous-color);
           padding: 10px;
           border-radius: 7px;
           background: rgba(var(--theme-mode-base-rgb-value), .5);
@@ -133,7 +133,7 @@ export default function HeroSection({ exhibitsData }) {
         .nav-button { width: 60px; height: 60px; background-color: rgba(var(--theme-mode-opp-rgb-value), 0.1); border: 1px solid rgba(var(--theme-mode-opp-rgb-value), 0.2); border-radius: 50%; color: var(--text-color); font-size: 24px; cursor: pointer; transition: background-color 0.3s, transform 0.1s; user-select: none; }
         .nav-button:hover { background-color: rgba(var(--theme-mode-opp-rgb-value), 0.2); }
         .nav-button:active { transform: scale(0.95); }
-      `}</style>`
+      `}</style>
     </>
   )
 }

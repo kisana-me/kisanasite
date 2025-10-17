@@ -15,10 +15,10 @@ export default function Footer() {
         <div className='list-wrapper'>
           <div className='list-name'>関連サイト</div>
           <ul>
-            <li><Link href='https://amiverse.net/' rel='noopener noreferrer' target='_blank' legacyBehavior><a className='list-content'>Amiverse</a></Link></li>
-            <li><Link href='https://ivecolor.com/' rel='noopener noreferrer' target='_blank' legacyBehavior><a className='list-content'>IVECOLOR</a></Link></li>
-            <li><Link href='https://bealive.amiverse.net/' rel='noopener noreferrer' target='_blank' legacyBehavior><a className='list-content'>BeAlive.</a></Link></li>
-            <li><Link href='https://x.amiverse.net/' rel='noopener noreferrer' target='_blank' legacyBehavior><a className='list-content'>得句巣</a></Link></li>
+            <li><Link href='https://amiverse.net/' legacyBehavior><a className='list-content' rel='noopener noreferrer' target='_blank'>Amiverse➚</a></Link></li>
+            <li><Link href='https://ivecolor.com/' legacyBehavior><a className='list-content' rel='noopener noreferrer' target='_blank'>IVECOLOR⇗</a></Link></li>
+            <li><Link href='https://bealive.amiverse.net/' legacyBehavior><a className='list-content' rel='noopener noreferrer' target='_blank'>BeAlive.➚</a></Link></li>
+            <li><Link href='https://x.amiverse.net/' legacyBehavior><a className='list-content' rel='noopener noreferrer' target='_blank'>得句巣⇗</a></Link></li>
           </ul>
         </div>
         <div className='list-wrapper'>
