@@ -13,7 +13,8 @@ export default function ProfileSection() {
           <div className="profile-content">
             <div className="profile-1">
               <h3>きさな / kisana</h3>
-              <p>27卒B3。Web系の個人開発ばかりしている。</p>
+              <p>05生まれ04世代27卒B3。</p>
+              <p>Web系の個人開発ばかりしている。</p>
               <p>バックエンドからフロントエンドまでやりたい。</p>
               <p>不定期でブログやYouTubeなどで投稿をしている。</p>
               <p>よくマイクラサーバーをたててマルチプレイをする。</p>

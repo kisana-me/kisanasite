@@ -67,11 +67,18 @@ export default function index({ exhibitsData, projectsData }) {
 }
 
 export async function getStaticProps() {
-  const filePath = path.join(process.cwd(), 'data', 'home', 'exhibits.json')
-  const fileContents = fs.readFileSync(filePath, 'utf8')
-  const exhibitsData = JSON.parse(fileContents)
+  function getJsonData(fileName) {
+    const filePath = path.join(process.cwd(), 'data', 'home', fileName)
+    const fileContents = fs.readFileSync(filePath, 'utf8')
+    return JSON.parse(fileContents)
+  }
 
-  const projectsData = getSortedMdsData('works')
+  const exhibitsData = getJsonData('exhibits.json')
+  const projectsData = {
+    web_applications: getSortedMdsData('works'),
+    youtube_videos: getJsonData('youtube_videos.json'),
+    articles: getJsonData('articles.json'),
+  }
 
   return {
     props: {

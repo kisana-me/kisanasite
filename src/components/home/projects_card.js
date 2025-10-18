@@ -26,6 +26,8 @@ export default function ProjectsCard({ project }) {
           overflow: hidden;
         }
         .projects-card-image-container {
+          aspect-ratio: 16 / 9;
+          background: #888888;
           position: relative;
           transition: transform 0.5s ease;
           z-index: -1;
@@ -45,6 +47,11 @@ export default function ProjectsCard({ project }) {
         .projects-card-summary {
           font-size: 0.8em;
           color: var(--inconspicuous-color);
+        }
+        .projects-card-title, .projects-card-summary {
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
         }
       `}</style>
     </>

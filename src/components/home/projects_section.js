@@ -16,7 +16,7 @@ export default function ProjectsSection({ projectsData }) {
               <h3>Web applications</h3>
               <p>ウェブアプリケーション</p>
               <div className="projects-cards">
-                {projectsData.map((project) => (
+                {projectsData.web_applications.map((project) => (
                   <Link key={ project.slug } href={ "/works/" + project.slug } style={{cursor: "pointer", textDecoration: "none", color: "inherit"}}>
                     <ProjectsCard project={project} />
                   </Link>
@@ -27,12 +27,22 @@ export default function ProjectsSection({ projectsData }) {
               <h3>YouTube videos</h3>
               <p>ユーチューブ動画</p>
               <div className="projects-cards">
+                {projectsData.youtube_videos.map((project) => (
+                  <Link key={ project.id } href={ project.link } rel="noopener noreferrer" target="_blank" style={{cursor: "pointer", textDecoration: "none", color: "inherit"}}>
+                    <ProjectsCard project={project} />
+                  </Link>
+                ))}
               </div>
             </div>
             <div className="projects-3">
               <h3>Articles</h3>
               <p>記事</p>
               <div className="projects-cards">
+                {projectsData.articles.map((project) => (
+                  <Link key={ project.id } href={ project.link } rel="noopener noreferrer" target="_blank" style={{cursor: "pointer", textDecoration: "none", color: "inherit"}}>
+                    <ProjectsCard project={project} />
+                  </Link>
+                ))}
               </div>
             </div>
           </div>
@@ -67,6 +77,7 @@ export default function ProjectsSection({ projectsData }) {
           display: flex;
           gap: 10px;
           overflow-x: scroll;
+          scrollbar-width: none;
         }
         @media screen and (min-width: 600px) {
           .projects {
