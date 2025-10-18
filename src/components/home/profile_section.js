@@ -13,7 +13,8 @@ export default function ProfileSection() {
           <div className="profile-content">
             <div className="profile-1">
               <h3>きさな / kisana</h3>
-              <p>27卒B3。Web系の個人開発ばかりしている。</p>
+              <p>05生まれ04世代27卒B3。</p>
+              <p>Web系の個人開発ばかりしている。</p>
               <p>バックエンドからフロントエンドまでやりたい。</p>
               <p>不定期でブログやYouTubeなどで投稿をしている。</p>
               <p>よくマイクラサーバーをたててマルチプレイをする。</p>
@@ -34,7 +35,7 @@ export default function ProfileSection() {
               <div className="profile-2-icon">
                 <Image src="/images/kisana/kisana-logo.png" alt="kisana icon"
                   style={{ objectFit: 'cover', objectPosition: 'center', borderRadius: '14px',
-                    boxShadow: '0px 0px 7px 3px #ffffff88'
+                    boxShadow: '0px 0px 7px 3px rgba(var(--theme-mode-accent-rgb-value), 50%)'
                   }}fill />
               </div>
               <ul>
@@ -54,7 +55,7 @@ export default function ProfileSection() {
         .profile {
           width: 100%;
           max-width: 800px;
-          margin: 20px;
+          padding: 0 20px;
         }
         .profile-header {
           margin-bottom: 10px;
@@ -115,7 +116,7 @@ export default function ProfileSection() {
         @media screen and (min-width: 600px) {
           .profile {
             width: 80%;
-            margin: 0;
+            padding: 0;
           }
           .profile-content {
             flex-direction: row;

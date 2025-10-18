@@ -6,7 +6,7 @@ import { getSortedMdsData } from '@/lib/mds_reader'
 import { useEffect } from 'react'
 import fs from 'fs'
 import path from 'path'
-import HeroSection from '@/components/home/hero_section'
+import ExhibitsSection from '@/components/home/exhibits_section'
 import ProfileSection from '@/components/home/profile_section'
 import ProjectsSection from '@/components/home/projects_section'
 import ActivitiesSection from '@/components/home/activities_section'
@@ -21,7 +21,9 @@ export default function index({ exhibitsData, projectsData }) {
 
   return (
     <>
-      <HeroSection exhibitsData={exhibitsData} />
+      <div class="hero">
+        <ExhibitsSection exhibitsData={exhibitsData} />
+      </div>
       <div className="home-sections">
         <ProfileSection />
         <ProjectsSection projectsData={projectsData} />
@@ -65,11 +67,18 @@ export default function index({ exhibitsData, projectsData }) {
 }
 
 export async function getStaticProps() {
-  const filePath = path.join(process.cwd(), 'data', 'home', 'exhibits.json')
-  const fileContents = fs.readFileSync(filePath, 'utf8')
-  const exhibitsData = JSON.parse(fileContents)
+  function getJsonData(fileName) {
+    const filePath = path.join(process.cwd(), 'data', 'home', fileName)
+    const fileContents = fs.readFileSync(filePath, 'utf8')
+    return JSON.parse(fileContents)
+  }
 
-  const projectsData = getSortedMdsData('works')
+  const exhibitsData = getJsonData('exhibits.json')
+  const projectsData = {
+    web_applications: getSortedMdsData('works'),
+    youtube_videos: getJsonData('youtube_videos.json'),
+    articles: getJsonData('articles.json'),
+  }
 
   return {
     props: {
