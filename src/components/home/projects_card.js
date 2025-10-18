@@ -23,11 +23,9 @@ export default function ProjectsCard({ project }) {
         }
         .projects-card-image {
           width: 200px;
-          height: 200px;
           overflow: hidden;
         }
         .projects-card-image-container {
-          height: 200px;
           position: relative;
           transition: transform 0.5s ease;
           z-index: -1;

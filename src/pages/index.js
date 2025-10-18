@@ -6,7 +6,7 @@ import { getSortedMdsData } from '@/lib/mds_reader'
 import { useEffect } from 'react'
 import fs from 'fs'
 import path from 'path'
-import HeroSection from '@/components/home/hero_section'
+import ExhibitsSection from '@/components/home/exhibits_section'
 import ProfileSection from '@/components/home/profile_section'
 import ProjectsSection from '@/components/home/projects_section'
 import ActivitiesSection from '@/components/home/activities_section'
@@ -21,7 +21,9 @@ export default function index({ exhibitsData, projectsData }) {
 
   return (
     <>
-      <HeroSection exhibitsData={exhibitsData} />
+      <div class="hero">
+        <ExhibitsSection exhibitsData={exhibitsData} />
+      </div>
       <div className="home-sections">
         <ProfileSection />
         <ProjectsSection projectsData={projectsData} />

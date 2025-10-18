@@ -13,13 +13,27 @@ export default function ProjectsSection({ projectsData }) {
           </div>
           <div className="projects-content">
             <div className="projects-1">
-              {projectsData.map((project) => (
-                <Link key={ project.slug } href={ "/works/" + project.slug } style={{cursor: "pointer", textDecoration: "none", color: "inherit"}}>
-                  <ProjectsCard project={project} />
-                </Link>
-              ))}
+              <h3>Web applications</h3>
+              <p>ウェブアプリケーション</p>
+              <div className="projects-cards">
+                {projectsData.map((project) => (
+                  <Link key={ project.slug } href={ "/works/" + project.slug } style={{cursor: "pointer", textDecoration: "none", color: "inherit"}}>
+                    <ProjectsCard project={project} />
+                  </Link>
+                ))}
+              </div>
             </div>
             <div className="projects-2">
+              <h3>YouTube videos</h3>
+              <p>ユーチューブ動画</p>
+              <div className="projects-cards">
+              </div>
+            </div>
+            <div className="projects-3">
+              <h3>Articles</h3>
+              <p>記事</p>
+              <div className="projects-cards">
+              </div>
             </div>
           </div>
         </div>
@@ -32,7 +46,8 @@ export default function ProjectsSection({ projectsData }) {
         .projects {
           width: 100%;
           max-width: 800px;
-          margin: 20px;
+          padding: 0 20px;
+          box-sizing: border-box;
         }
         .projects-header {
           margin-bottom: 10px;
@@ -40,17 +55,23 @@ export default function ProjectsSection({ projectsData }) {
         .projects-header p {
           color: var(--inconspicuous-color)
         }
-        .projects-content {
-          overflow-x: scroll;
+        .projects-content h3 {
+          font-weight: normal;
         }
-        .projects-1 {
+        .projects-content p {
+          color: var(--inconspicuous-color);
+          font-size: 0.8em;
+        }
+        .projects-cards {
+          margin: 10px 0;
           display: flex;
           gap: 10px;
+          overflow-x: scroll;
         }
         @media screen and (min-width: 600px) {
           .projects {
             width: 80%;
-            margin: 0;
+            padding: 0;
           }
         }
       `}</style>
