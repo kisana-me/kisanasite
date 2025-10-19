@@ -12,39 +12,19 @@ export default function ProjectsSection({ projectsData }) {
             <p>企画</p>
           </div>
           <div className="projects-content">
-            <div className="projects-1">
-              <h3>Web applications</h3>
-              <p>ウェブアプリケーション</p>
-              <div className="projects-cards">
-                {projectsData.web_applications.map((project) => (
-                  <Link key={ project.slug } href={ "/works/" + project.slug } style={{cursor: "pointer", textDecoration: "none", color: "inherit"}}>
-                    <ProjectsCard project={project} />
-                  </Link>
-                ))}
+            {projectsData.map((category) => (
+              <div key={ category.id } className="projects-category">
+                <h3>{category.title}</h3>
+                <p>{category.summary}</p>
+                <div className="projects-cards">
+                  {category.projects.map((project) => (
+                    <Link key={ project.id } href={ project.link } style={{cursor: "pointer", textDecoration: "none", color: "inherit"}} rel="noopener noreferrer" target="_blank">
+                      <ProjectsCard project={project} />
+                    </Link>
+                  ))}
+                </div>
               </div>
-            </div>
-            <div className="projects-2">
-              <h3>YouTube videos</h3>
-              <p>ユーチューブ動画</p>
-              <div className="projects-cards">
-                {projectsData.youtube_videos.map((project) => (
-                  <Link key={ project.id } href={ project.link } rel="noopener noreferrer" target="_blank" style={{cursor: "pointer", textDecoration: "none", color: "inherit"}}>
-                    <ProjectsCard project={project} />
-                  </Link>
-                ))}
-              </div>
-            </div>
-            <div className="projects-3">
-              <h3>Articles</h3>
-              <p>記事</p>
-              <div className="projects-cards">
-                {projectsData.articles.map((project) => (
-                  <Link key={ project.id } href={ project.link } rel="noopener noreferrer" target="_blank" style={{cursor: "pointer", textDecoration: "none", color: "inherit"}}>
-                    <ProjectsCard project={project} />
-                  </Link>
-                ))}
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

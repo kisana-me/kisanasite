@@ -2,7 +2,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useRef } from 'react'
 import { usePageContext } from "@/contexts/page_context"
-import { getSortedMdsData } from '@/lib/mds_reader'
 import { useEffect } from 'react'
 import fs from 'fs'
 import path from 'path'
@@ -21,7 +20,7 @@ export default function index({ exhibitsData, projectsData }) {
 
   return (
     <>
-      <div class="hero">
+      <div className="home-hero">
         <ExhibitsSection exhibitsData={exhibitsData} />
       </div>
       <div className="home-sections">
@@ -74,11 +73,7 @@ export async function getStaticProps() {
   }
 
   const exhibitsData = getJsonData('exhibits.json')
-  const projectsData = {
-    web_applications: getSortedMdsData('works'),
-    youtube_videos: getJsonData('youtube_videos.json'),
-    articles: getJsonData('articles.json'),
-  }
+  const projectsData =  getJsonData('projects_data.json')
 
   return {
     props: {
