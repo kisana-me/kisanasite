@@ -46,10 +46,8 @@ export default function work({ mdData, sortedMdsData }) {
         </div>
         <div className="work-aside">
           {sortedMdsData.map((work) => (
-            <Link key={ work.slug } href={ "/works/" + work.slug } legacyBehavior>
-              <a className="work-aside-works">
-                <MiniCard title={work.title} image={work.image} summary={work.summary} />
-              </a>
+            <Link key={ work.slug } href={ "/works/" + work.slug } className="work-aside-works">
+              <MiniCard title={work.title} image={work.image} summary={work.summary} />
             </Link>
           ))}
         </div>
@@ -83,7 +81,7 @@ export default function work({ mdData, sortedMdsData }) {
           flex-direction: column;
           gap: 10px;
         }
-        .work-aside-works {
+        :global(.work-aside-works) {
           width: 100%;
           max-width: 400px;
           text-decoration: none;

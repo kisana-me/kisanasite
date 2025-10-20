@@ -29,19 +29,19 @@ export default function ProfileSection() {
             </div>
             <div className="profile-2">
               <ul>
-                <li><Link href="https://ivecolor.com/" legacyBehavior><a rel="noopener noreferrer" target="_blank">IVECOLOR: ブログ</a></Link></li>
-                <li><Link href="https://amiverse.net/" legacyBehavior><a rel="noopener noreferrer" target="_blank">Amiverse: SNS</a></Link></li>
+                <li><Link href="https://ivecolor.com/" rel="noopener noreferrer" target="_blank">IVECOLOR: ブログ</Link></li>
+                <li><Link href="https://amiverse.net/" rel="noopener noreferrer" target="_blank">Amiverse: SNS</Link></li>
               </ul>
               <div className="profile-2-icon">
                 <Image src="/images/kisana/kisana-logo.png" alt="kisana icon"
                   style={{ objectFit: 'cover', objectPosition: 'center', borderRadius: '14px',
                     boxShadow: '0px 0px 7px 3px rgba(var(--theme-mode-accent-rgb-value), 50%)'
-                  }}fill />
+                  }} fill sizes='96px'/>
               </div>
               <ul>
-                <li><Link href="https://x.com/@kisana_me/" legacyBehavior><a rel="noopener noreferrer" target="_blank">X: @kisana_me</a></Link></li>
-                <li><Link href="https://github.com/kisana-me/" legacyBehavior><a rel="noopener noreferrer" target="_blank">GitHub: @kisana-me</a></Link></li>
-                <li><Link href="https://youtube.com/@kisana_me/" legacyBehavior><a rel="noopener noreferrer" target="_blank">YouTube: @kisana_me</a></Link></li>
+                <li><Link href="https://x.com/@kisana_me/" rel="noopener noreferrer" target="_blank">X: @kisana_me</Link></li>
+                <li><Link href="https://github.com/kisana-me/" rel="noopener noreferrer" target="_blank">GitHub: @kisana-me</Link></li>
+                <li><Link href="https://youtube.com/@kisana_me/" rel="noopener noreferrer" target="_blank">YouTube: @kisana_me</Link></li>
               </ul>
             </div>
           </div>
@@ -106,12 +106,13 @@ export default function ProfileSection() {
           list-style: none;
           text-align: center;
         }
-        .profile-2 a {
+        :global(.profile-2 a) {
           color: var(--inconspicuous-color);
           font-size: 0.8em;
         }
         .profile-2-icon {
           width: 96px;
+          position: relative;
         }
         @media screen and (min-width: 600px) {
           .profile {

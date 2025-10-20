@@ -19,11 +19,9 @@ export default function index({ sortedMdsData }) {
     <>
       <h1>Works</h1>
       <div className="works">
-        {sortedMdsData.map((work) => (
-          <Link key={ work.slug } href={ "/works/" + work.slug } legacyBehavior>
-          <a className="works-card">
-            <Card title={work.title} image={work.image} icon={work.icon} summary={work.summary} />
-          </a>
+        {sortedMdsData.map((work, index) => (
+          <Link key={ work.slug } href={ "/works/" + work.slug } className="works-card">
+            <Card title={work.title} image={work.image} icon={work.icon} summary={work.summary} priority={index < 3} />
           </Link>
         ))}
       </div>
@@ -34,14 +32,14 @@ export default function index({ sortedMdsData }) {
           flex-wrap: wrap;
           gap: 10px;
         }
-        .works-card {
+        :global(.works-card) {
           width: 100%;
         }
         @media screen and (min-width: 600px) {
           .works {
             justify-content: space-evenly;
           }
-          .works-card {
+          :global(.works-card) {
             flex: 0 0 400px;
           }
         }

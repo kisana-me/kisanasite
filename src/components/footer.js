@@ -7,25 +7,25 @@ export default function Footer() {
         <div className='list-wrapper'>
           <div className='list-name'>ソーシャルメディア</div>
           <ul>
-            <li><Link href='https://amiverse.net/@kisana/' rel='noopener noreferrer' target='_blank' legacyBehavior><a className='list-content'>Amiverse</a></Link></li>
-            <li><Link href='https://misskey.io/@kisana/' rel='noopener noreferrer' target='_blank' legacyBehavior><a className='list-content'>Misskey.io</a></Link></li>
-            <li><Link href='https://x.com/@kisana_me/' rel='noopener noreferrer' target='_blank' legacyBehavior><a className='list-content'>X</a></Link></li>
+            <li><Link href='https://amiverse.net/@kisana/' rel='noopener noreferrer' target='_blank' className='list-content'>Amiverse</Link></li>
+            <li><Link href='https://misskey.io/@kisana/' rel='noopener noreferrer' target='_blank' className='list-content'>Misskey.io</Link></li>
+            <li><Link href='https://x.com/@kisana_me/' rel='noopener noreferrer' target='_blank' className='list-content'>X</Link></li>
           </ul>
         </div>
         <div className='list-wrapper'>
           <div className='list-name'>関連サイト</div>
           <ul>
-            <li><Link href='https://amiverse.net/' legacyBehavior><a className='list-content' rel='noopener noreferrer' target='_blank'>Amiverse➚</a></Link></li>
-            <li><Link href='https://ivecolor.com/' legacyBehavior><a className='list-content' rel='noopener noreferrer' target='_blank'>IVECOLOR⇗</a></Link></li>
-            <li><Link href='https://bealive.amiverse.net/' legacyBehavior><a className='list-content' rel='noopener noreferrer' target='_blank'>BeAlive.➚</a></Link></li>
-            <li><Link href='https://x.amiverse.net/' legacyBehavior><a className='list-content' rel='noopener noreferrer' target='_blank'>得句巣⇗</a></Link></li>
+            <li><Link href='https://amiverse.net/' className='list-content' rel='noopener noreferrer' target='_blank'>Amiverse➚</Link></li>
+            <li><Link href='https://ivecolor.com/' className='list-content' rel='noopener noreferrer' target='_blank'>IVECOLOR⇗</Link></li>
+            <li><Link href='https://bealive.amiverse.net/' className='list-content' rel='noopener noreferrer' target='_blank'>BeAlive.➚</Link></li>
+            <li><Link href='https://x.amiverse.net/' className='list-content' rel='noopener noreferrer' target='_blank'>得句巣⇗</Link></li>
           </ul>
         </div>
         <div className='list-wrapper'>
           <div className='list-name'>ツール</div>
           <ul>
-            <li><Link href='/tools/markdown-editor' legacyBehavior><a className='list-content'>Markdown Editor</a></Link></li>
-            <li><Link href='/tools/blockchain-maker' legacyBehavior><a className='list-content'>Blockchain Maker</a></Link></li>
+            <li><Link href='/tools/markdown-editor' className='list-content'>Markdown Editor</Link></li>
+            <li><Link href='/tools/blockchain-maker' className='list-content'>Blockchain Maker</Link></li>
           </ul>
           <div className='list'>
           </div>
@@ -33,10 +33,10 @@ export default function Footer() {
         <div className='list-wrapper'>
           <div className='list-name'>このサイトについて</div>
           <ul>
-            <li><Link href='/sitemap' legacyBehavior><a className='list-content'>サイトマップ</a></Link></li>
-            <li><Link href='/terms' legacyBehavior><a className='list-content'>利用規約</a></Link></li>
-            <li><Link href='/policy' legacyBehavior><a className='list-content'>プライバシーポリシー</a></Link></li>
-            <li><Link href='/contact' legacyBehavior><a className='list-content'>お問い合わせ</a></Link></li>
+            <li><Link href='/sitemap' className='list-content'>サイトマップ</Link></li>
+            <li><Link href='/terms' className='list-content'>利用規約</Link></li>
+            <li><Link href='/policy' className='list-content'>プライバシーポリシー</Link></li>
+            <li><Link href='/contact' className='list-content'>お問い合わせ</Link></li>
           </ul>
         </div>
       </div>
@@ -77,12 +77,12 @@ export default function Footer() {
           padding-left: 0;
           list-style-type: none;
         }
-        .list-content {
+        :global(.list-content) {
           display: inline;
           color: var(--inconspicuous-color);
           text-decoration: none;
         }
-        .list-content:hover {
+        :global(.list-content:hover) {
           text-decoration: underline;
         }
 

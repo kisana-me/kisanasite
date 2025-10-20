@@ -25,11 +25,9 @@ export default function index({ sortedDate, sortedUpdate }) {
       <p>{isPostOrder ? "投稿順です" : "更新順です" }</p>
       <Link href="/tags">タグ一覧</Link>
       <div className='posts'>
-        {(isPostOrder ? sortedDate : sortedUpdate).map((post) => (
-          <Link key={ post.slug } href={ "/posts/" + post.slug } legacyBehavior>
-            <a className="posts-card">
-              <Card title={post.title} image={post.image} summary={post.description} />
-            </a>
+        {(isPostOrder ? sortedDate : sortedUpdate).map((post, index) => (
+          <Link key={ post.slug } href={ "/posts/" + post.slug } className="posts-card">
+            <Card title={post.title} image={post.image} summary={post.description} priority={index < 3} />
           </Link>
         ))}
       </div>
@@ -40,7 +38,7 @@ export default function index({ sortedDate, sortedUpdate }) {
           flex-wrap: wrap;
           gap: 10px;
         }
-        .posts-card {
+        :global(.posts-card) {
           width: 100%;
           flex: 1 1 285px;
         }
@@ -48,7 +46,7 @@ export default function index({ sortedDate, sortedUpdate }) {
           .posts {
             justify-content: space-evenly;
           }
-          .posts-card {
+          :global(.posts-card) {
             flex: 0 0 400px;
           }
         }
