@@ -73,7 +73,7 @@ export async function getStaticProps() {
   }
 
   const exhibitsData = getJsonData('exhibits.json')
-  const projectsData =  getJsonData('projects_data.json')
+  const projectsData = getJsonData('projects_data.json')
 
   return {
     props: {
