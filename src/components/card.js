@@ -1,16 +1,16 @@
 import Image from 'next/image'
 
-export default function Card({image, icon, title, summary}) {
+export default function Card({image, icon, title, summary, priority = false}) {
   return (
     <>
       <div className="card">
         <div className="card-image-wrapper">
-          <Image src={image ? image : '/images/no-image.png'} alt={title} fill style={{borderRadius: '6px'}} />
+          <Image src={image ? image : '/images/no-image.png'} alt={title} fill style={{borderRadius: '6px'}} sizes='400px' priority={priority} />
         </div>
         <div className="card-plate">
           {icon &&
           <div className="card-icon">
-            <Image src={icon} alt={title} fill style={{borderRadius: '4px'}} />
+            <Image src={icon} alt={title} fill style={{borderRadius: '4px'}} sizes='50px'/>
           </div>
           }
           <div className="card-text">
@@ -37,6 +37,7 @@ export default function Card({image, icon, title, summary}) {
           background: var(--inconspicuous-color);
           display: flex;
           flex-shrink: 0;
+          position: relative;
         }
         .card-image {}
         .card-plate {
@@ -48,6 +49,7 @@ export default function Card({image, icon, title, summary}) {
           height: 50px;
           margin: 0 4px 0 0;
           display: flex;
+          position: relative;
         }
         .card-text {
           margin: 0 0 0 4px;

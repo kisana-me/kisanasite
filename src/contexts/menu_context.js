@@ -38,10 +38,10 @@ export const MenuContextProvider = ({ children }) => {
         <button onClick={() => setIsMenu(false)}  className="menu-close-button">&times;</button>
         <br />
         <br />
-        <Link href="/" legacyBehavior><a onClick={() => setIsMenu(false)} className="link">Home</a></Link>
-        <Link href="/about" legacyBehavior><a onClick={() => setIsMenu(false)} className="link">About</a></Link>
-        <Link href="/works" legacyBehavior><a onClick={() => setIsMenu(false)} className="link">Works</a></Link>
-        <Link href="/posts" legacyBehavior><a onClick={() => setIsMenu(false)} className="link">Posts</a></Link>
+        <Link href="/" className="link" onClick={() => setIsMenu(false)}>Home</Link>
+        <Link href="/about" className="link" onClick={() => setIsMenu(false)}>About</Link>
+        <Link href="/works" className="link" onClick={() => setIsMenu(false)}>Works</Link>
+        <Link href="/posts" className="link" onClick={() => setIsMenu(false)}>Posts</Link>
         <br />
         <br />
         <div>
@@ -91,7 +91,7 @@ export const MenuContextProvider = ({ children }) => {
         </div>
       </div>
       <style jsx>{`
-        .link {
+        :global(.link) {
           padding: 10px;
           color: var(--theme-mode-accent-rgb-color);
           text-decoration: none;

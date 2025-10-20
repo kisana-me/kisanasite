@@ -46,10 +46,8 @@ export default function post({ postData, sortedDate }) {
         </div>
         <div className="post-aside">
           {sortedDate.map((post) => (
-            <Link key={ post.slug } href={ "/posts/" + post.slug } legacyBehavior>
-              <a className="post-aside-posts">
-                <MiniCard title={post.title} image={post.image} summary={post.description} />
-              </a>
+            <Link key={ post.slug } href={ "/posts/" + post.slug } className="post-aside-posts">
+              <MiniCard title={post.title} image={post.image} summary={post.description} />
             </Link>
           ))}
         </div>
@@ -78,7 +76,7 @@ export default function post({ postData, sortedDate }) {
           flex-direction: column;
           gap: 10px;
         }
-        .post-aside-posts {
+        :global(.post-aside-posts) {
           width: 100%;
           max-width: 400px;
           text-decoration: none;

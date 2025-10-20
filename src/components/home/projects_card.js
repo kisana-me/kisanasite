@@ -7,7 +7,7 @@ export default function ProjectsCard({ project }) {
       <div className='projects-card'>
         <div className='projects-card-image'>
           <div className='projects-card-image-container'>
-            <Image src={project.image} alt="object" style={{ objectFit: 'cover', objectPosition: 'center' }} fill />
+            <Image src={project.image} alt="object" style={{ objectFit: 'cover', objectPosition: 'center' }} fill sizes='200px' />
           </div>
         </div>
         <div className='projects-card-info'>

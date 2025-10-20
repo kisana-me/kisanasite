@@ -6,13 +6,13 @@ export default function Header() {
 
   return (
     <header>
-      <Link href="/" legacyBehavior><a className='logo'>KISANA:ME</a></Link>
+      <Link href="/" className='logo'>KISANA:ME</Link>
       <nav>
         <div className="menu-wrapper">
-          <Link href="/" legacyBehavior><a className="link">Home</a></Link>
-          <Link href="/about" legacyBehavior><a className="link">About</a></Link>
-          <Link href="/works" legacyBehavior><a className="link">Works</a></Link>
-          <Link href="/posts" legacyBehavior><a className="link">Posts</a></Link>
+          <Link href="/" className="link">Home</Link>
+          <Link href="/about" className="link">About</Link>
+          <Link href="/works" className="link">Works</Link>
+          <Link href="/posts" className="link">Posts</Link>
         </div>
         <button onClick={() => setIsMenu(true)} className="menu-open-button">&#9776;</button>
       </nav>
@@ -33,12 +33,12 @@ export default function Header() {
           justify-content: space-between;
           z-index: 100;
         }
-        .logo {
+        :global(.logo) {
           padding: 10px;
           color: var(--theme-mode-accent-rgb-color);
           text-decoration: none;
         }
-        .link {
+        :global(.link) {
           padding: 10px;
           color: var(--theme-mode-accent-rgb-color);
           text-decoration: none;

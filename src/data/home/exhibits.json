@@ -9,7 +9,7 @@
   { "type": "CARD", "content": { "image": "/images/kisana/kisana-logo.png", "title": "X / きさな", "description": "X(旧Twitter)のアカウント", "link": "https://x.com/kisana_me" } },
   { "type": "CARD", "content": { "image": "/images/kisana/kisana-logo.png", "title": "GitHub / きさな", "description": "GitHubのアカウント", "link": "https://github.com/kisana-me" } },
   { "type": "CARD", "content": { "image": "/images/kisana/kisana-logo.png", "title": "Zenn / きさな", "description": "Zennのアカウント", "link": "https://zenn.dev/kisana" } },
-  { "type": "OBJECT", "content": { "object": "Sphere", "color": "#ff6b6b" } },
-  { "type": "OBJECT", "content": { "object": "Cube", "color": "#4a90e2" } },
-  { "type": "OBJECT", "content": { "object": "Torus", "color": "#48dbfb" } }
+  { "type": "Sphere", "content": { "color": "#ff6b6b" } },
+  { "type": "Cube", "content": { "color": "#4a90e2" } },
+  { "type": "Torus", "content": { "color": "#48dbfb" } }
 ]
