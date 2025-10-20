@@ -1,18 +1,21 @@
+"use client"
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import { usePageContext } from '@/contexts/page_context'
-import { useRouter } from 'next/router'
+import { usePathname } from 'next/navigation'
 import { useEffect } from 'react'
 
 export default function Layout({ children }) {
   const { mainTagTopPadding, setMainTagTopPadding } = usePageContext()
-  const router = useRouter()
+  const pathname = usePathname()
   const pathsWithoutMainTagTopPadding = ['/']
 
   useEffect(() => {
-    const isPathWithoutMainTagTopPadding = pathsWithoutMainTagTopPadding.includes(router.pathname)
+    if (!pathname) return
+    if (typeof setMainTagTopPadding !== 'function') return
+    const isPathWithoutMainTagTopPadding = pathsWithoutMainTagTopPadding.includes(pathname)
     setMainTagTopPadding(!isPathWithoutMainTagTopPadding)
-  }, [router.pathname])
+  }, [pathname, setMainTagTopPadding])
 
   return (
     <>
