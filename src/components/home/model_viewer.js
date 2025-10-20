@@ -160,7 +160,7 @@ const ModelViewer = forwardRef(({ exhibitsData, ...props }, ref) => {
         obj = new THREE.Mesh(new THREE.SphereGeometry(1.2, 32, 32), new THREE.MeshStandardMaterial({ ...data.content }))
       } else if (data.type == 'Cube') {
         obj = new THREE.Mesh(new THREE.BoxGeometry(1.8, 1.8, 1.8), new THREE.MeshStandardMaterial({ ...data.content }))
-      } else if (data.type == 'Torus') {
+      } else if (data.type === 'Torus') {
         obj = new THREE.Mesh(new THREE.TorusGeometry(1.2, 0.5, 32, 100), new THREE.MeshStandardMaterial({ ...data.content }))
       }
 
