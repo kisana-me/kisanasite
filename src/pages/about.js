@@ -1,13 +1,14 @@
-import DataDisplay from "@/components/data_display"
-import { usePageContext } from "@/contexts/page_context"
+import DataDisplay from '@/components/data_display'
+import { usePageContext } from '@/contexts/page_context'
 import { useEffect } from 'react'
 import fs from 'fs'
 import path from 'path'
 
-export default function about({data}) {
+export default function About({ data }) {
   const { setTitle } = usePageContext()
-  useEffect(()=>{
+  useEffect(() => {
     setTitle('About')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
@@ -16,12 +17,11 @@ export default function about({data}) {
       <p>こんにちは、私は「きさな🍭/kisana」です。</p>
       <p>自称WEBプログラマです。</p>
       <div>
-        <DataDisplay data={data} dataType='service' />
-        <DataDisplay data={data} dataType='tech' />
-        <DataDisplay data={data} dataType='hobby' />
+        <DataDisplay data={data} dataType="service" />
+        <DataDisplay data={data} dataType="tech" />
+        <DataDisplay data={data} dataType="hobby" />
       </div>
-      <style jsx>{`
-      `}</style>
+      <style jsx>{``}</style>
     </>
   )
 }
@@ -33,7 +33,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      data
-    }
+      data,
+    },
   }
 }

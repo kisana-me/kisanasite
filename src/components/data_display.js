@@ -1,5 +1,5 @@
-export default function DataDisplay ({ data, dataType }) {
-  if (!data || !data[dataType]) return <p>No data available</p>;
+export default function DataDisplay({ data, dataType }) {
+  if (!data || !data[dataType]) return <p>No data available</p>
   return (
     <section>
       <h1>{dataType.charAt(0).toUpperCase() + dataType.slice(1)}</h1>

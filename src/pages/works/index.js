@@ -1,18 +1,19 @@
-import Link from "next/link"
-import { useEffect } from "react"
-import { usePageContext } from "@/contexts/page_context"
+import Link from 'next/link'
+import { useEffect } from 'react'
+import { usePageContext } from '@/contexts/page_context'
 import { getSortedMdsData } from '@/lib/mds_reader'
-import Card from "@/components/card"
+import Card from '@/components/card'
 
 export function getStaticProps() {
   const sortedMdsData = getSortedMdsData('works')
-  return { props: {sortedMdsData} }
+  return { props: { sortedMdsData } }
 }
 
-export default function index({ sortedMdsData }) {
+export default function Index({ sortedMdsData }) {
   const { setTitle } = usePageContext()
-  useEffect(()=>{
+  useEffect(() => {
     setTitle('Works')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
@@ -20,7 +21,7 @@ export default function index({ sortedMdsData }) {
       <h1>Works</h1>
       <div className="works">
         {sortedMdsData.map((work, index) => (
-          <Link key={ work.slug } href={ "/works/" + work.slug } className="works-card">
+          <Link key={work.slug} href={'/works/' + work.slug} className="works-card">
             <Card title={work.title} image={work.image} icon={work.icon} summary={work.summary} priority={index < 3} />
           </Link>
         ))}

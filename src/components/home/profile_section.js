@@ -29,19 +29,47 @@ export default function ProfileSection() {
             </div>
             <div className="profile-2">
               <ul>
-                <li><Link href="https://ivecolor.com/" rel="noopener noreferrer" target="_blank">IVECOLOR: ブログ</Link></li>
-                <li><Link href="https://amiverse.net/" rel="noopener noreferrer" target="_blank">Amiverse: SNS</Link></li>
+                <li>
+                  <Link href="https://ivecolor.com/" rel="noopener noreferrer" target="_blank">
+                    IVECOLOR: ブログ
+                  </Link>
+                </li>
+                <li>
+                  <Link href="https://amiverse.net/" rel="noopener noreferrer" target="_blank">
+                    Amiverse: SNS
+                  </Link>
+                </li>
               </ul>
               <div className="profile-2-icon">
-                <Image src="/images/kisana/kisana-logo.png" alt="kisana icon"
-                  style={{ objectFit: 'cover', objectPosition: 'center', borderRadius: '14px',
-                    boxShadow: '0px 0px 7px 3px rgba(var(--theme-mode-accent-rgb-value), 50%)'
-                  }} fill sizes='96px'/>
+                <Image
+                  src="/images/kisana/kisana-logo.png"
+                  alt="kisana icon"
+                  style={{
+                    objectFit: 'cover',
+                    objectPosition: 'center',
+                    borderRadius: '14px',
+                    boxShadow: '0px 0px 7px 3px rgba(var(--theme-mode-accent-rgb-value), 50%)',
+                  }}
+                  fill
+                  sizes="96px"
+                />
               </div>
               <ul>
-                <li><Link href="https://x.com/@kisana_me/" rel="noopener noreferrer" target="_blank">X: @kisana_me</Link></li>
-                <li><Link href="https://github.com/kisana-me/" rel="noopener noreferrer" target="_blank">GitHub: @kisana-me</Link></li>
-                <li><Link href="https://youtube.com/@kisana_me/" rel="noopener noreferrer" target="_blank">YouTube: @kisana_me</Link></li>
+                <li>
+                  <Link href="https://x.com/@kisana_me/" rel="noopener noreferrer" target="_blank">
+                    X: @kisana_me
+                  </Link>
+                </li>
+                <li>
+                  <Link href="https://github.com/kisana-me/" rel="noopener noreferrer" target="_blank">
+                    GitHub: @kisana-me
+                  </Link>
+                </li>
+                <li>
+                  <Link href="https://youtube.com/@kisana_me/" rel="noopener noreferrer" target="_blank">
+                    YouTube: @kisana_me
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
@@ -60,8 +88,9 @@ export default function ProfileSection() {
         .profile-header {
           margin-bottom: 10px;
         }
-        .profile-header p, .profile-content p {
-          color: var(--inconspicuous-color)
+        .profile-header p,
+        .profile-content p {
+          color: var(--inconspicuous-color);
         }
         .profile-content {
           display: flex;
@@ -73,7 +102,8 @@ export default function ProfileSection() {
         .profile-content p {
           font-size: 0.8em;
         }
-        .profile-1, .profile-2 {
+        .profile-1,
+        .profile-2 {
           width: 100%;
         }
         .profile-1 {
@@ -122,7 +152,8 @@ export default function ProfileSection() {
           .profile-content {
             flex-direction: row;
           }
-          .profile-1, .profile-2 {
+          .profile-1,
+          .profile-2 {
             width: auto;
           }
         }

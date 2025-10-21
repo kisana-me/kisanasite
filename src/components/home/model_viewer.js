@@ -23,7 +23,9 @@ const ModelViewer = forwardRef(({ exhibitsData, ...props }, ref) => {
       return (
         <div
           key={index}
-          ref={el => { if (el) htmlItemsRef.current[index] = el }}
+          ref={(el) => {
+            if (el) htmlItemsRef.current[index] = el
+          }}
           className="html-item"
           onMouseEnter={() => setHoveredIndex(index)}
           onMouseLeave={() => setHoveredIndex(null)}
@@ -35,7 +37,8 @@ const ModelViewer = forwardRef(({ exhibitsData, ...props }, ref) => {
           <p>{data.content.description}</p>
         </div>
       )
-    }).filter(Boolean)
+    })
+    .filter(Boolean)
 
   // ターゲットを切り替える関数
   const changeTarget = useCallback((index) => {
@@ -57,7 +60,7 @@ const ModelViewer = forwardRef(({ exhibitsData, ...props }, ref) => {
     // 回転リセットの目標値を設定
     animationTargets.resetRotation = {
       object: targetObject,
-      targetY: 0
+      targetY: 0,
     }
 
     // 照明クラスの管理
@@ -70,7 +73,9 @@ const ModelViewer = forwardRef(({ exhibitsData, ...props }, ref) => {
     if (targets[index].isHtml) {
       const lighting = document.getElementById(`html-lighting-${index}`)
       if (lighting) {
-        setTimeout(() => { lighting.className = 'lighting-overlay lit' }, 300)
+        setTimeout(() => {
+          lighting.className = 'lighting-overlay lit'
+        }, 300)
       }
     }
   }, [])
@@ -84,7 +89,7 @@ const ModelViewer = forwardRef(({ exhibitsData, ...props }, ref) => {
     // 回転リセットの目標値を設定
     animationTargets.resetRotation = {
       object: object,
-      targetY: 0
+      targetY: 0,
     }
   }
 
@@ -104,7 +109,7 @@ const ModelViewer = forwardRef(({ exhibitsData, ...props }, ref) => {
       controlsTarget: new THREE.Vector3(),
       spotLightPos: new THREE.Vector3(),
       spotLightTarget: new THREE.Vector3(),
-      resetRotation: null
+      resetRotation: null,
     }
 
     const scene = new THREE.Scene()
@@ -142,7 +147,8 @@ const ModelViewer = forwardRef(({ exhibitsData, ...props }, ref) => {
     const pedestalMat = new THREE.MeshStandardMaterial({ color: 0x333333, roughness: 0.9 })
 
     exhibitsData.forEach((data, index) => {
-      let obj, isHtml = false
+      let obj,
+        isHtml = false
       const xPos = (index - (exhibitsData.length - 1) / 2) * modelSpacing
 
       if (data.type === 'CARD') {
@@ -295,13 +301,15 @@ const ModelViewer = forwardRef(({ exhibitsData, ...props }, ref) => {
     prev: handlePrev,
     next: handleNext,
     resetRotation: handleResetRotation,
-  }));
+  }))
 
-  const backgroundColor = darkMode ? '#000' : '#fff';
+  const backgroundColor = darkMode ? '#000' : '#fff'
 
   return (
     <>
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
         .viewer-container { position: relative; width: 100%; height: 100%; background-color: transparent; overflow: hidden; }
         .viewer-container::after {
           content: '';
@@ -326,7 +334,9 @@ const ModelViewer = forwardRef(({ exhibitsData, ...props }, ref) => {
         .lighting-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, transparent 0%, rgba(0,0,0,0.8) 120%); transition: opacity 1.2s ease-in-out; }
         .lighting-overlay.lit { opacity: 0; }
         .lighting-overlay.dimmed { opacity: 1; }
-      ` }} />
+      `,
+        }}
+      />
       <div ref={mountRef} className="viewer-container"></div>
       <div style={{ display: 'none' }}>{htmlContent}</div>
     </>

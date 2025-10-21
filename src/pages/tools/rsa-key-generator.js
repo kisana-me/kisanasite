@@ -1,13 +1,14 @@
-import { useState, useEffect } from "react"
-import jwkToPem from "jwk-to-pem"
-import {pem2jwk, jwk2pem} from "pem-jwk"
-import { usePageContext } from "@/contexts/page_context"
+import { useState, useEffect } from 'react'
+// import jwkToPem from 'jwk-to-pem'
+import { pem2jwk, jwk2pem } from 'pem-jwk'
+import { usePageContext } from '@/contexts/page_context'
 
-export default function rsa() {
+export default function RsaKeyGenerator() {
   const { setTitle, setRobots } = usePageContext()
-  useEffect(()=>{
+  useEffect(() => {
     setTitle('RSA')
     setRobots('noindex, nofollow')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const [publicKey, setPublicKey] = useState('')
@@ -17,16 +18,16 @@ export default function rsa() {
   async function generateKeyPairs() {
     const keyPair = await window.crypto.subtle.generateKey(
       {
-        name: "RSA-PSS",
+        name: 'RSA-PSS',
         modulusLength: 2048,
         publicExponent: new Uint8Array([0x01, 0x00, 0x01]),
-        hash: { name: "SHA-256" },
+        hash: { name: 'SHA-256' },
       },
       true,
-      ["sign", "verify"]
+      ['sign', 'verify']
     )
-    const publicKeyJwk = await window.crypto.subtle.exportKey("jwk", keyPair.publicKey)
-    const privateKeyJwk = await window.crypto.subtle.exportKey("jwk", keyPair.privateKey)
+    const publicKeyJwk = await window.crypto.subtle.exportKey('jwk', keyPair.publicKey)
+    const privateKeyJwk = await window.crypto.subtle.exportKey('jwk', keyPair.privateKey)
     setPublicKey(JSON.stringify(publicKeyJwk))
     setPrivateKey(JSON.stringify(privateKeyJwk))
     setPublicKeyPem(jwk2pem(publicKeyJwk))
@@ -69,14 +70,28 @@ export default function rsa() {
       <form onSubmit={pemPublickSubmit}>
         <label>
           pem公開鍵:
-          <textarea rows="20" cols="50" value={formPemPublic} onChange={e=>{setFormPemPublic(e.target.value)}} />
+          <textarea
+            rows="20"
+            cols="50"
+            value={formPemPublic}
+            onChange={(e) => {
+              setFormPemPublic(e.target.value)
+            }}
+          />
         </label>
         <button type="submit">送信</button>
       </form>
       <form onSubmit={pemPrivateSubmit}>
         <label>
           pem秘密鍵:
-          <textarea rows="20" cols="50" value={formPemPublic} onChange={e=>{setFormPemPrivate(e.target.value)}} />
+          <textarea
+            rows="20"
+            cols="50"
+            value={formPemPublic}
+            onChange={(e) => {
+              setFormPemPrivate(e.target.value)
+            }}
+          />
         </label>
         <button type="submit">送信</button>
       </form>

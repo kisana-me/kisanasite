@@ -1,6 +1,6 @@
 import { getTags, getAssociatedPosts } from '@/lib/posts'
-import React , { useEffect, useState } from 'react'
-import { usePageContext } from "@/contexts/page_context"
+import React, { useEffect } from 'react'
+import { usePageContext } from '@/contexts/page_context'
 import Link from 'next/link'
 
 export async function getStaticProps() {
@@ -16,7 +16,7 @@ export async function getStaticProps() {
   async function allPostsAndTags() {
     const allAssociatedPosts = await getAllAssociatedPosts()
     const jsonOutput = JSON.stringify(allAssociatedPosts)
-    return (jsonOutput)
+    return jsonOutput
   }
   const result = await allPostsAndTags()
   return {
@@ -26,22 +26,23 @@ export async function getStaticProps() {
   }
 }
 
-export default function index({result}) {
+export default function Index({ result }) {
   const { setTitle } = usePageContext()
-  useEffect(()=>{
+  useEffect(() => {
     setTitle('タグ一覧')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
     <>
-      <div className='wrap'>
+      <div className="wrap">
         <h1>タグ一覧</h1>
         {Object.keys(JSON.parse(result)).map((tag) => (
           <div key={tag}>
             <h2 id={tag}>#{tag}</h2>
             <ul>
               {JSON.parse(result)[tag].map((post) => (
-                <Link key={post.slug} href={ "/posts/" + post.slug }>
+                <Link key={post.slug} href={'/posts/' + post.slug}>
                   {post.title}
                 </Link>
               ))}

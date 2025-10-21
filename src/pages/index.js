@@ -1,7 +1,4 @@
-import Link from 'next/link'
-import Image from 'next/image'
-import { useState, useRef } from 'react'
-import { usePageContext } from "@/contexts/page_context"
+import { usePageContext } from '@/contexts/page_context'
 import { useEffect } from 'react'
 import fs from 'fs'
 import path from 'path'
@@ -10,12 +7,13 @@ import ProfileSection from '@/components/home/profile_section'
 import ProjectsSection from '@/components/home/projects_section'
 import ActivitiesSection from '@/components/home/activities_section'
 
-export default function index({ exhibitsData, projectsData }) {
+export default function Index({ exhibitsData, projectsData }) {
   const { setTitle, setMainTagTopPadding } = usePageContext()
 
-  useEffect(()=>{
+  useEffect(() => {
     setTitle('')
     setMainTagTopPadding(false)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
@@ -40,13 +38,14 @@ export default function index({ exhibitsData, projectsData }) {
           height: 100%;
           background-color: var(--background-color);
           background-image:
-          radial-gradient(at 46% 50%, hsla(213,100%,68%,1) 0px, transparent 50%),
-          radial-gradient(at 75% 42%, hsla(51,100%,50%,1) 0px, transparent 50%),
-          radial-gradient(at 69% 70%, hsla(108,100%,66%,1) 0px, transparent 50%),
-          radial-gradient(at 52% 82%, hsla(181,100%,66%,1) 0px, transparent 50%),
-          radial-gradient(at 44% 19%, hsla(234,100%,65%,1) 0px, transparent 50%),
-          radial-gradient(at 25% 27%, hsla(305,100%,56%,1) 0px, transparent 50%),
-          radial-gradient(at 20% 51%, hsla(0,76%,46%,1) 0px, transparent 50%);
+            // prettier-ignore
+            radial-gradient(at 46% 50%, hsla(213, 100%, 68%, 1) 0px, transparent 50%),
+            radial-gradient(at 75% 42%, hsla(51, 100%, 50%, 1) 0px, transparent 50%),
+            radial-gradient(at 69% 70%, hsla(108, 100%, 66%, 1) 0px, transparent 50%),
+            radial-gradient(at 52% 82%, hsla(181, 100%, 66%, 1) 0px, transparent 50%),
+            radial-gradient(at 44% 19%, hsla(234, 100%, 65%, 1) 0px, transparent 50%),
+            radial-gradient(at 25% 27%, hsla(305, 100%, 56%, 1) 0px, transparent 50%),
+            radial-gradient(at 20% 51%, hsla(0, 76%, 46%, 1) 0px, transparent 50%);
         }
         .heading-wrap {
           display: flex;
@@ -73,12 +72,12 @@ export async function getStaticProps() {
   }
 
   const exhibitsData = getJsonData('exhibits.json')
-  const projectsData =  getJsonData('projects_data.json')
+  const projectsData = getJsonData('projects_data.json')
 
   return {
     props: {
       exhibitsData,
       projectsData,
-    }
+    },
   }
 }

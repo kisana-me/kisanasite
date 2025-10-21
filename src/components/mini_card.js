@@ -1,18 +1,18 @@
 import Image from 'next/image'
 
-export default function Card({image, icon, title, summary}) {
+export default function Card({ image, icon, title, summary }) {
   return (
     <>
       <div className="mini-card">
         <div className="mini-card-image-wrapper">
-          <Image src={image ? image : '/images/no-image.png'} alt={title} fill style={{borderRadius: '6px'}} />
+          <Image src={image ? image : '/images/no-image.png'} alt={title} fill style={{ borderRadius: '6px' }} />
         </div>
         <div className="mini-card-plate">
-          {icon &&
-          <div className="mini-card-icon">
-            <Image src={icon} alt={title} fill style={{borderRadius: '4px'}} />
-          </div>
-          }
+          {icon && (
+            <div className="mini-card-icon">
+              <Image src={icon} alt={title} fill style={{ borderRadius: '4px' }} />
+            </div>
+          )}
           <div className="mini-card-text">
             <div className="mini-card-title">{title}</div>
             <div className="mini-card-summary">{summary ? summary : '---'}</div>
@@ -39,7 +39,8 @@ export default function Card({image, icon, title, summary}) {
           display: flex;
           flex-shrink: 0;
         }
-        .mini-card-image {}
+        .mini-card-image {
+        }
         .mini-card-plate {
           height: 90px;
           margin: 0 0 0 6px;
@@ -65,7 +66,7 @@ export default function Card({image, icon, title, summary}) {
           overflow: hidden;
         }
         .mini-card-summary {
-          color: var(--inconspicuous-color)
+          color: var(--inconspicuous-color);
         }
       `}</style>
     </>

@@ -1,18 +1,18 @@
-import { usePageContext } from "@/contexts/page_context"
+import { usePageContext } from '@/contexts/page_context'
 import { useEffect } from 'react'
 
 export default function Custom500() {
   const { setTitle } = usePageContext()
-  useEffect(()=>{
+  useEffect(() => {
     setTitle('500 サーバーエラー')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
     <>
       <h1>500 - Server-side error occurred</h1>
       <p>サーバー死んでます!</p>
-      <style jsx>{`
-      `}</style>
+      <style jsx>{``}</style>
     </>
   )
 }
