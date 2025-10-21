@@ -74,12 +74,12 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/terms" className="list-content">
+              <Link href="/terms-of-service" className="list-content">
                 利用規約
               </Link>
             </li>
             <li>
-              <Link href="/policy" className="list-content">
+              <Link href="/privacy-policy" className="list-content">
                 プライバシーポリシー
               </Link>
             </li>
