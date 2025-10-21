@@ -78,6 +78,7 @@ const ModelViewer = forwardRef(({ exhibitsData, ...props }, ref) => {
         }, 300)
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   // モデルの回転をリセットする関数
@@ -292,6 +293,7 @@ const ModelViewer = forwardRef(({ exhibitsData, ...props }, ref) => {
         currentMount.removeChild(cssRenderer.domElement)
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [changeTarget])
 
   const handlePrev = () => changeTarget((currentTargetIndex - 1 + exhibitsData.length) % exhibitsData.length)
@@ -342,5 +344,6 @@ const ModelViewer = forwardRef(({ exhibitsData, ...props }, ref) => {
     </>
   )
 })
+ModelViewer.displayName = 'ModelViewer'
 
 export default ModelViewer

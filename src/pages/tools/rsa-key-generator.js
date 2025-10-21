@@ -20,6 +20,7 @@ export default function RsaKeyGenerator() {
       {
         name: 'RSA-PSS',
         modulusLength: 2048,
+        // eslint-disable-next-line no-undef
         publicExponent: new Uint8Array([0x01, 0x00, 0x01]),
         hash: { name: 'SHA-256' },
       },
