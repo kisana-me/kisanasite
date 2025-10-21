@@ -9,8 +9,6 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
-      <style jsx>{`
-      `}</style>
       </body>
     </Html>
   )

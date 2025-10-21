@@ -12,6 +12,7 @@ export default function Layout({ children }) {
   useEffect(() => {
     const isPathWithoutMainTagTopPadding = pathsWithoutMainTagTopPadding.includes(router.pathname)
     setMainTagTopPadding(!isPathWithoutMainTagTopPadding)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.pathname])
 
   return (

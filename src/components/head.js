@@ -1,19 +1,19 @@
-import Head from "next/head"
-import hslToHex from "@/lib/theme"
-import { usePageContext } from "@/contexts/page_context"
-import { useThemeContext } from "@/contexts/theme_context"
-import { useState, useEffect } from "react"
+import Head from 'next/head'
+import hslToHex from '@/lib/theme'
+import { usePageContext } from '@/contexts/page_context'
+import { useThemeContext } from '@/contexts/theme_context'
+import { useState, useEffect } from 'react'
 
 export default function DefaultHead({ children }) {
   const { title, author, description, keywords, robots, type, imagePath, imageUrl, card, id, url } = usePageContext()
   const { hue, darkMode } = useThemeContext()
-  const tmpImagePath = imagePath || "/images/kisana/kisana-1.png"
+  const tmpImagePath = imagePath || '/images/kisana/kisana-1.png'
   const image = imageUrl || new URL(tmpImagePath, process.env.NEXT_PUBLIC_APP_URL || 'http://kisana.me/').toString()
-  const alt = "KISANA:ME site image."
+  const alt = 'KISANA:ME site image.'
   const site = process.env.NEXT_PUBLIC_APP_URL || 'http://kisana.me/'
   const [themeColor, setThemeColor] = useState('#000000')
 
-  useEffect(()=>{
+  useEffect(() => {
     setThemeColor(hslToHex(hue, 75, 70))
   }, [hue])
 
@@ -22,7 +22,7 @@ export default function DefaultHead({ children }) {
       <meta charSet="UTF-8" />
       <title>{title ? title + ' | KISANA:ME' : 'KISANA:ME'}</title>
       <meta name="theme-color" content={themeColor} />
-      <meta name="color-scheme" content={darkMode ? "dark" : "light"} />
+      <meta name="color-scheme" content={darkMode ? 'dark' : 'light'} />
       <meta name="viewport" content="width=device-width" />
       <meta name="author" content={author} />
       <meta name="generator" content="KISANA:ME" />

@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import ProjectsCard from './projects_card'
 
 export default function ProjectsSection({ projectsData }) {
@@ -13,12 +12,18 @@ export default function ProjectsSection({ projectsData }) {
           </div>
           <div className="projects-content">
             {projectsData.map((category) => (
-              <div key={ category.id } className="projects-category">
+              <div key={category.id} className="projects-category">
                 <h3>{category.title}</h3>
                 <p>{category.summary}</p>
                 <div className="projects-cards">
                   {category.projects.map((project) => (
-                    <Link key={ project.id } href={ project.link } style={{cursor: "pointer", textDecoration: "none", color: "inherit"}} rel="noopener noreferrer" target="_blank">
+                    <Link
+                      key={project.id}
+                      href={project.link}
+                      style={{ cursor: 'pointer', textDecoration: 'none', color: 'inherit' }}
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
                       <ProjectsCard project={project} />
                     </Link>
                   ))}
@@ -43,7 +48,7 @@ export default function ProjectsSection({ projectsData }) {
           margin-bottom: 10px;
         }
         .projects-header p {
-          color: var(--inconspicuous-color)
+          color: var(--inconspicuous-color);
         }
         .projects-content h3 {
           font-weight: normal;

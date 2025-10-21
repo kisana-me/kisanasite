@@ -1,6 +1,3 @@
-import Link from 'next/link'
-import Image from 'next/image'
-
 export default function ActivitiesSection() {
   return (
     <>
@@ -11,11 +8,8 @@ export default function ActivitiesSection() {
             <p>活動</p>
           </div>
           <div className="activities-content">
-            <div className="activities-1">
-              活動中。。。
-            </div>
-            <div className="activities-2">
-            </div>
+            <div className="activities-1">活動中。。。</div>
+            <div className="activities-2"></div>
           </div>
         </div>
       </div>
@@ -33,7 +27,7 @@ export default function ActivitiesSection() {
           margin-bottom: 10px;
         }
         .activities-header p {
-          color: var(--inconspicuous-color)
+          color: var(--inconspicuous-color);
         }
         @media screen and (min-width: 600px) {
           .activities {

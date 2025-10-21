@@ -6,15 +6,27 @@ export default function Header() {
 
   return (
     <header>
-      <Link href="/" className='logo'>KISANA:ME</Link>
+      <Link href="/" className="logo">
+        KISANA:ME
+      </Link>
       <nav>
         <div className="menu-wrapper">
-          <Link href="/" className="link">Home</Link>
-          <Link href="/about" className="link">About</Link>
-          <Link href="/works" className="link">Works</Link>
-          <Link href="/posts" className="link">Posts</Link>
+          <Link href="/" className="link">
+            Home
+          </Link>
+          <Link href="/about" className="link">
+            About
+          </Link>
+          <Link href="/works" className="link">
+            Works
+          </Link>
+          <Link href="/posts" className="link">
+            Posts
+          </Link>
         </div>
-        <button onClick={() => setIsMenu(true)} className="menu-open-button">&#9776;</button>
+        <button onClick={() => setIsMenu(true)} className="menu-open-button">
+          &#9776;
+        </button>
       </nav>
       <style jsx>{`
         header {
@@ -23,10 +35,11 @@ export default function Header() {
           padding: 3px;
           top: 0;
           position: fixed;
-          background: linear-gradient(0deg,
-            rgba(var(--theme-mode-base-rgb-value),0.30) 0%,
-            rgba(var(--theme-mode-base-rgb-value),0.5) 40%,
-            rgba(var(--theme-mode-base-rgb-value),0.8) 100%
+          background: linear-gradient(
+            0deg,
+            rgba(var(--theme-mode-base-rgb-value), 0.3) 0%,
+            rgba(var(--theme-mode-base-rgb-value), 0.5) 40%,
+            rgba(var(--theme-mode-base-rgb-value), 0.8) 100%
           );
           backdrop-filter: blur(3px);
           display: flex;

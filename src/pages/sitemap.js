@@ -1,11 +1,12 @@
-import { usePageContext } from "@/contexts/page_context"
+import { usePageContext } from '@/contexts/page_context'
 import { useEffect } from 'react'
-import Link from "next/link"
+import Link from 'next/link'
 
-export default function sitemap() {
+export default function Sitemap() {
   const { setTitle } = usePageContext()
-  useEffect(()=>{
+  useEffect(() => {
     setTitle('サイトマップ')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
@@ -36,8 +37,7 @@ export default function sitemap() {
           <Link href="/tools/blockchain-maker">Blockchain Maker</Link>
         </li>
       </ul>
-      <style jsx>{`
-      `}</style>
+      <style jsx>{``}</style>
     </>
   )
 }

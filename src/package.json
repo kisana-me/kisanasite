@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@next/mdx": "^15.5.5",
+    "eslint": "^9.38.0",
     "gray-matter": "^4.0.3",
     "highlight.js": "^11.11.1",
     "html-react-parser": "^5.2.7",
@@ -38,5 +39,8 @@
     "three": "^0.180.0",
     "unified": "^11.0.5",
     "zenn-markdown-html": "^0.2.3"
+  },
+  "devDependencies": {
+    "eslint-config-next": "15.5.6"
   }
 }

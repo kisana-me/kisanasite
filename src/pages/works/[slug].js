@@ -1,16 +1,16 @@
-import { useEffect } from "react"
+import { useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import parse from 'html-react-parser'
 import { getAllMdIds, getMdData, getSortedMdsData } from '@/lib/mds_reader'
-import { usePageContext } from "@/contexts/page_context"
+import { usePageContext } from '@/contexts/page_context'
 import MiniCard from '@/components/mini_card'
 
 export async function getStaticPaths() {
   const paths = getAllMdIds('works')
   return {
     paths,
-    fallback: false
+    fallback: false,
   }
 }
 
@@ -20,13 +20,14 @@ export async function getStaticProps({ params }) {
   return { props: { mdData, sortedMdsData } }
 }
 
-export default function work({ mdData, sortedMdsData }) {
+export default function Work({ mdData, sortedMdsData }) {
   const { setTitle, setDescription, setType, setImageUrl } = usePageContext()
-  useEffect(()=>{
+  useEffect(() => {
     setTitle(mdData.title)
     setDescription(mdData.description)
     setType('article')
     setImageUrl(mdData.image)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
@@ -46,7 +47,7 @@ export default function work({ mdData, sortedMdsData }) {
         </div>
         <div className="work-aside">
           {sortedMdsData.map((work) => (
-            <Link key={ work.slug } href={ "/works/" + work.slug } className="work-aside-works">
+            <Link key={work.slug} href={'/works/' + work.slug} className="work-aside-works">
               <MiniCard title={work.title} image={work.image} summary={work.summary} />
             </Link>
           ))}
@@ -70,7 +71,7 @@ export default function work({ mdData, sortedMdsData }) {
         }
         .work-icon {
           width: 50px;
-          height:  50px;
+          height: 50px;
           display: flex;
         }
         .work-aside {

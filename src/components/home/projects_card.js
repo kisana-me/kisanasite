@@ -1,18 +1,17 @@
-import Link from 'next/link'
 import Image from 'next/image'
 
 export default function ProjectsCard({ project }) {
   return (
     <>
-      <div className='projects-card'>
-        <div className='projects-card-image'>
-          <div className='projects-card-image-container'>
-            <Image src={project.image} alt="object" style={{ objectFit: 'cover', objectPosition: 'center' }} fill sizes='200px' />
+      <div className="projects-card">
+        <div className="projects-card-image">
+          <div className="projects-card-image-container">
+            <Image src={project.image} alt="object" style={{ objectFit: 'cover', objectPosition: 'center' }} fill sizes="200px" />
           </div>
         </div>
-        <div className='projects-card-info'>
-          <div className='projects-card-title'>{project.title}</div>
-          <div className='projects-card-summary'>{project.summary}</div>
+        <div className="projects-card-info">
+          <div className="projects-card-title">{project.title}</div>
+          <div className="projects-card-summary">{project.summary}</div>
         </div>
       </div>
       <style jsx>{`
@@ -48,7 +47,8 @@ export default function ProjectsCard({ project }) {
           font-size: 0.8em;
           color: var(--inconspicuous-color);
         }
-        .projects-card-title, .projects-card-summary {
+        .projects-card-title,
+        .projects-card-summary {
           text-overflow: ellipsis;
           overflow: hidden;
           white-space: nowrap;
