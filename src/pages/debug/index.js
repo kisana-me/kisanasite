@@ -1,7 +1,10 @@
 import Link from 'next/link'
-import { use, useEffect } from 'react'
+import { useEffect } from 'react'
+import { usePageContext } from '@/contexts/page_context'
 
 export default function Index() {
+  const { setTitle } = usePageContext()
+
   useEffect(() => {
     setTitle('Debug')
     // eslint-disable-next-line react-hooks/exhaustive-deps
