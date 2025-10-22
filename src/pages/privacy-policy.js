@@ -5,18 +5,19 @@ import Link from 'next/link'
 export default function PrivacyPolicy() {
   const { setTitle } = usePageContext()
   useEffect(() => {
-    setTitle('プライバシーポリシー')
+    setTitle('Privacy Policy')
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
     <>
-      <h1>このサイトの運営方針</h1>
+      <div className="heading">
+        <h1>Privacy Policy</h1>
+        <p>プライバシーポリシー</p>
+      </div>
+      <p>このサイトの運営方針</p>
       <h2>個人情報の利用目的</h2>
-      <p>
-        当サイトでは、お問い合わせの際やコメント機能にて、
-        名前やメールアドレス等の個人情報を入力いただく場合がございます。
-      </p>
+      <p>当サイトでは、お問い合わせの際やコメント機能にて、 名前やメールアドレス等の個人情報を入力いただく場合がございます。</p>
       <p>
         取得した個人情報は、お問い合わせに対する回答や必要な情報を電子メールなどをでご連絡する場合に
         利用させていただくものであり、これらの目的以外では利用いたしません。

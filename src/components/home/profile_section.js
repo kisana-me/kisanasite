@@ -1,94 +1,82 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { useThemeContext } from '@/contexts/theme_context'
 
 export default function ProfileSection() {
+  const { darkMode } = useThemeContext()
+
   return (
     <>
-      <div className="profile-wrapper">
-        <div className="profile">
-          <div className="profile-header">
-            <h2>Profile</h2>
-            <p>プロフィール</p>
+      <div className="profile">
+        <div className="heading">
+          <h2>Profile</h2>
+          <p>プロフィール</p>
+        </div>
+        <div className="profile-content">
+          <div className="profile-1">
+            <h3>きさな / kisana</h3>
+            <p>05生まれ04世代27卒B3。</p>
+            <p>Web系の個人開発ばかりしている。</p>
+            <p>バックエンドからフロントエンドまでやりたい。</p>
+            <p>不定期でブログやYouTubeなどで投稿をしている。</p>
+            <p>よくマイクラサーバーをたててマルチプレイをする。</p>
+            <dl>
+              <dt>好きなもの:</dt>
+              <dd>IT技術 任天堂 SNS ガジェット機器 K-POP BeatBox ...</dd>
+              <dt>趣味:</dt>
+              <dd>映画ドラマアニメ鑑賞 ゲーム ライブ参戦 サイクリング ...</dd>
+              <dt>技術:</dt>
+              <dd>Ruby on Rails / Next.js / React / Docker / Ubuntu / Proxmox / Blender / AviUtl ...</dd>
+            </dl>
           </div>
-          <div className="profile-content">
-            <div className="profile-1">
-              <h3>きさな / kisana</h3>
-              <p>05生まれ04世代27卒B3。</p>
-              <p>Web系の個人開発ばかりしている。</p>
-              <p>バックエンドからフロントエンドまでやりたい。</p>
-              <p>不定期でブログやYouTubeなどで投稿をしている。</p>
-              <p>よくマイクラサーバーをたててマルチプレイをする。</p>
-              <dl>
-                <dt>好きなもの:</dt>
-                <dd>IT技術 任天堂 SNS ガジェット機器 K-POP BeatBox ...</dd>
-                <dt>趣味:</dt>
-                <dd>映画ドラマアニメ鑑賞 ゲーム ライブ参戦 サイクリング ...</dd>
-                <dt>技術:</dt>
-                <dd>Ruby on Rails / Next.js / React / Docker / Ubuntu / Proxmox / Blender / AviUtl ...</dd>
-              </dl>
+          <div className="profile-2">
+            <ul>
+              <li>
+                <Link href="https://ivecolor.com/" rel="noopener noreferrer" target="_blank">
+                  IVECOLOR: ブログ
+                </Link>
+              </li>
+              <li>
+                <Link href="https://amiverse.net/" rel="noopener noreferrer" target="_blank">
+                  Amiverse: SNS
+                </Link>
+              </li>
+            </ul>
+            <div className="profile-2-icon">
+              <Image
+                src="/images/kisana/kisana-logo.png"
+                alt="kisana icon"
+                style={{
+                  objectFit: 'cover',
+                  objectPosition: 'center',
+                  borderRadius: '14px',
+                  boxShadow: `0px 0px ${darkMode ? '14px 7px' : '7px 3px'} hsla(var(--theme-hsl-value), 50%)`,
+                }}
+                fill
+                sizes="96px"
+              />
             </div>
-            <div className="profile-2">
-              <ul>
-                <li>
-                  <Link href="https://ivecolor.com/" rel="noopener noreferrer" target="_blank">
-                    IVECOLOR: ブログ
-                  </Link>
-                </li>
-                <li>
-                  <Link href="https://amiverse.net/" rel="noopener noreferrer" target="_blank">
-                    Amiverse: SNS
-                  </Link>
-                </li>
-              </ul>
-              <div className="profile-2-icon">
-                <Image
-                  src="/images/kisana/kisana-logo.png"
-                  alt="kisana icon"
-                  style={{
-                    objectFit: 'cover',
-                    objectPosition: 'center',
-                    borderRadius: '14px',
-                    boxShadow: '0px 0px 7px 3px rgba(var(--theme-mode-accent-rgb-value), 50%)',
-                  }}
-                  fill
-                  sizes="96px"
-                />
-              </div>
-              <ul>
-                <li>
-                  <Link href="https://x.com/@kisana_me/" rel="noopener noreferrer" target="_blank">
-                    X: @kisana_me
-                  </Link>
-                </li>
-                <li>
-                  <Link href="https://github.com/kisana-me/" rel="noopener noreferrer" target="_blank">
-                    GitHub: @kisana-me
-                  </Link>
-                </li>
-                <li>
-                  <Link href="https://youtube.com/@kisana_me/" rel="noopener noreferrer" target="_blank">
-                    YouTube: @kisana_me
-                  </Link>
-                </li>
-              </ul>
-            </div>
+            <ul>
+              <li>
+                <Link href="https://x.com/@kisana_me/" rel="noopener noreferrer" target="_blank">
+                  X: @kisana_me
+                </Link>
+              </li>
+              <li>
+                <Link href="https://github.com/kisana-me/" rel="noopener noreferrer" target="_blank">
+                  GitHub: @kisana-me
+                </Link>
+              </li>
+              <li>
+                <Link href="https://youtube.com/@kisana_me/" rel="noopener noreferrer" target="_blank">
+                  YouTube: @kisana_me
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
       <style jsx>{`
-        .profile-wrapper {
-          display: flex;
-          justify-content: center;
-        }
-        .profile {
-          width: 100%;
-          max-width: 800px;
-          padding: 0 20px;
-        }
-        .profile-header {
-          margin-bottom: 10px;
-        }
-        .profile-header p,
         .profile-content p {
           color: var(--inconspicuous-color);
         }
@@ -124,6 +112,7 @@ export default function ProfileSection() {
           margin-left: 20px;
         }
         .profile-2 {
+          margin: auto;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -145,10 +134,6 @@ export default function ProfileSection() {
           position: relative;
         }
         @media screen and (min-width: 600px) {
-          .profile {
-            width: 80%;
-            padding: 0;
-          }
           .profile-content {
             flex-direction: row;
           }

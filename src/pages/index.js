@@ -8,18 +8,17 @@ import ProjectsSection from '@/components/home/projects_section'
 import ActivitiesSection from '@/components/home/activities_section'
 
 export default function Index({ exhibitsData, projectsData }) {
-  const { setTitle, setMainTagTopPadding } = usePageContext()
+  const { setTitle, fullMain } = usePageContext()
 
   useEffect(() => {
     setTitle('')
-    setMainTagTopPadding(false)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
     <>
       <div className="home-hero">
-        <ExhibitsSection exhibitsData={exhibitsData} />
+        <ExhibitsSection key={String(fullMain)} exhibitsData={exhibitsData} fullMain={fullMain} />
       </div>
       <div className="home-sections">
         <ProfileSection />
@@ -27,7 +26,21 @@ export default function Index({ exhibitsData, projectsData }) {
         <ActivitiesSection />
       </div>
       <style jsx>{`
+        :global(.home-hero h1),
+        :global(.home-hero h2),
+        :global(.home-hero h3),
+        :global(.home-hero p),
+        :global(.home-sections h1),
+        :global(.home-sections h2),
+        :global(.home-sections h3),
+        :global(.home-sections p) {
+          margin: 0;
+        }
         .home-sections {
+          width: 100%;
+          max-width: 1500px;
+          padding: 0 20px 0;
+          box-sizing: border-box;
           display: flex;
           flex-direction: column;
           gap: 30px;
@@ -58,6 +71,13 @@ export default function Index({ exhibitsData, projectsData }) {
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           border-bottom: 2px solid var(--link-color);
+        }
+        @media screen and (min-width: 800px) {
+          .home-sections {
+            width: 90%;
+            padding: 0;
+            margin: 0 auto;
+          }
         }
       `}</style>
     </>

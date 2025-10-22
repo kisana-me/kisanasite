@@ -1,4 +1,5 @@
 import { usePageContext } from '@/contexts/page_context'
+import Link from 'next/link'
 import { useEffect } from 'react'
 
 export default function Contact() {
@@ -10,10 +11,13 @@ export default function Contact() {
 
   return (
     <>
-      <h1>お問い合わせ</h1>
+      <div className="heading">
+        <h1>Contact</h1>
+        <p>お問い合わせ</p>
+      </div>
       <p>
         私が運営しているブログサイトの
-        <a href="https://ivecolor.com/contact/">お問い合わせフォーム</a>をご使用ください。
+        <Link href="https://ivecolor.com/contact/">お問い合わせフォーム</Link>をご使用ください。
       </p>
       <style jsx>{``}</style>
     </>

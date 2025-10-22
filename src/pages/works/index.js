@@ -18,7 +18,10 @@ export default function Index({ sortedMdsData }) {
 
   return (
     <>
-      <h1>Works</h1>
+      <div className="heading">
+        <h1>Works</h1>
+        <p>作品一覧</p>
+      </div>
       <div className="works">
         {sortedMdsData.map((work, index) => (
           <Link key={work.slug} href={'/works/' + work.slug} className="works-card">

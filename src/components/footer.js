@@ -53,6 +53,11 @@ export default function Footer() {
           <div className="list-name">ツール</div>
           <ul>
             <li>
+              <Link href="/tools" className="list-content">
+                Index
+              </Link>
+            </li>
+            <li>
               <Link href="/tools/markdown-editor" className="list-content">
                 Markdown Editor
               </Link>

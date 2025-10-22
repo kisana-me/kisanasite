@@ -21,9 +21,9 @@ export const ThemeContextProvider = ({ children }) => {
   }, [])
 
   useEffect(() => {
-    if(thereRenderFlagRef.current) {
+    if (thereRenderFlagRef.current) {
       localStorage.setItem('theme', theme)
-    }else{
+    } else {
       thereRenderFlagRef.current = true
     }
     if (theme === 'system') {
@@ -39,9 +39,9 @@ export const ThemeContextProvider = ({ children }) => {
   }, [theme])
 
   useEffect(() => {
-    if(hueRenderFlagRef.current) {
+    if (hueRenderFlagRef.current) {
       localStorage.setItem('hue', hue)
-    }else{
+    } else {
       hueRenderFlagRef.current = true
     }
   }, [hue])
@@ -53,22 +53,31 @@ export const ThemeContextProvider = ({ children }) => {
   const GlobalStyles = `
     :root {
       --theme-hue-value: ${hue};
+      --theme-hsl-value: ${hue}, 75%, 70%;
       --theme-hsl-color: hsl(${hue}, 75%, 70%);
       --theme-background-1-hsl-color: hsl(${hue}, 75%, ${darkMode ? '16' : '88'}%);
       --theme-background-2-hsl-color: hsl(${hue}, 75%, ${darkMode ? '10' : '94'}%);
       --theme-background-3-hsl-color: hsl(${hue}, 75%, ${darkMode ? '8' : '96'}%);
-      --theme-mode-accent-rgb-value: ${darkMode ? '255,255,255' : '0,0,0'};
-      --theme-mode-base-rgb-value: ${darkMode ? '0,0,0' : '255,255,255'};
-      --theme-mode-accent-rgb-color: rgb(${darkMode ? '255,255,255' : '0,0,0'});
-      --theme-mode-base-rgb-color: rgb(${darkMode ? '0,0,0' : '255,255,255'});
+      --theme-mode-base-rgb-value: ${darkMode ? '0, 0, 0' : '255, 255, 255'};
+      --theme-mode-base-rgb-color: rgb(${darkMode ? '0, 0, 0' : '255, 255, 255'});
+      --theme-mode-accent-rgb-value: ${darkMode ? '255, 255, 255' : '0, 0, 0'};
+      --theme-mode-accent-rgb-color: rgb(${darkMode ? '255, 255, 255' : '0, 0, 0'});
       --inconspicuous-color: hsl(0, 0%, ${darkMode ? '70' : '30'}%);
+      --gradient: linear-gradient(to right,
+        hsl(0, 75%, ${darkMode ? '70' : '60'}%),
+        hsl(60, 75%, ${darkMode ? '70' : '60'}%),
+        hsl(120, 75%, ${darkMode ? '70' : '60'}%),
+        hsl(180, 75%, ${darkMode ? '70' : '60'}%),
+        hsl(240, 75%, ${darkMode ? '70' : '60'}%),
+        hsl(300, 75%, ${darkMode ? '70' : '60'}%),
+        hsl(360, 75%, ${darkMode ? '70' : '60'}%));
     }
     html {
       background-color: #${darkMode ? '000' : 'fff'};
       color: #${darkMode ? 'fff' : '000'};
     }
     a {
-      color: hsl(${hue}, 75%, 45%);
+      color: hsl(${hue}, 75%, ${darkMode ? '70' : '45'}%);
     }
   `
 

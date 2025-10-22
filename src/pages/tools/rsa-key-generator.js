@@ -6,7 +6,7 @@ import { usePageContext } from '@/contexts/page_context'
 export default function RsaKeyGenerator() {
   const { setTitle, setRobots } = usePageContext()
   useEffect(() => {
-    setTitle('RSA')
+    setTitle('RSA Key Generator')
     setRobots('noindex, nofollow')
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -49,7 +49,10 @@ export default function RsaKeyGenerator() {
 
   return (
     <>
-      <h1>Generate RSA-PPS</h1>
+      <div className="heading">
+        <h1>RSA Key Generator</h1>
+        <p>RSA鍵生成器</p>
+      </div>
       <button onClick={generateKeyPairs}>Generate</button>
       <br />
       <span>jwk公開鍵</span>

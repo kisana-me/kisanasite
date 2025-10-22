@@ -47,6 +47,10 @@ export default function ProjectsCard({ project }) {
           font-size: 0.8em;
           color: var(--inconspicuous-color);
         }
+        .projects-card:hover .projects-card-title,
+        .projects-card:hover .projects-card-summary {
+          text-decoration: underline;
+        }
         .projects-card-title,
         .projects-card-summary {
           text-overflow: ellipsis;
