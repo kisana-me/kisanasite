@@ -29,7 +29,6 @@ export default function BlockchainMaker() {
         <h1>Blockchain Maker</h1>
         <p>ブロックチェーンメーカー</p>
       </div>
-      <h1>Blockchain Maker</h1>
       <p>難易度は、先頭から「0」が何個続くhash値を探すかであり、react上の計算が遅いので1~3の間に設定することをおすすめします。</p>
       <p>ハッシュ化する文字列は、単にブロック番号、ナンス、テキスト、前ハッシュ値をスペーサー等入れず順に組み合わせたものです。</p>
 
