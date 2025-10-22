@@ -83,26 +83,23 @@ export default function MarkdownEditor() {
 
   return (
     <>
-      <div className="wrap">
+      <div className="heading">
         <h1>Markdown Editor</h1>
-        <p>このフォームにマークダウン形式で記述すると下にレンダリング結果が出力されます。</p>
-        <p>マークダウン処理エンジンは'markdown-it'を使用しています。</p>
-        <div className="markdown">
-          <textarea
-            rows="20"
-            cols="50"
-            onChange={(e) => {
-              setPostData(getPostData(e.target.value))
-            }}
-          />
-        </div>
-        <div className="show-md">{postData.contentHtml ? parse(postData.contentHtml) : ''}</div>
+        <p>マークダウンエディタ</p>
       </div>
-      <style jsx>{`
-        .wrap {
-          padding: 50px 0 0 0;
-        }
-      `}</style>
+      <p>このフォームにマークダウン形式で記述すると下にレンダリング結果が出力されます。</p>
+      <p>マークダウン処理エンジンは'markdown-it'を使用しています。</p>
+      <div className="markdown">
+        <textarea
+          rows="20"
+          cols="50"
+          onChange={(e) => {
+            setPostData(getPostData(e.target.value))
+          }}
+        />
+      </div>
+      <div className="show-md">{postData.contentHtml ? parse(postData.contentHtml) : ''}</div>
+      <style jsx>{``}</style>
     </>
   )
 }

@@ -5,13 +5,16 @@ import Link from 'next/link'
 export default function Sitemap() {
   const { setTitle } = usePageContext()
   useEffect(() => {
-    setTitle('サイトマップ')
+    setTitle('Sitemap')
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
     <>
-      <h1>サイトマップ</h1>
+      <div className="heading">
+        <h1>Sitemap</h1>
+        <p>サイトマップ</p>
+      </div>
       <p>本サイトのすべてのページを示します。</p>
       <h2>メイン</h2>
       <ul>

@@ -51,7 +51,7 @@ export function ScrollbarContextProvider({ children }) {
     const maxScroll = contentHeight - viewportHeight
     const delta = e.clientY - startY
     const scrollProgress = delta / scrollbarTravel
-    const newScroll = startScroll + (scrollProgress * maxScroll)
+    const newScroll = startScroll + scrollProgress * maxScroll
     window.scrollTo(0, newScroll)
   }
 
@@ -61,7 +61,7 @@ export function ScrollbarContextProvider({ children }) {
     isDraggingRef.current = true
     dragInfoRef.current = {
       startY: e.clientY,
-      startScroll: window.scrollY
+      startScroll: window.scrollY,
     }
     scrollbarRef.current.classList.add('dragging')
   }
@@ -95,21 +95,21 @@ export function ScrollbarContextProvider({ children }) {
     if (scrollbarRef.current) {
       onMouseDown(e)
       window.addEventListener('mousemove', onMouseMove)
-      window.addEventListener('mouseup', () => {
-        onMouseUp()
-        window.removeEventListener('mousemove', onMouseMove)
-      }, { once: true })
+      window.addEventListener(
+        'mouseup',
+        () => {
+          onMouseUp()
+          window.removeEventListener('mousemove', onMouseMove)
+        },
+        { once: true }
+      )
     }
   }
 
   return (
     <ScrollbarContext.Provider value={null}>
       {children}
-      <div
-        ref={scrollbarRef}
-        onMouseDown={handleMouseDown}
-        className={`global-scrollbar ${scrollbarVisible ? 'visible' : ''}`}
-      />
+      <div ref={scrollbarRef} onMouseDown={handleMouseDown} className={`global-scrollbar ${scrollbarVisible ? 'visible' : ''}`} />
       <style jsx global>{`
         .global-scrollbar {
           position: fixed;

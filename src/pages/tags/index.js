@@ -29,32 +29,29 @@ export async function getStaticProps() {
 export default function Index({ result }) {
   const { setTitle } = usePageContext()
   useEffect(() => {
-    setTitle('タグ一覧')
+    setTitle('Tags')
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
     <>
-      <div className="wrap">
-        <h1>タグ一覧</h1>
-        {Object.keys(JSON.parse(result)).map((tag) => (
-          <div key={tag}>
-            <h2 id={tag}>#{tag}</h2>
-            <ul>
-              {JSON.parse(result)[tag].map((post) => (
-                <Link key={post.slug} href={'/posts/' + post.slug}>
-                  {post.title}
-                </Link>
-              ))}
-            </ul>
-          </div>
-        ))}
+      <div className="heading">
+        <h1>Tags</h1>
+        <p>タグ一覧</p>
       </div>
-      <style jsx>{`
-        .wrap {
-          padding: 50px 0 0 0;
-        }
-      `}</style>
+      {Object.keys(JSON.parse(result)).map((tag) => (
+        <div key={tag}>
+          <h2 id={tag}>#{tag}</h2>
+          <ul>
+            {JSON.parse(result)[tag].map((post) => (
+              <Link key={post.slug} href={'/posts/' + post.slug}>
+                {post.title}
+              </Link>
+            ))}
+          </ul>
+        </div>
+      ))}
+      <style jsx>{``}</style>
     </>
   )
 }

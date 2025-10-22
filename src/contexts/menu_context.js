@@ -8,9 +8,9 @@ export const MenuContextProvider = ({ children }) => {
   // Menu
   const [isMenu, setIsMenu] = useState(false)
   useEffect(() => {
-    if(isMenu) {
+    if (isMenu) {
       document.body.style.overflow = 'hidden'
-    }else{
+    } else {
       document.body.style.overflow = 'auto'
     }
   }, [isMenu])
@@ -20,35 +20,43 @@ export const MenuContextProvider = ({ children }) => {
     setHue(newHue)
   }
   const gradientBackground = `
-    linear-gradient(to right, 
-    hsl(0, 75%, 70%), 
-    hsl(60, 75%, 70%), 
-    hsl(120, 75%, 70%), 
-    hsl(180, 75%, 70%), 
-    hsl(240, 75%, 70%), 
-    hsl(300, 75%, 70%), 
+    linear-gradient(to right,
+    hsl(0, 75%, 70%),
+    hsl(60, 75%, 70%),
+    hsl(120, 75%, 70%),
+    hsl(180, 75%, 70%),
+    hsl(240, 75%, 70%),
+    hsl(300, 75%, 70%),
     hsl(360, 75%, 70%)
     )
   `
 
   return (
-    <MenuContext.Provider value={{isMenu, setIsMenu}}>
+    <MenuContext.Provider value={{ isMenu, setIsMenu }}>
       {children}
       <div className={isMenu ? 'menu-open' : 'menu-close'}>
-        <button onClick={() => setIsMenu(false)}  className="menu-close-button">&times;</button>
+        <button onClick={() => setIsMenu(false)} className="menu-close-button">
+          &times;
+        </button>
         <br />
         <br />
-        <Link href="/" className="link" onClick={() => setIsMenu(false)}>Home</Link>
-        <Link href="/about" className="link" onClick={() => setIsMenu(false)}>About</Link>
-        <Link href="/works" className="link" onClick={() => setIsMenu(false)}>Works</Link>
-        <Link href="/posts" className="link" onClick={() => setIsMenu(false)}>Posts</Link>
+        <Link href="/" className="link" onClick={() => setIsMenu(false)}>
+          Home
+        </Link>
+        <Link href="/about" className="link" onClick={() => setIsMenu(false)}>
+          About
+        </Link>
+        <Link href="/works" className="link" onClick={() => setIsMenu(false)}>
+          Works
+        </Link>
+        <Link href="/posts" className="link" onClick={() => setIsMenu(false)}>
+          Posts
+        </Link>
         <br />
         <br />
         <div>
           <div>テーマを変更</div>
-          <span>
-            現在のテーマ: {theme === 'light' ? '☀️ライト☀️' : theme === 'dark' ? '🌙ダーク🌙' : '🖥️システム🖥️'}
-          </span>
+          <span>現在のテーマ: {theme === 'light' ? '☀️ライト☀️' : theme === 'dark' ? '🌙ダーク🌙' : '🖥️システム🖥️'}</span>
           <br />
           <button
             onClick={() => {
@@ -65,7 +73,9 @@ export const MenuContextProvider = ({ children }) => {
         <br />
         <div>
           <div>色を変更</div>
-          <span>現在の色: <span style={{ color: 'var(--theme-hsl-color)' }}>こんな色</span></span>
+          <span>
+            現在の色: <span style={{ color: 'var(--theme-hsl-color)' }}>こんな色</span>
+          </span>
           <br />
           <input
             type="range"
@@ -74,20 +84,19 @@ export const MenuContextProvider = ({ children }) => {
             step={1}
             value={hue}
             onChange={(e) => handleHueChange(parseInt(e.target.value))}
-            className='input_hue'
+            className="input_hue"
             style={{
               appearance: 'none',
               height: '12px',
               borderRadius: '2px',
               background: gradientBackground,
-              cursor: 'pointer'
+              cursor: 'pointer',
             }}
           />
           <br />
-          <button
-            onClick={resetHue}
-            className="reset_hue"
-          >リセット</button>
+          <button onClick={resetHue} className="reset_hue">
+            リセット
+          </button>
         </div>
       </div>
       <style jsx>{`
@@ -126,7 +135,7 @@ export const MenuContextProvider = ({ children }) => {
           height: 20px;
           background: var(--theme-hsl-color);
           border-radius: 2px;
-          transition: transform .2s ease;
+          transition: transform 0.2s ease;
           border: 0 solid var(--theme-hsl-color);
           box-shadow: 0px 4px 5px -2px var(--theme-hsl-color);
         }
@@ -136,7 +145,7 @@ export const MenuContextProvider = ({ children }) => {
           height: 20px;
           background: var(--theme-hsl-color);
           border-radius: 2px;
-          transition: transform .2s ease;
+          transition: transform 0.2s ease;
           border: 0 solid var(--theme-hsl-color);
           box-shadow: 0px 4px 5px -2px var(--theme-hsl-color);
         }

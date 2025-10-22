@@ -12,7 +12,7 @@ export const getStaticProps = () => {
 export default function Index({ sortedDate, sortedUpdate }) {
   const { setTitle } = usePageContext()
   useEffect(() => {
-    setTitle('投稿一覧')
+    setTitle('Posts')
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -20,19 +20,17 @@ export default function Index({ sortedDate, sortedUpdate }) {
   const arrayTrigger = () => setIsPostOrder(!isPostOrder)
   return (
     <>
-      <h1>Posts</h1>
+      <div className="heading">
+        <h1>Posts</h1>
+        <p>投稿一覧</p>
+      </div>
       <button onClick={arrayTrigger}>切り替え</button>
       <p>{isPostOrder ? '投稿順です' : '更新順です'}</p>
       <Link href="/tags">タグ一覧</Link>
       <div className="posts">
         {(isPostOrder ? sortedDate : sortedUpdate).map((post, index) => (
           <Link key={post.slug} href={'/posts/' + post.slug} className="posts-card">
-            <Card
-              title={post.title}
-              image={post.image}
-              summary={post.description}
-              priority={index < 3}
-            />
+            <Card title={post.title} image={post.image} summary={post.description} priority={index < 3} />
           </Link>
         ))}
       </div>

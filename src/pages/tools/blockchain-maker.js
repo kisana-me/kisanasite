@@ -25,34 +25,28 @@ export default function BlockchainMaker() {
 
   return (
     <>
-      <div className="wrap">
-        <div className="container">
-          <h1>Blockchain Maker</h1>
-          <p>難易度は、先頭から「0」が何個続くhash値を探すかであり、react上の計算が遅いので1~3の間に設定することをおすすめします。</p>
-          <p>ハッシュ化する文字列は、単にブロック番号、ナンス、テキスト、前ハッシュ値をスペーサー等入れず順に組み合わせたものです。</p>
+      <div className="heading">
+        <h1>Blockchain Maker</h1>
+        <p>ブロックチェーンメーカー</p>
+      </div>
+      <h1>Blockchain Maker</h1>
+      <p>難易度は、先頭から「0」が何個続くhash値を探すかであり、react上の計算が遅いので1~3の間に設定することをおすすめします。</p>
+      <p>ハッシュ化する文字列は、単にブロック番号、ナンス、テキスト、前ハッシュ値をスペーサー等入れず順に組み合わせたものです。</p>
 
-          <input type="number" value={difficulty} onChange={(e) => setDifficulty(e.target.value)} />
-          <br />
-          <div className="blocks">
-            {blocks.map((block, index) => (
-              <Block
-                key={index}
-                difficulty={difficulty}
-                blockNumber={block.blockNumber}
-                previousHash={block.previousHash}
-                onMine={(newHash) => addBlock(newHash)}
-              />
-            ))}
-          </div>
-        </div>
+      <input type="number" value={difficulty} onChange={(e) => setDifficulty(e.target.value)} />
+      <br />
+      <div className="blocks">
+        {blocks.map((block, index) => (
+          <Block
+            key={index}
+            difficulty={difficulty}
+            blockNumber={block.blockNumber}
+            previousHash={block.previousHash}
+            onMine={(newHash) => addBlock(newHash)}
+          />
+        ))}
       </div>
       <style jsx>{`
-        .wrap {
-          padding: 50px 0 0 0;
-        }
-        .container {
-          padding: 20px;
-        }
         .blocks {
           display: flex;
           overflow-x: auto;
