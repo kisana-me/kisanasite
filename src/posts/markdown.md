@@ -99,14 +99,14 @@ asdfghjkl[^1]zxcvbnm
 
 ### multimd-table
 
-|             |          Grouping           ||
-|First Header  | Second Header | Third Header |
-| ------------ | :-----------: | -----------: |
-|Content       |          *Long Cell*        ||
-|Content       |   **Cell**    |         Cell |
-||LONG CELL||
-|New section   |     More      |         Data |
-|And more      | With an escaped '\\|'       ||
+|             |          Grouping           || long |
+|First Header  | Second Header | Third Header | long |
+| ------------ | :-----------: | -----------: | -----------: |
+|Content       |          *Long Cell*        || long |
+|Content       |   **Cell**    |         Cell | veryveryveryveryveryverylonglonglonglonglongcellellcel |
+||LONG CELL||||
+|New section   |     More      |         Data | long |
+|And more      | With an escaped '\\|'       || long |
 
 aaa
 

@@ -65,6 +65,9 @@ export default function Work({ mdData, sortedMdsData }) {
           padding: 10px;
           box-sizing: border-box;
         }
+        :global(.work-main img) {
+          width: 100%;
+        }
         .work-image {
           width: 100%;
           display: flex;

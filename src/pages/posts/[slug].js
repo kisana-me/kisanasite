@@ -77,6 +77,9 @@ export default function Post({ postData, sortedDate }) {
           padding: 10px;
           box-sizing: border-box;
         }
+        :global(.post-main img) {
+          width: 100%;
+        }
         .post-image {
           width: 100%;
           display: flex;
