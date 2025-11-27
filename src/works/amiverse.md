@@ -7,7 +7,7 @@ icon: '/images/amiverse/amiverse-logo.png'
 image: '/images/amiverse/amiverse-1.png'
 ---
 
-![Amiverseのスクリーンショット5枚](https://m.ivecolor.com/ivecolor/variants/images/images/yqd2xu4tza015bn3j.webp)
+![Amiverseのスクリーンショット5枚](https://m.ivecolor.com/ivecolor/images/variants/normal/yqd2xu4tza015b.webp)
 
 ## 概要
 

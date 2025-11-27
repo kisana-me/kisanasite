@@ -7,7 +7,7 @@ icon: '/images/ivecolor/ivecolor-logo.png'
 image: '/images/ivecolor/ivecolor-1.png'
 ---
 
-![IVECOLORのスクリーンショット5枚](https://m.ivecolor.com/ivecolor/variants/images/images/og5y47udifrcea8jp.webp)
+![IVECOLORのスクリーンショット5枚](https://m.ivecolor.com/ivecolor/images/variants/normal/og5y47udifrcea.webp)
 
 ## 概要
 

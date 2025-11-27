@@ -7,7 +7,7 @@ icon: '/images/bealive/bealive-logo.png'
 image: '/images/bealive/bealive-1.png'
 ---
 
-![BeAlive.のスクリーンショット5枚](https://m.ivecolor.com/ivecolor/variants/images/images/t0k95brlscjhg1zoe.webp)
+![BeAlive.のスクリーンショット5枚](https://m.ivecolor.com/ivecolor/images/variants/normal/t0k95brlscjhg1.webp)
 
 ## 概要
 

@@ -7,7 +7,7 @@ icon: '/images/anyur/anyur-logo.png'
 image: '/images/anyur/anyur-1.png'
 ---
 
-![ANYURのスクリーンショット5枚](https://m.ivecolor.com/ivecolor/variants/images/images/3zkqxb179gd2a4peu.webp)
+![ANYURのスクリーンショット5枚](https://m.ivecolor.com/ivecolor/images/variants/normal/3zkqxb179gd2a4.webp)
 
 ## 概要
 
