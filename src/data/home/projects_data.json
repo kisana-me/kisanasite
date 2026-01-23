@@ -43,15 +43,22 @@
   },
   {
     "id": "youtube_videos",
-    "title": "YouTube videos",
+    "title": "YouTube Videos",
     "summary": "ユーチューブ動画",
     "projects": [
+      {
+        "id": "HXUaaMKSl9Y",
+        "link": "https://youtu.be/HXUaaMKSl9Y",
+        "image": "https://m.ivecolor.com/ivecolor/images/variants/normal/v7aj40otqv1yqx.webp",
+        "title": "ディスクでゲームできる【ゲーミングWii】を作ってみた！ #ゆっくり実況",
+        "summary": "以前制作したゲーミングWiiに、ディスクドライブを搭載してみました。"
+      },
       {
         "id": "f4_syeOp9qU",
         "link": "https://youtu.be/f4_syeOp9qU",
         "image": "https://m.ivecolor.com/ivecolor/images/variants/normal/u3tsw6a5o0gexf.webp",
         "title": "【ゲーミングWii】完全にPC化したゲーム機で\"あの\"サイトを見る！ #ゆっくり実況",
-        "summary": "WiiにUbuntuを入れ阿部寛のサイトを見ます。"
+        "summary": "WiiにUbuntuを入れて、Webサイトを見ます。"
       },
       {
         "id": "ZJECeK41-50",

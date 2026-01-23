@@ -55,7 +55,7 @@ export default function ExhibitsSection({ exhibitsData }) {
         </div>
       </div>
       <style jsx>{`
-         {
+        {
           /* EXHIBITS */
         }
 
@@ -101,7 +101,7 @@ export default function ExhibitsSection({ exhibitsData }) {
           }
         }
 
-         {
+        {
           /* NAME PLATE */
         }
 
@@ -123,7 +123,7 @@ export default function ExhibitsSection({ exhibitsData }) {
           text-align: right;
         }
 
-         {
+        {
           /* CONTROLLER */
         }
 
