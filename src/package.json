@@ -3,10 +3,13 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "predev": "node scripts/generate-content.mjs",
     "dev": "next dev --webpack",
+    "prebuild": "node scripts/generate-content.mjs",
     "build": "next build --webpack",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "serve out",
+    "prelint": "node scripts/generate-content.mjs",
+    "lint": "eslint ."
   },
   "dependencies": {
     "@next/mdx": "^16.1.3",
@@ -41,6 +44,7 @@
     "zenn-markdown-html": "^0.3.1"
   },
   "devDependencies": {
-    "eslint-config-next": "16.1.3"
+    "eslint-config-next": "16.1.3",
+    "serve": "^14.2.5"
   }
 }

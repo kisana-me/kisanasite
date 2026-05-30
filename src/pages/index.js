@@ -1,7 +1,6 @@
 import { usePageContext } from '@/contexts/page_context'
 import { useEffect } from 'react'
-import fs from 'fs'
-import path from 'path'
+import generatedContent from '@/generated/content.generated'
 import ExhibitsSection from '@/components/home/exhibits_section'
 import ProfileSection from '@/components/home/profile_section'
 import ProjectsSection from '@/components/home/projects_section'
@@ -85,19 +84,10 @@ export default function Index({ exhibitsData, projectsData }) {
 }
 
 export async function getStaticProps() {
-  function getJsonData(fileName) {
-    const filePath = path.join(process.cwd(), 'data', 'home', fileName)
-    const fileContents = fs.readFileSync(filePath, 'utf8')
-    return JSON.parse(fileContents)
-  }
-
-  const exhibitsData = getJsonData('exhibits.json')
-  const projectsData = getJsonData('projects_data.json')
-
   return {
     props: {
-      exhibitsData,
-      projectsData,
+      exhibitsData: generatedContent.home.exhibitsData,
+      projectsData: generatedContent.home.projectsData,
     },
   }
 }

@@ -31,6 +31,14 @@ yarn-error.log*
 # vercel
 .vercel
 
+# legacy Cloudflare artifacts (not used for Pages static hosting)
+.open-next/
+.wrangler/
+cloudflare-env.d.ts
+
+# generated content (created by scripts/generate-content.mjs)
+generated/
+
 # next-pwa
 /public/sw.js
 /public/sw.js.map

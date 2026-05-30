@@ -9,8 +9,13 @@ const withPWA = require('next-pwa')({
 })
 
 module.exports = withPWA({
+  // Cloudflare Pages static hosting
+  // `next build` will output static files into `out/`.
+  output: 'export',
+  trailingSlash: true,
   reactStrictMode: true,
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',

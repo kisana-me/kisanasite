@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
-import fs from 'fs'
-import path from 'path'
+import generatedContent from '@/generated/content.generated'
 import { usePageContext } from '@/contexts/page_context'
 import UnorderedList from '@/components/about/unordered_list'
 
@@ -46,13 +45,9 @@ export default function About({ data }) {
 }
 
 export async function getStaticProps() {
-  const filePath = path.join(process.cwd(), 'data', 'series.json')
-  const fileContents = fs.readFileSync(filePath, 'utf8')
-  const data = JSON.parse(fileContents)
-
   return {
     props: {
-      data,
+      data: generatedContent.series,
     },
   }
 }
