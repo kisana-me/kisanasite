@@ -61,9 +61,16 @@ Cloudflare Pages のプロジェクト設定で以下を指定してください
 - **Root directory**: （リポジトリ直下。指定不要）
 - **Build command**: `npm ci && npm run build`
 - **Build output directory**: `out`
-- **環境変数**: `NODE_VERSION=22.18` 以上、`SITE_DATA_SOURCE=api`、
+- **環境変数**: `SITE_DATA_SOURCE=api`、
   `STUDIO_EXPORT_URL`、`STUDIO_EXPORT_TOKEN`、
-  `NEXT_PUBLIC_CMS_API_BASE`、`NEXT_PUBLIC_TURNSTILE_SITE_KEY`
+  `NEXT_PUBLIC_CMS_API_BASE`、`NEXT_PUBLIC_TURNSTILE_SITE_KEY`、
+  `NEXT_PUBLIC_APP_URL`、`NEXT_PUBLIC_GA4_ID`
+  （Production と Preview の両方に要ります）
+
+Node のバージョンは `.node-version` で固定しています。`@ivecolor/markdown` を
+TypeScript のまま読むので Node の型除去が要り、**22.18 未満だと
+`ERR_UNKNOWN_FILE_EXTENSION` でビルドが落ちます**。Cloudflare は `engines` を
+見ないので、`NODE_VERSION` 環境変数か `.node-version` のどちらかが必須です。
 
 記事を公開したらビルドし直す必要があります。CMS のサイト設定の
 `deploy_hook` に Cloudflare Pages のデプロイフックURLを入れておくと、

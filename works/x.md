@@ -7,7 +7,7 @@ icon: '/images/x/x-logo.png'
 image: '/images/x/x-1.png'
 ---
 
-![得句巣のスクリーンショット5枚](https://m.ivecolor.com/ivecolor/images/variants/normal/2shanm5g3ifv6e.webp)
+![得句巣のスクリーンショット5枚](https://m.ivecolor.com/media/2shanm5g3ifv6e.webp)
 
 ## 概要
 
