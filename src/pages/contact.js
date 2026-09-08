@@ -1,10 +1,15 @@
 import { getPage } from '@/lib/site'
 import StaticPage from '@/components/static_page'
+import InquiryForm from '@/components/inquiry_form'
 
 export function getStaticProps() {
   return { props: { page: getPage('contact') } }
 }
 
 export default function Page({ page }) {
-  return <StaticPage page={page} title="Contact" subtitle="お問い合わせ" />
+  return (
+    <StaticPage page={page} title="Contact" subtitle="お問い合わせ">
+      <InquiryForm />
+    </StaticPage>
+  )
 }

@@ -74,11 +74,6 @@ export default function Footer() {
           <div className="list-name">このサイトについて</div>
           <ul>
             <li>
-              <Link href="/sitemap" className="list-content">
-                サイトマップ
-              </Link>
-            </li>
-            <li>
               <Link href="/terms-of-service" className="list-content">
                 利用規約
               </Link>

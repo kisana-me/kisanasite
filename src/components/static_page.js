@@ -9,7 +9,7 @@ import TableOfContents from '@/components/table_of_contents'
  * 見出しと本文は CMS 側で書き換えられる。**CMS にまだ無ければ「準備中」**を出す。
  * 消えたのか作り忘れたのかは画面からは分からないので、ページ自体は残す。
  */
-export default function StaticPage({ page, title, subtitle }) {
+export default function StaticPage({ page, title, subtitle, children }) {
   const { setTitle, setDescription } = usePageContext()
   useEffect(() => {
     setTitle(page?.title || title)
@@ -31,6 +31,7 @@ export default function StaticPage({ page, title, subtitle }) {
       ) : (
         <p>準備中です。</p>
       )}
+      {children}
       <style jsx>{`
         .static-page {
           width: 100%;

@@ -54,7 +54,7 @@ CMS の `/sites` で1つ作る。
 | `about` | `pages/about.js` に直書きされていた本文と `data/series.json` |
 | `terms-of-service` | 旧 `pages/terms-of-service.js` |
 | `privacy-policy` | 旧 `pages/privacy-policy.js` |
-| `contact` | 旧 `pages/contact.js` |
+| `contact` | 旧 `pages/contact.js`。本文の下にお問い合わせフォームが付く |
 
 ### 2.4 作品を6つ入れる
 
@@ -127,12 +127,27 @@ URLを変えないため。
 - 単独行の画像が `figure` + `figcaption` になる（キャプションは `alt`）
 - 日本語の括弧に隣り合う強調が効く（`**IVE（アイヴ）**の`）
 
-## 4. 入れ終わったら
+## 4. お問い合わせフォーム
+
+`/contact` は固定ページの本文の下にフォームを出し、CMS の
+`POST /api/inquiries` へ直接送る。届いた内容は `/s/kisanasite/inquiries` で読む。
+
+- **サイトは `Origin` から決まる。** `sites.url` に `https://kisana.me` が
+  入っていないと 403 になる。ローカルからは通らない
+- Turnstile を使うなら、CMS のサイト設定に `turnstile_secret` を入れ、
+  Cloudflare Pages に `NEXT_PUBLIC_TURNSTILE_SITE_KEY` を入れる。
+  **シークレットが未設定なら CMS は素通しする**ので、サイトキーを入れずに
+  始めてもよい
+- 通知先を入れたいときは、サイト設定の `notify_webhook` を埋める
+- **公開サイトには1件も出ない。** デプロイフックも叩かれない
+
+## 5. 入れ終わったら
 
 1. `SITE_DATA_SOURCE=api` にして `npm run build` が通ることを確かめる
 2. `/works` の並びが `order` どおりか、`/posts` に作品が混ざっていないかを見る
 3. `/sitemap.xml` と `/feed.xml` が出ているかを見る
-4. CMS の「公開」でデプロイフックが叩かれ、ビルドが走ることを確かめる
+4. `/contact` から1件送って、CMS のお問い合わせ一覧に出るかを見る
+5. CMS の「公開」でデプロイフックが叩かれ、ビルドが走ることを確かめる
 
 `src/posts/*.md` と `src/works/*.md` は移行後も残してあるが、
 **ビルドはもう読んでいない。** 消すかどうかは移行が済んでから決める。

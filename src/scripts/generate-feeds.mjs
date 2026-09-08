@@ -41,7 +41,6 @@ const STATIC_ENTRIES = [
   { path: "/posts", changefreq: "weekly", priority: "0.8" },
   { path: "/tags", changefreq: "monthly", priority: "0.4" },
   { path: "/contact", changefreq: "yearly", priority: "0.3" },
-  { path: "/sitemap", changefreq: "monthly", priority: "0.3" },
   { path: "/tools", changefreq: "monthly", priority: "0.4" },
   { path: "/tools/markdown-editor", changefreq: "monthly", priority: "0.4" },
   { path: "/tools/blockchain-maker", changefreq: "monthly", priority: "0.4" },

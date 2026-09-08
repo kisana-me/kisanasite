@@ -17,11 +17,11 @@ Home, About, Works, Postsのページがあります。
 | パス | 中身 |
 |---|---|
 | `/` | Home。`data/home/*.json` から作る（CMS 管理ではない）|
-| `/about` `/terms-of-service` `/privacy-policy` `/contact` | 固定ページ。CMS の `status = 'specific'` |
+| `/about` `/terms-of-service` `/privacy-policy` | 固定ページ。CMS の `status = 'specific'` |
+| `/contact` | 固定ページ + お問い合わせフォーム。送り先は CMS の `POST /api/inquiries` |
 | `/works` `/works/:slug` | 作品。CMS の公開記事のうち `works` タグが付いているもの |
 | `/posts` `/posts/:slug` | 記事。CMS の公開記事のうち `works` タグが付いていないもの |
 | `/tags` | タグ一覧。記事が付けているタグだけ出る |
-| `/sitemap` | 人が読むサイトマップ |
 | `/sitemap.xml` `/feed.xml` | 検索エンジンとRSSリーダ向け。ビルド時に生成 |
 | `/tools/*` | ツール。CMS 管理ではない |
 
@@ -36,6 +36,10 @@ Home, About, Works, Postsのページがあります。
 
 既定では `src/fixtures/site-data.json` を読むので、CMS が無くても動きます。
 CMS に繋ぐときは `.env.example` を写して `SITE_DATA_SOURCE=api` にしてください。
+
+**お問い合わせフォームはローカルからは通りません。** CMS は `Origin` を見て
+サイトを決めるので、`sites.url` に登録したオリジン（`https://kisana.me`）から
+でないと 403 が返ります。
 
 **Node 22.18 以上が要ります。** ビルドスクリプトが `@ivecolor/markdown` を
 TypeScript のまま読むため、Node の型除去に頼っています。
@@ -60,7 +64,8 @@ Cloudflare Pages のプロジェクト設定で以下を指定してください
 - **Build command**: `npm ci && npm run build`
 - **Build output directory**: `out`
 - **環境変数**: `NODE_VERSION=22.18` 以上、`SITE_DATA_SOURCE=api`、
-  `STUDIO_EXPORT_URL`、`STUDIO_EXPORT_TOKEN`
+  `STUDIO_EXPORT_URL`、`STUDIO_EXPORT_TOKEN`、
+  `NEXT_PUBLIC_CMS_API_BASE`、`NEXT_PUBLIC_TURNSTILE_SITE_KEY`
 
 記事を公開したらビルドし直す必要があります。CMS のサイト設定の
 `deploy_hook` に Cloudflare Pages のデプロイフックURLを入れておくと、
