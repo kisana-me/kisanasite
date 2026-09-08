@@ -10,8 +10,8 @@
     "start": "serve out",
     "prelint": "node scripts/generate-content.mjs",
     "lint": "eslint .",
-    "markdown:pull": "git subtree pull --prefix src/packages/markdown https://github.com/kisana-me/markdown.git main --squash",
-    "markdown:push": "git subtree push --prefix src/packages/markdown https://github.com/kisana-me/markdown.git main"
+    "markdown:pull": "git subtree pull --prefix packages/markdown https://github.com/kisana-me/markdown.git main --squash",
+    "markdown:push": "git subtree push --prefix packages/markdown https://github.com/kisana-me/markdown.git main"
   },
   "dependencies": {
     "@ivecolor/markdown": "file:./packages/markdown",

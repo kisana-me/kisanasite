@@ -11,7 +11,7 @@ import { writeFeeds } from "./generate-feeds.mjs";
  * `@ivecolor/markdown` を Next のバンドルに入れる必要も出る。
  * このスクリプトは素の Node で動き、TypeScript のまま読める（Node 22.18+ の型除去）。
  *
- * `src/posts/*.md` と `src/works/*.md` はもう読まない。記事の正本は CMS 側の D1。
+ * `posts/*.md` と `works/*.md` はもう読まない。記事の正本は CMS 側の D1。
  */
 
 function readJsonFile(absolutePath) {

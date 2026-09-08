@@ -25,16 +25,15 @@ Home, About, Works, Postsのページがあります。
 | `/sitemap.xml` `/feed.xml` | 検索エンジンとRSSリーダ向け。ビルド時に生成 |
 | `/tools/*` | ツール。CMS 管理ではない |
 
-`src/posts/*.md` と `src/works/*.md` は**もう読んでいません**。CMS へ移す前の
+`posts/*.md` と `works/*.md` は**もう読んでいません**。CMS へ移す前の
 原稿として置いてあるだけです。
 
 ## 開発
 
-- `cd src`
 - `npm install`
 - `npm run dev`
 
-既定では `src/fixtures/site-data.json` を読むので、CMS が無くても動きます。
+既定では `fixtures/site-data.json` を読むので、CMS が無くても動きます。
 CMS に繋ぐときは `.env.example` を写して `SITE_DATA_SOURCE=api` にしてください。
 
 **お問い合わせフォームはローカルからは通りません。** CMS は `Origin` を見て
@@ -46,9 +45,8 @@ TypeScript のまま読むため、Node の型除去に頼っています。
 
 ## ビルド（静的出力）
 
-このプロジェクトは Cloudflare Pages での静的配信を想定しており、`next build` により `src/out/` に静的ファイルを出力します。
+このプロジェクトは Cloudflare Pages での静的配信を想定しており、`next build` により `out/` に静的ファイルを出力します。
 
-- `cd src`
 - `npm run build`
 - ローカル確認: `npm run start`（`out/` を静的サーブ）
 
@@ -60,7 +58,7 @@ TypeScript のまま読むため、Node の型除去に頼っています。
 
 Cloudflare Pages のプロジェクト設定で以下を指定してください。
 
-- **Root directory**: `src`
+- **Root directory**: （リポジトリ直下。指定不要）
 - **Build command**: `npm ci && npm run build`
 - **Build output directory**: `out`
 - **環境変数**: `NODE_VERSION=22.18` 以上、`SITE_DATA_SOURCE=api`、
@@ -73,7 +71,7 @@ Cloudflare Pages のプロジェクト設定で以下を指定してください
 
 ## Markdown
 
-本文は `src/packages/markdown`（[kisana-me/markdown](https://github.com/kisana-me/markdown)
+本文は `packages/markdown`（[kisana-me/markdown](https://github.com/kisana-me/markdown)
 の subtree）で描画します。**CMS のライブプレビューと同じコード**を通すので、
 書いている画面と公開後の見た目がずれません。
 
