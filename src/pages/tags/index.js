@@ -1,32 +1,18 @@
-import { getTags, getAssociatedPosts } from '@/lib/posts'
 import React, { useEffect } from 'react'
-import { usePageContext } from '@/contexts/page_context'
 import Link from 'next/link'
+import { getTags, getPostsForTag } from '@/lib/site'
+import { usePageContext } from '@/contexts/page_context'
 
-export async function getStaticProps() {
-  const allTags = getTags()
-  async function getAllAssociatedPosts() {
-    const allAssociatedPosts = {}
-    for (const tag of allTags) {
-      const associatedPosts = await getAssociatedPosts(tag)
-      allAssociatedPosts[tag] = associatedPosts
-    }
-    return allAssociatedPosts
-  }
-  async function allPostsAndTags() {
-    const allAssociatedPosts = await getAllAssociatedPosts()
-    const jsonOutput = JSON.stringify(allAssociatedPosts)
-    return jsonOutput
-  }
-  const result = await allPostsAndTags()
-  return {
-    props: {
-      result,
-    },
-  }
+export function getStaticProps() {
+  // 印として使うタグ（works）は `lib/site` の時点で落ちている
+  const groups = getTags().map((tag) => ({
+    ...tag,
+    posts: getPostsForTag(tag.slug).map((post) => ({ slug: post.slug, title: post.title })),
+  }))
+  return { props: { groups } }
 }
 
-export default function Index({ result }) {
+export default function Index({ groups }) {
   const { setTitle } = usePageContext()
   useEffect(() => {
     setTitle('Tags')
@@ -39,14 +25,15 @@ export default function Index({ result }) {
         <h1>Tags</h1>
         <p>タグ一覧</p>
       </div>
-      {Object.keys(JSON.parse(result)).map((tag) => (
-        <div key={tag}>
-          <h2 id={tag}>#{tag}</h2>
+      {groups.length === 0 && <p>タグはまだありません。</p>}
+      {groups.map((tag) => (
+        <div key={tag.slug}>
+          <h2 id={tag.slug}>#{tag.name}</h2>
           <ul>
-            {JSON.parse(result)[tag].map((post) => (
-              <Link key={post.slug} href={'/posts/' + post.slug}>
-                {post.title}
-              </Link>
+            {tag.posts.map((post) => (
+              <li key={post.slug}>
+                <Link href={'/posts/' + post.slug}>{post.title}</Link>
+              </li>
             ))}
           </ul>
         </div>

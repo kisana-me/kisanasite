@@ -1,0 +1,260 @@
+{
+  "generated_at": "2026-01-01T00:00:00Z",
+  "site": {
+    "id": "site0000000001",
+    "name_id": "kisanasite",
+    "name": "KISANA:ME",
+    "description": "kisana の個人用ウェブサイト",
+    "url": "https://kisana.me"
+  },
+  "accounts": [
+    {
+      "id": "acct0000000001",
+      "name_id": "kisana",
+      "name": "kisana",
+      "description": "自称WEBプログラマ",
+      "icon_url": null,
+      "role": "owner"
+    }
+  ],
+  "posts": [
+    {
+      "id": "work0000000001",
+      "name_id": "amiverse",
+      "account_id": "acct0000000001",
+      "title": "Amiverse",
+      "summary": "ソーシャルメディア",
+      "content_md": "![Amiverseのスクリーンショット5枚](https://m.ivecolor.com/ivecolor/images/variants/normal/yqd2xu4tza015b.webp)\n\n## 概要\n\n一般的なSNS。ActivityPubに対応していてMisskeyやMastdonなどと投稿のやり取りができる。\n\n画像や動画を投稿できる。リアクションができる。\n\n## リンク\n\n- [amiverse.net](https://amiverse.net/)\n- [api.amiverse.net](https://api.amiverse.net/)\n- [GitHubリポジトリ](https://github.com/kisana-me/amiverse)\n- [個人開発の成果物をまとめた記事](https://ivecolor.com/posts/gf7p3068lk49ezbcv)\n\n## 開発時期\n\n2023年3月~/未定\n\n## 使用技術\n\n- バックエンド Ruby on Rails\n- DB MariaDB\n- オブジェクトストレージ MinIO\n- 画像処理 ImageMagick\n- 動画処理 FFmpeg\n- 全文検索 Meilisearch\n- 形態素解析 MeCab, natto\n- セッション管理 Redis\n- ジョブ管理 Sidekiq\n- フロントエンド Next.js(React)\n\n## 作成した背景\n\n任天堂のSNSであるMiiverseがサ終して、それを模倣した横長ドット絵を投稿できるSNSを作りたいと思ったのが始まり(この機能は現存)。\n\nMiiverseの亜種ということでAmiverse。\n\n単にSNSを作ってみたかった。\n\n## こだわった点\n\nサインイン・サインアップ・お問い合わせなど、フォーム送信時にはCloudflare Turnstileを利用してbot対策を施した。\n\nメールアドレスを変更するにはパスワードが、パスワードを変更するにはメール認証が必須としてセキュリティを高めた。\n\n正しいIDで間違ったパスワードを使いサインインを試行し続けるとロックされる仕組みを実装した。\n\nパスワードを忘れてサインインできなくなっても、再設定メールを送りリセットできるようにした。\n\nRailsのsessionにトークンを配列で記録して複数アカウント同時サインインを実装し、モジュール化してまとめている([モジュール部分のソースコード](https://github.com/kisana-me/anyur/blob/main/src/app/controllers/concerns/session_management.rb))。\n\n## 苦労した点\n\nOAuthの認可・リソースサーバーを完全自作するというのが大変だった([認可とる部分のソースコード](https://github.com/kisana-me/anyur/blob/main/src/app/controllers/oauth_controller.rb), [認可する動画](https://amiverse.net/items/x61qdj0twplrazmuo))。\n\nメール認証を必須にしているのでメールサーバーをどうするか悩んだ。このドメインから送信したいが、オンプレ環境ではop25b、SendGridなどは1日100送信まで、などの制約があり、最終的にDKIMを無視し、GmailとCloudflare Email Routingを利用して利用者に送信している(Gmailではスパム判定)。\n\n一時期はVPS上でPostfix+Dovecotの構成で運用していたが無駄な出費と感じ契約を終えた。\n\n## 今後の展望\n\nSNS開発が趣味なのでいつまででも開発は続けていく。ANYURのシステムが確立した際に不特定多数のユーザーにアプローチして、多くの人に使ってもらえるプロダクトに育てたい。\n",
+      "thumbnail_url": "/images/amiverse/amiverse-1.png",
+      "status": "published",
+      "published_at": "2024-01-01T00:00:00Z",
+      "edited_at": null,
+      "tag_ids": [
+        "tag00000000001"
+      ],
+      "meta": {
+        "icon": "/images/amiverse/amiverse-logo.png",
+        "order": "2"
+      }
+    },
+    {
+      "id": "work0000000002",
+      "name_id": "anyur",
+      "account_id": "acct0000000001",
+      "title": "ANYUR",
+      "summary": "アカウントシステム",
+      "content_md": "![ANYURのスクリーンショット5枚](https://m.ivecolor.com/ivecolor/images/variants/normal/3zkqxb179gd2a4.webp)\n\n## 概要\n\n一番新しいプロジェクト。\n\n複数アカウント同時サインインができる。\n\nStripeを使ったサブスクプランに加入できる。\n\n他のサービス(現状ではBeAlive.と得句巣のみ)にパスワードレスサインイン(OAuthを利用したSSO)ができる。\n\n現在は以下のサービスにSSOできます。\n\n- Amiverse\n- IVECOLOR\n- BeAlive.\n- 得句巣\n\n## リンク\n\n- [anyur.com](https://anyur.com)\n- [GitHubリポジトリ](https://github.com/kisana-me/anyur)\n- [個人開発の成果物をまとめた記事](https://ivecolor.com/posts/gf7p3068lk49ezbcv)\n\n## 開発時期\n\n2025年4月~/2か月\n\n## 使用技術\n\n- バックエンド Ruby on Rails\n- DB MariaDB\n- 決済 Stripe\n\n## 作成した背景\n\n個人開発したサービスごとにアカウント管理をするのは大変だろうと思い、一つのアカウントを作成するだけで複数のサービスを利用できるようにしたいと思ったのが始まり。\n\n## こだわった点\n\nサインイン・サインアップ・お問い合わせなど、フォーム送信時にはCloudflare Turnstileを利用してbot対策を施した。\n\nメールアドレスを変更するにはパスワードが、パスワードを変更するにはメール認証が必須としてセキュリティを高めた。\n\n正しいIDで間違ったパスワードを使いサインインを試行し続けるとロックされる仕組みを実装した。\n\nパスワードを忘れてサインインできなくなっても、再設定メールを送りリセットできるようにした。\n\nRailsのsessionにトークンを配列で記録して複数アカウント同時サインインを実装し、モジュール化してまとめている([モジュール部分のソースコード](https://github.com/kisana-me/anyur/blob/main/src/app/controllers/concerns/session_management.rb))。\n\n## 苦労した点\n\nOAuthの認可・リソースサーバーを完全自作するというのが大変だった([認可とる部分のソースコード](https://github.com/kisana-me/anyur/blob/main/src/app/controllers/oauth_controller.rb), [認可する動画](https://amiverse.net/items/x61qdj0twplrazmuo))。\n\nメール認証を必須にしているのでメールサーバーをどうするか悩んだ。このドメインから送信したいが、オンプレ環境ではop25b、SendGridなどは1日100送信まで、などの制約があり、最終的にDKIMを無視し、GmailとCloudflare Email Routingを利用して利用者に送信している(Gmailではスパム判定)。\n\n一時期はVPS上でPostfix+Dovecotの構成で運用していたが無駄な出費と感じ契約を終えた。\n\n## 今後の展望\n\n今後も個人開発プロダクトが増えていくので相互連携をうまくとれるようにしていく。アイコン・実績機能などを追加予定。\n",
+      "thumbnail_url": "/images/anyur/anyur-1.png",
+      "status": "published",
+      "published_at": "2024-02-01T00:00:00Z",
+      "edited_at": null,
+      "tag_ids": [
+        "tag00000000001"
+      ],
+      "meta": {
+        "icon": "/images/anyur/anyur-logo.png",
+        "order": "1"
+      }
+    },
+    {
+      "id": "work0000000003",
+      "name_id": "bealive",
+      "account_id": "acct0000000001",
+      "title": "BeAlive.",
+      "summary": "生存確認SNS",
+      "content_md": "![BeAlive.のスクリーンショット5枚](https://m.ivecolor.com/ivecolor/images/variants/normal/t0k95brlscjhg1.webp)\n\n## 概要\n\n「BeReal.」というSNSを真似て作った。\n\nキャプチャ画面で撮影を押すと、3秒カウントダウン→撮影→カメラ切りかえ→3秒カウントダウン→撮影、というようにしてフロントカメラとバックカメラで2枚の写真を撮影する。これを色んな人と共有するというSNS。\n\nアカウントを持つ人がリクエストを発行でき、そのリクエストURLを他人になんらかの方法で送る。送られてきた人はサインインしていなくても撮影ができる。\n\n## リンク\n\n- [bealive.amiverse.net](https://bealive.amiverse.net)\n- [GitHubリポジトリ](https://github.com/kisana-me/bealive)\n- [個人開発の成果物をまとめた記事](https://ivecolor.com/posts/gf7p3068lk49ezbcv)\n\n## 開発時期\n\n2024年6月~/1週間ほど\n\n## 使用技術\n\n- バックエンド Ruby on Rails\n- DB MariaDB\n- オブジェクトストレージ MinIO\n- 画像処理 ImageMagick\n\n## 作成した背景\n\n「BeReal.」との差別化で、だれでもいつでもリクエストを送信出来たら面白そうと思った。\n\nこの仕組みで高齢者の生存確認ができるのではないかとも思った。そこからサインインしていなくてもリクエストがあれば簡単にWeb上で撮影できる仕組みを思いついた。\n\n## こだわった点\n\nAmiverseで作成した画像配信技術を転用している。\n\nWeb上で撮影が完結するところ。\n\nANYURアカウントでOAuthを使ったSSOができるところ([ソースコード](https://github.com/kisana-me/bealive/blob/main/src/app/controllers/sessions_controller.rb), [SSOする動画](https://amiverse.net/items/x61qdj0twplrazmuo))。\n\n## 苦労した点\n\nWeb上でカメラを扱うのが難しかった。加えてフロントエンドは最近のRailsに組み込まれているStimulusを初めて使ったので新技術を扱うという労力があった。\n\n## 今後の展望\n\nネイティブアプリ化したい。\n",
+      "thumbnail_url": "/images/bealive/bealive-1.png",
+      "status": "published",
+      "published_at": "2024-03-01T00:00:00Z",
+      "edited_at": null,
+      "tag_ids": [
+        "tag00000000001"
+      ],
+      "meta": {
+        "icon": "/images/bealive/bealive-logo.png",
+        "order": "4"
+      }
+    },
+    {
+      "id": "work0000000004",
+      "name_id": "ivecolor",
+      "account_id": "acct0000000001",
+      "title": "IVECOLOR",
+      "summary": "ブログシステム",
+      "content_md": "![IVECOLORのスクリーンショット5枚](https://m.ivecolor.com/ivecolor/images/variants/normal/og5y47udifrcea.webp)\n\n## 概要\n\n汎用的なブログシステム。マークダウン形式で記事を書けて、htmlを埋め込める。OGP設定しているのでSNSでリンク送信時にサムネが表示される。\n\n## リンク\n\n- [ivecolor.com](https://ivecolor.com)\n- [GitHubリポジトリ](https://github.com/kisana-me/blog14)\n- [個人開発の成果物をまとめた記事](https://ivecolor.com/posts/gf7p3068lk49ezbcv)\n\n## 開発時期\n\n2024年2月~/4か月ほど\n\n## 使用技術\n\n- バックエンド Ruby on Rails\n- DB MariaDB\n- オブジェクトストレージ MinIO\n- マークダウンレンダラ Redcarpet\n- エディタ Action Text\n- 画像処理 ImageMagick\n\n## 作成した背景\n\nGoogle Adsenseに合格して広告収入を得たかった(審査落ち)。\n\n## こだわった点\n\nお問い合わせフォームに独自のBOT対策として計算問題を実装したが、普通に突破されている。\n\nAmiverseで作成した画像配信技術を転用している。\n\n## 苦労した点\n\nAdsense審査が厳しい。\n\n## 今後の展望\n\nアナリティクス機能を強化したい。誰でも記事が書けるようにしたい。埋め込みや動画や画像の管理等をしっかりできる機能を作りたい。\n",
+      "thumbnail_url": "/images/ivecolor/ivecolor-1.png",
+      "status": "published",
+      "published_at": "2024-04-01T00:00:00Z",
+      "edited_at": null,
+      "tag_ids": [
+        "tag00000000001"
+      ],
+      "meta": {
+        "icon": "/images/ivecolor/ivecolor-logo.png",
+        "order": "3"
+      }
+    },
+    {
+      "id": "work0000000005",
+      "name_id": "kisana-me",
+      "account_id": "acct0000000001",
+      "title": "KISANA:ME",
+      "summary": "ポートフォリオサイト",
+      "content_md": "## 概要\n\nポートフォリオサイトです。\n\n## リンク\n\n- [kisana.me](https://kisana.me)\n- [GitHubリポジトリ](https://github.com/kisana-me/kisanasite)\n\n## 開発時期\n\n2023年3月~/未定\n\n## 使用技術\n\n- フロントエンド Next.js\n\n## 作成した背景\n\nSNS上で独自ドメインのポートフォリオサイトを自作している人が多く作ってみたいと思ったから。\n\n## こだわった点\n\nメニューからダークモードやテーマカラーを選べる。テーマカラーはhueで320?段階から選べる。\n\n## 苦労した点\n\nMDXに対応したかったが、ライブラリ等使い方が分からなかったので断念。現在はmarkdown-itでマークダウン記述できる。\n\n## 今後の展望\n\nいろんなメディアでの活動内容を動的に取得して、まとまっているサイトに仕上げたい。CMSを作って管理したい。\n",
+      "thumbnail_url": "/images/kisana/kisana-1.png",
+      "status": "published",
+      "published_at": "2024-05-01T00:00:00Z",
+      "edited_at": null,
+      "tag_ids": [
+        "tag00000000001"
+      ],
+      "meta": {
+        "icon": "/images/kisana/kisana-logo.png",
+        "order": "6"
+      }
+    },
+    {
+      "id": "work0000000006",
+      "name_id": "x",
+      "account_id": "acct0000000001",
+      "title": "得句巣",
+      "summary": "漢字とアルファベットのSNS",
+      "content_md": "![得句巣のスクリーンショット5枚](https://m.ivecolor.com/ivecolor/images/variants/normal/2shanm5g3ifv6e.webp)\n\n## 概要\n\n漢字しか使えないSNS。投稿へのリアクションは｢良｣｢可｣｢不可｣。返信もできる。\n\n## リンク\n\n- [x.amiverse.net](https://x.amiverse.net)\n- [GitHubリポジトリ](https://github.com/kisana-me/x)\n- ![得句巣のスクリーンショット5枚](https://m.ivecolor.com/ivecolor/variants/images/images/2shanm5g3ifv6ezq7.webp)\n\n## 開発時期\n\n2024年12月~/2日ほど\n\n## 使用技術\n\n- バックエンド Ruby on Rails\n- DB MariaDB\n\n## 作成した背景\n\n個人開発から生まれた｢対多｣という漢字しか使えないSNSアプリがバズっていて、これは正規表現のバリデーションかけるだけで簡単に作れるのではないかと思い、作った。\n\n｢対多｣との差別化として、ネイティブアプリで作成するのではなくてwebアプリとして作成し、サインイン等を必須としないことで誰でも気軽に使える点がある。\n\n## こだわった点\n\n最近のRailsに追加されたHotwireの機能を使ってシームレスなタイムラインを作成した。1番下で読込ボタンを押すと続きが画面遷移無しに読み込まれる。\n\nBeAlive.で作成したコードを転用してANYURアカウントでOAuthを使ったSSOができるようになっている。\n\n## 苦労した点\n\n正規表現で漢字の範囲を選択するところ。\n\n## 今後の展望\n\n限定的にアルファベットも使える機能を追加したい。\n",
+      "thumbnail_url": "/images/x/x-1.png",
+      "status": "published",
+      "published_at": "2024-06-01T00:00:00Z",
+      "edited_at": null,
+      "tag_ids": [
+        "tag00000000001"
+      ],
+      "meta": {
+        "icon": "/images/x/x-logo.png",
+        "order": "5"
+      }
+    },
+    {
+      "id": "post0000000001",
+      "name_id": "bealive",
+      "account_id": "acct0000000001",
+      "title": "BeAliveを作りました！",
+      "summary": "",
+      "content_md": "## BeAlive\n\n生存確認WEBアプリケーションです。\n",
+      "thumbnail_url": null,
+      "status": "published",
+      "published_at": "2024-06-23T15:00:00Z",
+      "edited_at": null,
+      "tag_ids": [
+        "tag00000000003"
+      ]
+    },
+    {
+      "id": "post0000000002",
+      "name_id": "markdown",
+      "account_id": "acct0000000001",
+      "title": "markdownのテスト",
+      "summary": "テストページです",
+      "content_md": "## 以下 markdown-it の検証\n\n### 改行\n\nあいうえお改行のみ\nあかさたな\n\nあいうえお改行２回！\n\nあｓｄｆｇｈｊｋｌ\n\nこんにちは、スペースふたつと改行  \n改行した\n\nこんどはｂｒ改行<br />\nつかえるの？\n\nかいぎょうさんかい\n\n\nしました\n\n```text\nあいうえお改行のみ\nあかさたな\n\nあいうえお改行２回！\n\nあｓｄｆｇｈｊｋｌ\n\nこんにちは、スペースふたつと改行  \n改行した\n\nこんどはｂｒ改行<br />\nつかえるの？\n\nかいぎょうさんかい\n\n\nしました\n```\n\n### ライン\n---\n```md\n---\n```\n## 以下 markdown-it プラグイン の検証\n\n### container\n\n::: warning\nワーニング！here be dragons\n:::\n\n::: info\ni info\n:::\n\n### mark\n\n==マークされた==文字\n\n### ins\n\n++inserted++されたもじ\n\n### abbr\n\n*[HTML]: Hyper Text Markup Language\n*[W3C]:  World Wide Web Consortium\nThe HTML specification\nis maintained by the W3C.\n\n### sup\n\n29^th^\n\n### sub\n\nH~2~O\n\n### footnote\n\nasdfghjkl[^1]zxcvbnm\n\n[^1]: description?\n\n### multimd-table\n\n|             |          Grouping           || long |\n|First Header  | Second Header | Third Header | long |\n| ------------ | :-----------: | -----------: | -----------: |\n|Content       |          *Long Cell*        || long |\n|Content       |   **Cell**    |         Cell | veryveryveryveryveryverylonglonglonglonglongcellellcel |\n||LONG CELL||||\n|New section   |     More      |         Data | long |\n|And more      | With an escaped '\\\\|'       || long |\n\naaa\n\n\n|--|--|--|--|--|--|--|--|\n|♜|  |♝|♛|♚|♝|♞|♜|\n|  |♟|♟|♟|  |♟|♟|♟|\n|♟|  |♞|  |  |  |  |  |\n|  |♗|  |  |♟|  |  |  |\n|  |  |  |  |♙|  |  |  |\n|  |  |  |  |  |♘|  |  |\n|♙|♙|♙|♙|  |♙|♙|♙|\n|♖|♘|♗|♕|♔|  |  |♖|\n\n### toc\n\n### task-list\n\n- [ ] asdf\n- [x] asdf\n\nx?\n",
+      "thumbnail_url": null,
+      "status": "published",
+      "published_at": "2024-10-24T12:00:00Z",
+      "edited_at": null,
+      "tag_ids": [
+        "tag00000000004"
+      ]
+    },
+    {
+      "id": "post0000000003",
+      "name_id": "start",
+      "account_id": "acct0000000001",
+      "title": "開設！",
+      "summary": "おしらせです。",
+      "content_md": "## サイト作成\n\nWebサイトをたててみました～！\nWebデザインも勉強します🍭\n",
+      "thumbnail_url": null,
+      "status": "published",
+      "published_at": "2024-02-29T12:00:00Z",
+      "edited_at": "2024-10-24T13:00:00Z",
+      "tag_ids": [
+        "tag00000000002"
+      ]
+    },
+    {
+      "id": "page0000000001",
+      "name_id": "about",
+      "account_id": "acct0000000001",
+      "title": "About",
+      "summary": "私について",
+      "content_md": "こんにちは、私は「きさな🍭/kisana」です。\n自称WEBプログラマです。\n\n## Services\n\n- 2024.6 生存確認アプリ「BeAlive.」作成\n- 2024.2 ブログサイト「IVECOLOR」立ち上げ\n- 2023.3 ソーシャルメディア「Amiverse」開始\n\n## Technologies\n\n- 2025 情報セキュリティマネジメント試験 合格\n- 2024 ITパスポート, 普通自動車免許取得\n- 2018 プログラミング 始める\n",
+      "thumbnail_url": null,
+      "status": "specific",
+      "published_at": "2024-01-01T00:00:00Z",
+      "edited_at": null,
+      "tag_ids": []
+    },
+    {
+      "id": "page0000000002",
+      "name_id": "terms-of-service",
+      "account_id": "acct0000000001",
+      "title": "利用規約",
+      "summary": "本サイトの利用規約です。",
+      "content_md": "本サイトの利用規約です。CMS に入力してください。\n",
+      "thumbnail_url": null,
+      "status": "specific",
+      "published_at": "2024-01-01T00:00:00Z",
+      "edited_at": null,
+      "tag_ids": []
+    },
+    {
+      "id": "page0000000003",
+      "name_id": "privacy-policy",
+      "account_id": "acct0000000001",
+      "title": "プライバシーポリシー",
+      "summary": "本サイトのプライバシーポリシーです。",
+      "content_md": "本サイトのプライバシーポリシーです。CMS に入力してください。\n",
+      "thumbnail_url": null,
+      "status": "specific",
+      "published_at": "2024-01-01T00:00:00Z",
+      "edited_at": null,
+      "tag_ids": []
+    },
+    {
+      "id": "page0000000004",
+      "name_id": "contact",
+      "account_id": "acct0000000001",
+      "title": "Contact",
+      "summary": "お問い合わせ",
+      "content_md": "私が運営しているブログサイトの[お問い合わせフォーム](https://ivecolor.com/contact)をご使用ください。\n",
+      "thumbnail_url": null,
+      "status": "specific",
+      "published_at": "2024-01-01T00:00:00Z",
+      "edited_at": null,
+      "tag_ids": []
+    }
+  ],
+  "tags": [
+    {
+      "id": "tag00000000001",
+      "name_id": "works",
+      "name": "作品",
+      "description": "作品として並べる印"
+    },
+    {
+      "id": "tag00000000002",
+      "name_id": "start",
+      "name": "start",
+      "description": ""
+    },
+    {
+      "id": "tag00000000003",
+      "name_id": "bealive",
+      "name": "bealive",
+      "description": ""
+    },
+    {
+      "id": "tag00000000004",
+      "name_id": "test",
+      "name": "test",
+      "description": ""
+    }
+  ],
+  "comments": []
+}

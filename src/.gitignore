@@ -44,3 +44,7 @@ generated/
 /public/sw.js.map
 /public/workbox-*.js
 /public/workbox-*.js.map
+
+# generated feeds (created by scripts/generate-feeds.mjs)
+/public/sitemap.xml
+/public/feed.xml

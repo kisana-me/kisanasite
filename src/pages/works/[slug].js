@@ -2,31 +2,29 @@ import { useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import parse from 'html-react-parser'
-import { getAllMdIds, getMdData, getSortedMdsData } from '@/lib/mds_reader'
+import { getWork, getWorkSlugs, getWorks } from '@/lib/site'
 import { usePageContext } from '@/contexts/page_context'
 import MiniCard from '@/components/mini_card'
+import TableOfContents from '@/components/table_of_contents'
 
 export async function getStaticPaths() {
-  const paths = getAllMdIds('works')
   return {
-    paths,
+    paths: getWorkSlugs().map((slug) => ({ params: { slug } })),
     fallback: false,
   }
 }
 
 export async function getStaticProps({ params }) {
-  const sortedMdsData = getSortedMdsData('works')
-  const mdData = await getMdData('works', params.slug)
-  return { props: { mdData, sortedMdsData } }
+  return { props: { work: getWork(params.slug), works: getWorks() } }
 }
 
-export default function Work({ mdData, sortedMdsData }) {
+export default function Work({ work, works }) {
   const { setTitle, setDescription, setType, setImageUrl } = usePageContext()
   useEffect(() => {
-    setTitle(mdData.title)
-    setDescription(mdData.description)
+    setTitle(work.title)
+    setDescription(work.summary)
     setType('article')
-    setImageUrl(mdData.image)
+    setImageUrl(work.image)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -35,20 +33,21 @@ export default function Work({ mdData, sortedMdsData }) {
       <div className="work-container">
         <div className="work-main">
           <div className="work-image">
-            <Image src={mdData.image ? mdData.image : '/images/no-image.png'} alt={mdData.title} priority fill />
+            <Image src={work.image ? work.image : '/images/no-image.png'} alt={work.title} priority fill />
           </div>
           <div className="work-icon">
-            <Image src={mdData.icon ? mdData.icon : '/images/no-image.png'} alt={mdData.title} priority fill />
+            <Image src={work.icon ? work.icon : '/images/no-image.png'} alt={work.title} priority fill />
           </div>
-          <h1>{mdData.title}</h1>
-          <div>{mdData.description}</div>
+          <h1>{work.title}</h1>
+          <div>{work.summary}</div>
           <hr />
-          {parse(mdData.contentHtml)}
+          <TableOfContents items={work.toc} />
+          {parse(work.contentHtml)}
         </div>
         <div className="work-aside">
-          {sortedMdsData.map((work) => (
-            <Link key={work.slug} href={'/works/' + work.slug} className="work-aside-works">
-              <MiniCard title={work.title} image={work.image} summary={work.summary} />
+          {works.map((other) => (
+            <Link key={other.slug} href={'/works/' + other.slug} className="work-aside-works">
+              <MiniCard title={other.title} image={other.image} summary={other.summary} />
             </Link>
           ))}
         </div>

@@ -93,6 +93,11 @@ export default function Footer() {
                 お問い合わせ
               </Link>
             </li>
+            <li>
+              <Link href="/feed.xml" className="list-content" type="application/rss+xml">
+                RSS
+              </Link>
+            </li>
           </ul>
         </div>
       </div>

@@ -1,15 +1,14 @@
 import Link from 'next/link'
 import { useEffect } from 'react'
 import { usePageContext } from '@/contexts/page_context'
-import { getSortedMdsData } from '@/lib/mds_reader'
+import { getWorks } from '@/lib/site'
 import Card from '@/components/card'
 
 export function getStaticProps() {
-  const sortedMdsData = getSortedMdsData('works')
-  return { props: { sortedMdsData } }
+  return { props: { works: getWorks() } }
 }
 
-export default function Index({ sortedMdsData }) {
+export default function Index({ works }) {
   const { setTitle } = usePageContext()
   useEffect(() => {
     setTitle('Works')
@@ -23,7 +22,7 @@ export default function Index({ sortedMdsData }) {
         <p>作品一覧</p>
       </div>
       <div className="works">
-        {sortedMdsData.map((work, index) => (
+        {works.map((work, index) => (
           <Link key={work.slug} href={'/works/' + work.slug} className="works-card">
             <Card title={work.title} image={work.image} icon={work.icon} summary={work.summary} priority={index < 3} />
           </Link>

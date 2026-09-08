@@ -1,108 +1,74 @@
 import fs from "node:fs";
 import path from "node:path";
-import matter from "gray-matter";
-import hljs from "highlight.js";
+import { extractToc, renderMarkdown, renderPlain } from "@ivecolor/markdown";
+import { loadSiteData, PAGE_NAME_IDS, WORKS_TAG } from "./site-data.mjs";
+import { writeFeeds } from "./generate-feeds.mjs";
 
-import MarkdownIt from "markdown-it";
-import markdownItContainer from "markdown-it-container";
-import markdownItMark from "markdown-it-mark";
-import markdownItIns from "markdown-it-ins";
-import markdownItAbbr from "markdown-it-abbr";
-import markdownItDeflist from "markdown-it-deflist";
-import markdownItSup from "markdown-it-sup";
-import markdownItSub from "markdown-it-sub";
-import markdownItFootnote from "markdown-it-footnote";
-import markdownItMultimdTable from "markdown-it-multimd-table";
-import markdownItToc from "markdown-it-table-of-contents";
-import markdownItTaskLists from "markdown-it-task-lists";
+/**
+ * CMS の配信データ（`/export/build.json`）から、ページが読む1つのモジュールを吐く。
+ *
+ * **描画はここで1回だけ**やる。ページ側で描くと同じ本文を何度も通すことになり、
+ * `@ivecolor/markdown` を Next のバンドルに入れる必要も出る。
+ * このスクリプトは素の Node で動き、TypeScript のまま読める（Node 22.18+ の型除去）。
+ *
+ * `src/posts/*.md` と `src/works/*.md` はもう読まない。記事の正本は CMS 側の D1。
+ */
 
 function readJsonFile(absolutePath) {
-  const fileContents = fs.readFileSync(absolutePath, "utf8");
-  return JSON.parse(fileContents);
+  return JSON.parse(fs.readFileSync(absolutePath, "utf8"));
 }
 
-function safeDateValue(value) {
-  const date = new Date(value);
-  return Number.isFinite(date.getTime()) ? date.getTime() : 0;
+/** ISO 8601 の新しい順。null は最後 */
+function byPublishedDesc(a, b) {
+  return (b.published_at ?? "").localeCompare(a.published_at ?? "");
 }
 
-function createMarkdownRenderer() {
-  // Note: the highlight callback references `md` (assigned after ctor).
-  // This matches the pattern already used in the codebase.
-  let md;
-  md = new MarkdownIt({
-    highlight: function (str, lang) {
-      if (lang && hljs.getLanguage(lang)) {
-        try {
-          return (
-            '<pre class="hljs"><span>lang:' +
-            lang +
-            '</span><br /><code>' +
-            hljs.highlight(str, { language: lang, ignoreIllegals: true }).value +
-            "</code></pre>"
-          );
-        } catch {
-          // fallthrough
-        }
-      }
-      return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + "</code></pre>";
-    },
-    html: true,
-    linkify: true,
-    breaks: true,
-    typographer: true,
-  })
-    .use(markdownItMark)
-    .use(markdownItIns)
-    .use(markdownItAbbr)
-    .use(markdownItDeflist)
-    .use(markdownItSup)
-    .use(markdownItSub)
-    .use(markdownItFootnote)
-    .use(markdownItContainer, "info")
-    .use(markdownItContainer, "success")
-    .use(markdownItContainer, "warning")
-    .use(markdownItContainer, "danger")
-    .use(markdownItMultimdTable, {
-      multiline: true,
-      rowspan: true,
-      headerless: true,
-    })
-    .use(markdownItToc, {
-      transformLink: () => "",
-      containerHeaderHtml: '<div class="toc-container-header">目次</div>',
-    })
-    .use(markdownItTaskLists);
-
-  return md;
+/**
+ * 作品の並び順は `meta.order` の小さい順。
+ * **`meta` の値は文字列で届く**ので数として使うときに変換する（契約の `meta`）。
+ */
+function byOrder(a, b) {
+  const left = Number(a.order);
+  const right = Number(b.order);
+  if (Number.isFinite(left) && Number.isFinite(right) && left !== right) return left - right;
+  if (Number.isFinite(left) !== Number.isFinite(right)) return Number.isFinite(left) ? -1 : 1;
+  return byPublishedDesc(a, b);
 }
 
-function loadMarkdownDirectory({ rootDir, relativeDir, markdown }) {
-  const absoluteDir = path.join(rootDir, relativeDir);
-  const fileNames = fs.readdirSync(absoluteDir).filter((name) => name.endsWith(".md"));
+/** 一覧カードに要るぶんだけ。本文とHTMLは持たせない（生成物が倍になる）*/
+function toSummary(record) {
+  const { contentHtml, toc, ...rest } = record;
+  return rest;
+}
 
-  const bySlug = {};
-  const meta = [];
+async function toRecord(post, ctx, tagsById) {
+  const meta = post.meta ?? {};
+  return {
+    slug: post.name_id,
+    title: post.title,
+    summary: post.summary,
+    image: post.thumbnail_url,
+    // 作品のロゴ。`/m/{id}` で書かれた値は CMS が配信URLに直して渡す
+    icon: typeof meta.icon === "string" ? meta.icon : null,
+    order: meta.order ?? null,
+    publishedAt: post.published_at,
+    editedAt: post.edited_at,
+    featured: post.featured === true,
+    tags: (post.tag_ids ?? [])
+      .map((id) => tagsById[id])
+      .filter(Boolean)
+      // 印として使うタグはタグ一覧に出さない（契約の「予約タグ」）
+      .filter((tag) => tag.name_id !== WORKS_TAG)
+      .map((tag) => ({ slug: tag.name_id, name: tag.name })),
+    contentHtml: await renderMarkdown(post.content_md, ctx),
+    toc: extractToc(post.content_md),
+    // RSS と og:description に使う。要約が無ければ本文の頭を使う
+    plain: (post.summary || renderPlain(post.content_md)).slice(0, 200),
+  };
+}
 
-  for (const fileName of fileNames) {
-    const slug = fileName.replace(/\.md$/, "");
-    const absolutePath = path.join(absoluteDir, fileName);
-    const raw = fs.readFileSync(absolutePath, "utf8");
-    const parsed = matter(raw);
-    const contentHtml = markdown.render(parsed.content).toString();
-
-    const record = {
-      slug,
-      id: slug,
-      contentHtml,
-      ...parsed.data,
-    };
-
-    bySlug[slug] = record;
-    meta.push({ slug, ...parsed.data });
-  }
-
-  return { bySlug, meta };
+function indexBySlug(records) {
+  return Object.fromEntries(records.map((record) => [record.slug, record]));
 }
 
 function writeGeneratedModule({ rootDir, outputRelativePath, data }) {
@@ -116,59 +82,67 @@ function writeGeneratedModule({ rootDir, outputRelativePath, data }) {
     "export default generatedContent;\n";
 
   fs.writeFileSync(absoluteOutputPath, source, "utf8");
-  // eslint-disable-next-line no-console
   console.log(`Generated ${outputRelativePath}`);
 }
 
-function main() {
+async function main() {
   const rootDir = process.cwd();
-  const markdown = createMarkdownRenderer();
+  const data = await loadSiteData();
 
-  const homeExhibits = readJsonFile(path.join(rootDir, "data", "home", "exhibits.json"));
-  const homeProjects = readJsonFile(path.join(rootDir, "data", "home", "projects_data.json"));
-  const series = readJsonFile(path.join(rootDir, "data", "series.json"));
+  const tagsById = Object.fromEntries((data.tags ?? []).map((tag) => [tag.id, tag]));
+  const worksTagId = (data.tags ?? []).find((tag) => tag.name_id === WORKS_TAG)?.id ?? null;
 
-  const postsLoaded = loadMarkdownDirectory({
-    rootDir,
-    relativeDir: "posts",
-    markdown,
-  });
+  // **記事と固定ページは同じ `posts` に入っていて、`status` でしか分かれない。**
+  // ここを `published` だけで絞ると固定ページが1件も残らない
+  const published = (data.posts ?? []).filter((p) => p.status === "published");
+  const specific = (data.posts ?? []).filter((p) => p.status === "specific");
 
-  const worksLoaded = loadMarkdownDirectory({
-    rootDir,
-    relativeDir: "works",
-    markdown,
-  });
+  const isWork = (post) => worksTagId !== null && (post.tag_ids ?? []).includes(worksTagId);
 
-  const postsSortedDate = postsLoaded.meta
-    .slice()
-    .sort((a, b) => safeDateValue(b.date) - safeDateValue(a.date));
+  const ctx = {
+    posts: Object.fromEntries(
+      published.map((p) => [
+        p.name_id,
+        {
+          slug: p.name_id,
+          title: p.title,
+          summary: p.summary,
+          thumbnailUrl: p.thumbnail_url,
+          publishedAt: p.published_at,
+          editedAt: p.edited_at,
+        },
+      ]),
+    ),
+    siteUrl: data.site?.url || "https://kisana.me",
+  };
 
-  const postsSortedUpdate = postsLoaded.meta
-    .slice()
-    .sort((a, b) => safeDateValue(b.update) - safeDateValue(a.update));
+  const render = (posts) => Promise.all(posts.map((post) => toRecord(post, ctx, tagsById)));
 
-  const worksSorted = worksLoaded.meta
-    .slice()
-    .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+  const posts = (await render(published.filter((p) => !isWork(p)))).sort(byPublishedDesc);
+  const works = (await render(published.filter(isWork))).sort(byOrder);
+  const pages = await render(specific.filter((p) => PAGE_NAME_IDS.includes(p.name_id)));
+
+  // 記事が付けているタグだけ。1件も付いていないタグは一覧に出さない
+  const used = new Set(posts.flatMap((post) => post.tags.map((tag) => tag.slug)));
+  const tags = (data.tags ?? [])
+    .filter((tag) => tag.name_id !== WORKS_TAG && used.has(tag.name_id))
+    .map((tag) => ({ slug: tag.name_id, name: tag.name, description: tag.description }));
 
   const generated = {
+    site: {
+      name: data.site?.name ?? "KISANA:ME",
+      description: data.site?.description ?? "",
+      url: ctx.siteUrl,
+    },
+    generatedAt: data.generated_at ?? null,
     home: {
-      exhibitsData: homeExhibits,
-      projectsData: homeProjects,
+      exhibitsData: readJsonFile(path.join(rootDir, "data", "home", "exhibits.json")),
+      projectsData: readJsonFile(path.join(rootDir, "data", "home", "projects_data.json")),
     },
-    series,
-    posts: {
-      bySlug: postsLoaded.bySlug,
-      sortedDate: postsSortedDate,
-      sortedUpdate: postsSortedUpdate,
-      slugs: Object.keys(postsLoaded.bySlug),
-    },
-    works: {
-      bySlug: worksLoaded.bySlug,
-      sorted: worksSorted,
-      slugs: Object.keys(worksLoaded.bySlug),
-    },
+    posts: { list: posts.map(toSummary), bySlug: indexBySlug(posts) },
+    works: { list: works.map(toSummary), bySlug: indexBySlug(works) },
+    pages: indexBySlug(pages),
+    tags,
   };
 
   writeGeneratedModule({
@@ -176,6 +150,8 @@ function main() {
     outputRelativePath: path.join("generated", "content.generated.js"),
     data: generated,
   });
+
+  writeFeeds({ rootDir, generated });
 }
 
-main();
+await main();

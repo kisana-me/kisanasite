@@ -1,6 +1,6 @@
 import { usePageContext } from '@/contexts/page_context'
 import { useEffect } from 'react'
-import generatedContent from '@/generated/content.generated'
+import { getHomeData } from '@/lib/site'
 import ExhibitsSection from '@/components/home/exhibits_section'
 import ProfileSection from '@/components/home/profile_section'
 import ProjectsSection from '@/components/home/projects_section'
@@ -84,10 +84,11 @@ export default function Index({ exhibitsData, projectsData }) {
 }
 
 export async function getStaticProps() {
+  const home = getHomeData()
   return {
     props: {
-      exhibitsData: generatedContent.home.exhibitsData,
-      projectsData: generatedContent.home.projectsData,
+      exhibitsData: home.exhibitsData,
+      projectsData: home.projectsData,
     },
   }
 }

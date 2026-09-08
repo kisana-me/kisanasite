@@ -1,8 +1,18 @@
 import { usePageContext } from '@/contexts/page_context'
 import { useEffect } from 'react'
 import Link from 'next/link'
+import { getPosts, getWorks } from '@/lib/site'
 
-export default function Sitemap() {
+export function getStaticProps() {
+  return {
+    props: {
+      works: getWorks().map((work) => ({ slug: work.slug, title: work.title })),
+      posts: getPosts().map((post) => ({ slug: post.slug, title: post.title })),
+    },
+  }
+}
+
+export default function Sitemap({ works, posts }) {
   const { setTitle } = usePageContext()
   useEffect(() => {
     setTitle('Sitemap')
@@ -15,7 +25,10 @@ export default function Sitemap() {
         <h1>Sitemap</h1>
         <p>サイトマップ</p>
       </div>
-      <p>本サイトのすべてのページを示します。</p>
+      <p>
+        本サイトのすべてのページを示します。検索エンジン向けの XML は
+        <Link href="/sitemap.xml">/sitemap.xml</Link>にあります。
+      </p>
       <h2>メイン</h2>
       <ul>
         <li>
@@ -30,6 +43,25 @@ export default function Sitemap() {
         <li>
           <Link href="/posts">Posts</Link>
         </li>
+        <li>
+          <Link href="/tags">Tags</Link>
+        </li>
+      </ul>
+      <h2>Works</h2>
+      <ul>
+        {works.map((work) => (
+          <li key={work.slug}>
+            <Link href={'/works/' + work.slug}>{work.title}</Link>
+          </li>
+        ))}
+      </ul>
+      <h2>Posts</h2>
+      <ul>
+        {posts.map((post) => (
+          <li key={post.slug}>
+            <Link href={'/posts/' + post.slug}>{post.title}</Link>
+          </li>
+        ))}
       </ul>
       <h2>ツール</h2>
       <ul>
@@ -38,6 +70,24 @@ export default function Sitemap() {
         </li>
         <li>
           <Link href="/tools/blockchain-maker">Blockchain Maker</Link>
+        </li>
+        <li>
+          <Link href="/tools/rsa-key-generator">RSA Key Generator</Link>
+        </li>
+      </ul>
+      <h2>このサイトについて</h2>
+      <ul>
+        <li>
+          <Link href="/terms-of-service">利用規約</Link>
+        </li>
+        <li>
+          <Link href="/privacy-policy">プライバシーポリシー</Link>
+        </li>
+        <li>
+          <Link href="/contact">お問い合わせ</Link>
+        </li>
+        <li>
+          <Link href="/feed.xml">RSS</Link>
         </li>
       </ul>
       <style jsx>{``}</style>

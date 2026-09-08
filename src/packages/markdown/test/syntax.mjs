@@ -19,6 +19,20 @@ const render = (md) => renderMarkdown(md, ctx);
 }
 
 {
+  // markdown-it-container の書き方（名前の前に空白）も通す
+  const html = await render("::: warning\nここを読め\n:::");
+  assert.match(html, /markdown-callout--warning/);
+  assert.match(html, /ここを読め/);
+}
+
+{
+  // コードブロックの中は詰めない
+  const html = await render("```md\n::: warning\n:::\n```");
+  assert.match(html, /::: warning/);
+  assert.doesNotMatch(html, /markdown-callout/);
+}
+
+{
   // 4種以外は素通し（未知のディレクティブとして消える）
   const html = await render(":::note\n本文\n:::");
   assert.doesNotMatch(html, /markdown-callout/);

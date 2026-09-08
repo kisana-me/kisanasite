@@ -1,15 +1,19 @@
 import Link from 'next/link'
 import React, { useState, useEffect } from 'react'
 import Card from '@/components/card'
-import { getSortedPostsData } from '@/lib/posts'
+import { getPosts } from '@/lib/site'
 import { usePageContext } from '@/contexts/page_context'
 
 export const getStaticProps = () => {
-  const allPostsData = getSortedPostsData()
-  return { props: { sortedDate: allPostsData[0], sortedUpdate: allPostsData[1] } }
+  return { props: { posts: getPosts() } }
 }
 
-export default function Index({ sortedDate, sortedUpdate }) {
+/** 更新順は「更新日時が無いものは公開日時で見る」。CMS は未更新なら null を返す */
+function byUpdatedDesc(a, b) {
+  return (b.editedAt ?? b.publishedAt ?? '').localeCompare(a.editedAt ?? a.publishedAt ?? '')
+}
+
+export default function Index({ posts }) {
   const { setTitle } = usePageContext()
   useEffect(() => {
     setTitle('Posts')
@@ -18,6 +22,8 @@ export default function Index({ sortedDate, sortedUpdate }) {
 
   const [isPostOrder, setIsPostOrder] = useState(true)
   const arrayTrigger = () => setIsPostOrder(!isPostOrder)
+  const sorted = isPostOrder ? posts : [...posts].sort(byUpdatedDesc)
+
   return (
     <>
       <div className="heading">
@@ -28,9 +34,9 @@ export default function Index({ sortedDate, sortedUpdate }) {
       <p>{isPostOrder ? '投稿順です' : '更新順です'}</p>
       <Link href="/tags">タグ一覧</Link>
       <div className="posts">
-        {(isPostOrder ? sortedDate : sortedUpdate).map((post, index) => (
+        {sorted.map((post, index) => (
           <Link key={post.slug} href={'/posts/' + post.slug} className="posts-card">
-            <Card title={post.title} image={post.image} summary={post.description} priority={index < 3} />
+            <Card title={post.title} image={post.image} summary={post.summary} priority={index < 3} />
           </Link>
         ))}
       </div>

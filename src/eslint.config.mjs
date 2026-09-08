@@ -10,8 +10,8 @@ export default [
       "node_modules/**",
       "cloudflare-env.d.ts",
       "pages/tools/markdown-editor.js",
-      "lib/mds_reader.js",
-      "lib/posts.js",
+      // 別リポジトリ（kisana-me/markdown）の subtree。向こうの tsconfig で見る
+      "packages/markdown/**",
     ],
   },
   ...nextCoreWebVitals,

@@ -1,3 +1,5 @@
+import { maskCode } from "./media.ts";
+
 const JST = "Asia/Tokyo";
 
 /** 旧サイトの strftime('%Y/%m/%d %H:%M') と同じ見た目にする */
@@ -28,4 +30,22 @@ export function parseTime(value: unknown): number | null {
   const m = /^(?:(\d+):)?(\d{1,2}):(\d{2})$/.exec(s);
   if (m) return Number(m[1] ?? 0) * 3600 + Number(m[2]) * 60 + Number(m[3]);
   return null;
+}
+
+/**
+ * `::: warning` を `:::warning` に寄せる。
+ *
+ * remark-directive は**名前の前に空白を許さない**が、markdown-it-container は
+ * 許していた。旧 kisana.me の本文はその書き方で、そのまま通すと段落として
+ * 出てしまう（黙って地の文になるので気づきにくい）。開始行だけ詰める。
+ *
+ * 閉じ側（`:::` だけの行）は元から名前を持たないので触らない。
+ * コードブロックの中は伏せてから当てる。
+ */
+const CONTAINER_OPEN = /^(:{3,})[ \t]+(?=[A-Za-z][\w-]*)/gm;
+
+export function normalizeDirectives(md: string): string {
+  if (!md || !md.includes(":::")) return md;
+  const { masked, restore } = maskCode(md);
+  return restore(masked.replace(CONTAINER_OPEN, "$1"));
 }

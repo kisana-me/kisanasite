@@ -2,31 +2,30 @@ import { useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import parse from 'html-react-parser'
-import { getAllPostIds, getPostData, getSortedPostsData } from '@/lib/posts'
+import { getPost, getPostSlugs, getPosts } from '@/lib/site'
+import { formatDateTime } from '@/lib/format'
 import { usePageContext } from '@/contexts/page_context'
 import MiniCard from '@/components/mini_card'
+import TableOfContents from '@/components/table_of_contents'
 
 export async function getStaticPaths() {
-  const paths = getAllPostIds()
   return {
-    paths,
+    paths: getPostSlugs().map((slug) => ({ params: { slug } })),
     fallback: false,
   }
 }
 
 export async function getStaticProps({ params }) {
-  const allPostsData = getSortedPostsData()
-  const postData = await getPostData(params.slug)
-  return { props: { postData, sortedDate: allPostsData[0] } }
+  return { props: { post: getPost(params.slug), posts: getPosts() } }
 }
 
-export default function Post({ postData, sortedDate }) {
+export default function Post({ post, posts }) {
   const { setTitle, setDescription, setType, setImageUrl } = usePageContext()
   useEffect(() => {
-    setTitle(postData.title)
-    setDescription(postData.description)
+    setTitle(post.title)
+    setDescription(post.summary)
     setType('article')
-    setImageUrl(postData.image)
+    setImageUrl(post.image)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -35,32 +34,29 @@ export default function Post({ postData, sortedDate }) {
       <div className="post-container">
         <div className="post-main">
           <div className="post-image">
-            <Image
-              src={postData.image ? `/images/${postData.id}/${postData.image}` : '/images/no-image.png'}
-              alt={postData.title}
-              priority={true}
-              fill
-            />
+            <Image src={post.image ? post.image : '/images/no-image.png'} alt={post.title} priority={true} fill />
           </div>
-          <h1>{postData.title}</h1>
-          <div>ID:{postData.id}</div>
-          <div>投稿:{postData.date}</div>
-          <div>更新:{postData.update}</div>
-          <div>
-            タグ:
-            {postData.tag.map((t) => (
-              <Link key={t} href={'/tags'}>
-                <span>{t}</span>
-              </Link>
-            ))}
-          </div>
-          <div>{postData.description}</div>
-          {parse(postData.contentHtml)}
+          <h1>{post.title}</h1>
+          <div>投稿:{formatDateTime(post.publishedAt)}</div>
+          {post.editedAt && <div>更新:{formatDateTime(post.editedAt)}</div>}
+          {post.tags.length > 0 && (
+            <div>
+              タグ:
+              {post.tags.map((tag) => (
+                <Link key={tag.slug} href={`/tags#${tag.slug}`}>
+                  <span>{tag.name}</span>
+                </Link>
+              ))}
+            </div>
+          )}
+          <div>{post.summary}</div>
+          <TableOfContents items={post.toc} />
+          {parse(post.contentHtml)}
         </div>
         <div className="post-aside">
-          {sortedDate.map((post) => (
-            <Link key={post.slug} href={'/posts/' + post.slug} className="post-aside-posts">
-              <MiniCard title={post.title} image={post.image} summary={post.description} />
+          {posts.map((other) => (
+            <Link key={other.slug} href={'/posts/' + other.slug} className="post-aside-posts">
+              <MiniCard title={other.title} image={other.image} summary={other.summary} />
             </Link>
           ))}
         </div>

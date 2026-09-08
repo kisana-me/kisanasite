@@ -49,7 +49,7 @@ export interface RewriteSource {
 /** コードブロックとコードスパンを伏せる。中の `/m/xxx` は本文ではない */
 const CODE = /(^|\n)(?:```|~~~)[\s\S]*?(?:\n(?:```|~~~)|$)|`+[^`\n]*`+/g;
 
-function maskCode(md: string): { masked: string; restore: (s: string) => string } {
+export function maskCode(md: string): { masked: string; restore: (s: string) => string } {
   const holes: string[] = [];
   const masked = md.replace(CODE, (hit) => {
     holes.push(hit);

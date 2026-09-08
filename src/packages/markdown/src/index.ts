@@ -19,11 +19,12 @@ import GithubSlugger from "github-slugger";
 import { remarkAbbr } from "./abbr.ts";
 import { remarkIvecolor } from "./plugin.ts";
 import type { RenderContext, TocItem } from "./types.ts";
+import { normalizeDirectives } from "./util.ts";
 
 export * from "./types.ts";
 export { isUnresolvedRef, mediaUrl, rewriteMediaRefs } from "./media.ts";
 export type { RewriteSource } from "./media.ts";
-export { formatDateTime } from "./util.ts";
+export { formatDateTime, normalizeDirectives } from "./util.ts";
 
 /**
  * remark-flexible-markers と remark-ins が付ける class を落として、
@@ -81,7 +82,7 @@ export async function renderMarkdown(md: string, ctx: RenderContext): Promise<st
     .use(rehypeCleanMark)
     .use(rehypeShiki, { theme: "monokai" })
     .use(rehypeStringify)
-    .process(md ?? "");
+    .process(normalizeDirectives(md ?? ""));
   return String(file);
 }
 
@@ -92,7 +93,7 @@ export async function renderMarkdown(md: string, ctx: RenderContext): Promise<st
  */
 function parseBase(md: string): any {
   const processor = baseProcessor();
-  return processor.runSync(processor.parse(md ?? ""));
+  return processor.runSync(processor.parse(normalizeDirectives(md ?? "")));
 }
 
 /**

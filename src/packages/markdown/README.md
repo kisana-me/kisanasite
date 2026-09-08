@@ -25,6 +25,7 @@ private リポジトリなので、CI ではトークンが要る。手順は使
 | `src/index.ts` | `renderMarkdown` / `extractToc` / `renderPlain` |
 | `src/plugin.ts` | 独自記法（`:::gallery` / `:::info` / `::youtube` / `yt-sync`）と URL単独行の埋め込み |
 | `src/abbr.ts` | 略語（`*[HTML]: Hyper Text Markup Language`）|
+| `src/util.ts` | 日時・時刻の整形と `::: name` の詰め直し |
 | `src/embeds.ts` | YouTube / X / TikTok / Instagram の埋め込み HTML |
 | `src/media.ts` | `/m/{id}` の解決と配信URLの組み立て |
 | `src/types.ts` | `RenderContext` など。**両側の契約** |
